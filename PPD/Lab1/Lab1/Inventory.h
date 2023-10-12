@@ -9,6 +9,7 @@ class Inventory
 private:
 	unordered_map<int, Product*> products;
 	unordered_map<int, mutex*> mutexes;
+	mutex lock;
 
 public:
 	
