@@ -19,11 +19,27 @@ vector<Product*> Inventory::getAllProducts()
 	return allProducts;
 }
 
-void Inventory::addProduct(double prince, int quantity)
+int Inventory::sale(int productId, int quantity)
+{
+	mutexes[productId]->lock();
+	auto product = products[productId];
+	int amount = 0;
+	if (quantity <= product->getQuantity()) {
+		amount = product->getPrice() * quantity;
+		product->setQuantity(product->getQuantity() - quantity);
+	}
+
+	mutexes[productId]->unlock();
+	return amount;
+}
+
+void Inventory::addProduct(double price, int quantity)
 {
 	lock.lock();
 	int id = products.size() + 1;
-	if()
-
+	auto product = new Product(id, quantity, price);
+	products[id] = product;
+	mutexes[id] = new mutex();
 	lock.unlock();
 }
+

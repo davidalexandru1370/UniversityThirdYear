@@ -12,9 +12,8 @@ private:
 	mutex lock;
 
 public:
-	
 	Product* getProductById(int id);
 	vector<Product*> getAllProducts();
-	void addProduct(double prince, int quantity);
-
+	int sale(int productId, int quantity);
+	void addProduct(double price, int quantity);
 };
