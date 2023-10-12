@@ -69,4 +69,3 @@ When the application is used offline, all the operations performed store the inf
 
 When application will get internet connection, all the new edited/added/deleted entities will be sent to the server database.
 
-    
