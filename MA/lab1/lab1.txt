@@ -1,0 +1,72 @@
+1. A short description
+Homework application is an app for managing laboratory and other type of assignments for students.
+It is a mobile application that can be accessed from any android device with android >= 7.0.
+You can add new assignments, edit them, delete them, mark them as done, and see the list of all assignments.
+Some of the application functionalities works only if you have a connection to the internet like get existing assignments.
+Other type of assignments can be done offline like adding a new assignment.
+Deleting, editing, marking as done can be done offline only if you had previously accessed the list of assignments online.
+There is no authentication system, so anyone can access the application and add, edit, delete, mark as done any assignment.
+
+2.Domain:
+Homework entity: 
+- id: unique identifier of the homework, 
+- description: summary of the task,
+- deadline: date when the homework should be done,
+- received date: date when the homework was received,
+- subject: subject of the homework,
+- delivered: boolean value that indicates if the homework was delivered or not.
+
+3.Present the details of each crud operation. - create. - read. - update. - delete.
+- create: 
+  - add a new homework: 
+    - click on the floating button with the plus sign,
+    - fill the form with the homework details,
+    - click on the save button.
+
+read:
+  - get all homeworks:
+    - list of homeworks will be displayed when entry the application,
+    - click on the refresh button to get the latest version of the list of homeworks.
+    - the list of homeworks will be displayed.
+
+update:
+    - edit a homework:
+        - click on the edit button from the list of homeworks,
+        - fill the form with the new homework details,
+        - click on the save button.
+
+delete:
+    - delete a homework:
+        - click on the delete button from the list of homeworks,
+        - click on the yes button from the confirmation dialog.
+
+4.Persistence details, what crud operations are persisted on the local db and on the server.
+- create: 
+  - add a new homework: 
+    - the homework will be added to the local database,
+    - the homework will be added to the server database.
+
+- read:
+  - get all homeworks:
+    - the homeworks will be retrieved from the server database.
+    - the homeworks will be stored in the local database but only those who are created/modified when there is no internet connection.
+
+- update:
+    - edit a homework:
+        - the homework will be updated in the local database,
+        - the homework will be updated in the server database.
+- delete:
+    - delete a homework:
+        - the homework will be deleted from the local database,
+        - the homework will be deleted from the server database.
+
+5.Details on what is happening when the device is offline.
+When the application is used offline, all the operations performed store the information locally:
+-	the entities created are stored in the local database
+-	the read operation is performed on the locally saved entities
+-	the update operation goes for the locally saved entities
+-	the delete operation is performed on the local database
+
+When application will get internet connection, all the new edited/added/deleted entities will be sent to the server database.
+
+    
