@@ -9,21 +9,19 @@ Product* Inventory::getProductById(int id)
 vector<Product*> Inventory::getAllProducts()
 {
 	vector<Product*> allProducts;
-	lock.lock();
 
 	for (const auto& pair : this->products) {
 		allProducts.push_back(pair.second);
 	}
-	lock.unlock();
 
 	return allProducts;
 }
 
-int Inventory::sale(int productId, int quantity)
+double Inventory::sale(int productId, int quantity)
 {
 	mutexes[productId]->lock();
 	auto product = products[productId];
-	int amount = 0;
+	double amount = 0;
 	if (quantity <= product->getQuantity()) {
 		amount = product->getPrice() * quantity;
 		product->setQuantity(product->getQuantity() - quantity);

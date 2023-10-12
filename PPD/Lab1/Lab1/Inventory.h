@@ -14,6 +14,6 @@ private:
 public:
 	Product* getProductById(int id);
 	vector<Product*> getAllProducts();
-	int sale(int productId, int quantity);
+	double sale(int productId, int quantity);
 	void addProduct(double price, int quantity);
 };
