@@ -1,0 +1,18 @@
+//sum of n numbers
+int n, int number;
+display("how many numbers do you want to add?\n");
+
+readInt(n);
+
+int sum = 0;
+int index = 0;
+
+while (index < n) {
+    display("enter a number");
+    readInt(number);
+    sum = sum + number;
+    index = index + 1;
+}
+
+display("The sum is: ");
+display(number);

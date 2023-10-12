@@ -1,0 +1,17 @@
+//minimum of three numbers
+int a, int b, int c;
+
+readInt(a);
+readInt(b);
+readInt(c);
+
+int minimum = a;
+
+if (minimum > b) {
+	minimum = b;
+}
+if (minimum > c) {
+	minimum = c;
+}
+
+display(smallest);

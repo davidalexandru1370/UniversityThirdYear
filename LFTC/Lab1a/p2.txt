@@ -1,0 +1,16 @@
+//compute the greatest common divisor of 2 numbers
+int a, int b;
+
+readInt(a);
+readInt(b);
+
+while(a != b){
+    if(a > b){
+        a = a - b;
+    }
+    else{
+        b = b - a;
+    }
+}
+
+display(a);

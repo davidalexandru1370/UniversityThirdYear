@@ -1,0 +1,19 @@
+Alphabet:
+	a. Lower and upper case letters [aA-zZ] of the English alphabet
+	b. Underline character '_'
+	c. Decimal digits (0-9)
+Lexic:
+	- special symbols: 
+		- operators: + - * / < <= = >= == !=
+		- separators: [ ] { } , ; : space newline " '
+		- reserved words: int string char readInt if else while const def return read display
+	- identifiers: a sequence of letters and digits, such that the first character is a letter; the rule is: 
+		identifier ::= ("_" | letter){letter|digit|"_"}
+		letter ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" 
+		digit ::= "0" | "1" | "2" | ... | "9"
+	- constants:
+		string = "{letter|digit|"_"|" "}"
+		char = '(letter|digit|special_char)'
+		special_char = "+" | "-" | "*" | "<" | ">" | "&" | "|" | ...
+		integer = "0" | ["+"|"-"]non_zero_digit{digit}
+		non_zero_digit = "1" | "2" | ... | "9"

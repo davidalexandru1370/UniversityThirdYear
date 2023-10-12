@@ -1,0 +1,17 @@
+//minimum of three numbers
+int 23a, int b, int c; //a variable can not start with a number
+
+readInt(a);
+readInt(b);
+readInt(c);
+
+ints minimum = a; //ints is not a type
+
+if (minimum > b) {
+	minimum = b;
+}
+if (minimum > c) {
+	minimum = c;
+}
+
+display(smallest);
