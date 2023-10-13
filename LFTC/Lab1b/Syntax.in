@@ -16,7 +16,7 @@ simplstmt ::= assignstmt  | iostmt | declaration
 
 assignstmt ::= IDENTIFIER "=" expression
 
-expression ::= expression "+" term | expression "-" term | term
+expression ::= expression "+" term | expression "-" term | term | term "+" expression | term "-" expression
 
 term ::= term "*" factor | factor | term "/" factor | factor
 
