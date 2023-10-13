@@ -7,13 +7,15 @@ readInt(a);
 readInt(b);
 readInt(c);
 
-int minimum = a;
+int minimum;
+minimum = a;
 
 if (minimum > b) {
 	minimum = b;
 }
+
 if (minimum > c) {
 	minimum = c;
 }
 
-display(smallest);
+display(minimum);

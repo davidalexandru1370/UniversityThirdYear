@@ -9,7 +9,7 @@ int sum = 0;
 int index = 0;
 
 while (index < n) {
-    display("enter a number");
+    display("enter a number\n");
     readInt(number);
     sum = sum + number;
     index = index + 1;
