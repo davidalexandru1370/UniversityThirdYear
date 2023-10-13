@@ -7,7 +7,7 @@ Lexic:
 		- separators: [ ] { } , ; : space newline " '
 		- reserved words: int string char readInt if else while const def return read display
 	- identifiers:
-		identifier = (letter){letter}(digit)
+		identifier = (letter){letter}[{digit}]
 		letter = "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" 
 		digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 	- constants:

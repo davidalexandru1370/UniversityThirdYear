@@ -1,5 +1,6 @@
 //compute the greatest common divisor of 2 numbers
-int a, int b;
+int a;
+int b;
 
 readInt(a);
 readInt(b);

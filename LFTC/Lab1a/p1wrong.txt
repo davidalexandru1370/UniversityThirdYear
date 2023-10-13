@@ -16,4 +16,4 @@ if (minimum > c) {
 	minimum = c;
 }
 
-display(smallest);
+display(minimum);
