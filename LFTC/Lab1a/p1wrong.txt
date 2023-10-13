@@ -1,5 +1,7 @@
-//minimum of three numbers
-int 23a, int b, int c; //a variable can not start with a number
+//minimum of three numbers, illegal tokens
+int 23a;
+int b;
+int c; //a variable can not start with a number
 
 readInt(a);
 readInt(b);

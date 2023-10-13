@@ -1,5 +1,6 @@
 //sum of n numbers
-int n, int number;
+int n;
+int number;
 display("how many numbers do you want to add?\n");
 
 readInt(n);

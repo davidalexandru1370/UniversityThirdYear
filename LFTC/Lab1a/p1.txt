@@ -1,5 +1,7 @@
 //minimum of three numbers
-int a, int b, int c;
+int a;
+int b;
+int c;
 
 readInt(a);
 readInt(b);

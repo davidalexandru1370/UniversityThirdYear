@@ -1,12 +1,10 @@
-program ::= "VAR" decllist ";" cmpdstmt "."
-
 decllist ::= declaration | declaration ";" decllist
 
-declaration ::= IDENTIFIER ":" type
+declaration ::= "type" IDENTIFIER 
 
 type1 ::= "int" | "char" | "string"
 
-arraydecl ::= identifier "[" nr "]" "OF" type1
+arraydecl ::= identifier type1[nr]  
 
 type  ::= type1|arraydecl
 
