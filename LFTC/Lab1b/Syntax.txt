@@ -1,5 +1,9 @@
 decllist = declaration | declaration ";" decllist
 
+program =  "PROGRAM" "{" cmpdstmt "}"
+
+cmpdstmt = "BEGIN" stmtlist  "END"
+
 declaration = "type" IDENTIFIER 
 
 type1 = "int" | "char" | "string"

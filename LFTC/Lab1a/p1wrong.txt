@@ -1,19 +1,22 @@
 //minimum of three numbers, illegal tokens
-int 23a; //a variable can not start with a number
-int b;
-int c; 
+program{
+begin
 
-readInt(a);
-readInt(b);
-readInt(c);
+	int 23a; //a variable can not start with a number
+	int b;
+	int c; 
 
-ints minimum = a; //ints is not a type
+	readInt(a);
+	readInt(b);
+	readInt(c);
 
-if (minimum > b) {
-	minimum = b;
+	if (minimum ~ b) { //invalid operator
+		minimum = b;
+	}
+	if (minimum > c) {
+		minimum = c;
+	}
+
+	display(minimum);
+end
 }
-if (minimum > c) {
-	minimum = c;
-}
-
-display(minimum);

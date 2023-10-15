@@ -1,21 +1,25 @@
 //minimum of three numbers
-int a;
-int b;
-int c;
+program{
+begin
+	int a;
+	int b;
+	int c;
 
-readInt(a);
-readInt(b);
-readInt(c);
+	readInt(a);
+	readInt(b);
+	readInt(c);
 
-int minimum;
-minimum = a;
+	int minimum;
+	minimum = a;
 
-if (minimum > b) {
-	minimum = b;
+	if (minimum > b) {
+		minimum = b;
+	}
+
+	if (minimum > c) {
+		minimum = c;
+	}
+
+	display(minimum);
+end
 }
-
-if (minimum > c) {
-	minimum = c;
-}
-
-display(minimum);

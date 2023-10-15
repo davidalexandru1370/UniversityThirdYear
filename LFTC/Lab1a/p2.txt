@@ -1,17 +1,21 @@
 //compute the greatest common divisor of 2 numbers
-int a;
-int b;
+program{
+begin
+    int a;
+    int b;
 
-readInt(a);
-readInt(b);
+    readInt(a);
+    readInt(b);
 
-while(a != b){
-    if(a > b){
-        a = a - b;
+    while(a != b){
+        if(a > b){
+            a = a - b;
+        }
+        else{
+            b = b - a;
+        }
     }
-    else{
-        b = b - a;
-    }
+
+    display(a);
+end
 }
-
-display(a);
