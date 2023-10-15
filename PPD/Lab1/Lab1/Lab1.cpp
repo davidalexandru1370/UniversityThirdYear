@@ -1,63 +1,70 @@
 #include <iostream>
 #include <fstream>
-#include "Inventory.h"
+#include <mutex>
 #include "Order.h"
 
 #define THREAD_COUNT 1000
-long double money = 0;
+double money = 0;
 int numberOfBills = 0;
 int numberOfItems = 0;
+mutex billsMutex;
 
 Inventory* getInventory() {
-    Inventory* inventory = new Inventory();
-    double price;
-    int quantity;
-    
-    ifstream inputFile("input.txt");
+	Inventory* inventory = new Inventory();
+	double price;
+	int quantity;
 
-    while (!inputFile.eof()) {
-        numberOfItems++;
-        inputFile >> quantity >> price;
-        inventory->addProduct(price, quantity);
-    }
+	ifstream inputFile("input.txt");
 
-    return inventory;
+	while (!inputFile.eof()) {
+		numberOfItems++;
+		inputFile >> quantity >> price;
+		inventory->addProduct(price, quantity);
+	}
+
+	return inventory;
 }
 
 vector<Order> generateOrders(int numberOfProducts, int numberOfOrders) {
-    const int maximumNumberOfQuantity = 50;
-    vector<Order> orders;
-    for (int index = 0; index < numberOfOrders; index++) {
-        auto quantity = rand() % maximumNumberOfQuantity;
-        Order *order = new Order(quantity);
-        orders.push_back(*order);
-    }
-    
-    return orders;
+	const int maximumNumberOfQuantity = 1;
+	vector<Order> orders;
+	for (int index = 0; index < numberOfOrders; index++) {
+		auto quantity = rand() % maximumNumberOfQuantity + 1;
+		int productId = rand() % numberOfProducts + 1;
+		Order* order = new Order(productId, quantity);
+		orders.push_back(*order);
+	}
+
+	return orders;
 }
 
-void executeOrders(Order &order) {
-    
+void executeOrders(Inventory* inventory, Order* order) {
+	order->execute(inventory);
+	billsMutex.lock();
+	money += order->getProfit();
+	numberOfBills++;
+	billsMutex.unlock();
 }
-
 
 int main()
 {
-    auto inventory = getInventory();
-    auto orders = generateOrders(inventory->getAllProducts().size(), THREAD_COUNT);
-    vector<thread> threads;
-    threads.reserve(THREAD_COUNT + 2);
+	auto inventory = getInventory();
+	vector<Order> orders = generateOrders(inventory->getAllProducts().size(), THREAD_COUNT);
+	vector<thread> threads;
+	threads.resize(THREAD_COUNT + 2);
 
-    for (size_t index = 0; index < THREAD_COUNT; index++)
-    {
-        threads[index] = thread(executeOrders, orders[index]);
-    }
+	for (size_t index = 0; index < THREAD_COUNT; index++)
+	{
+		threads[index] = thread(executeOrders, inventory, &orders[index]);
+	}
 
-    for (size_t index = 0; index < THREAD_COUNT; index++)
-    {
-        threads[index].join();
-    }
+	for (size_t index = 0; index < THREAD_COUNT; index++)
+	{
+		threads[index].join();
+	}
 
-    return 0;
+	cout << numberOfBills << "\n";
+	cout << money;
+	return 0;
 }
 
