@@ -30,11 +30,19 @@ int Order::getId()
     return this->id;
 }
 
+void Order::setIsRegistered(bool isRegistered)
+{
+    this->isRegistered = isRegistered;
+}
+
+bool Order::getIsRegistered()
+{
+    return this->isRegistered;
+}
+
 void Order::execute(Inventory* inventory)
 {
-    lock.lock();
     auto profit = inventory->sale(this->id, this->quantity);
     this->setQuantity(0);
     this->profit += profit;
-    lock.unlock();
 }

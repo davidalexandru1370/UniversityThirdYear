@@ -3,6 +3,7 @@
 #include <mutex>
 #include <cmath>
 #include "Order.h"
+#include <shared_mutex>
 
 #define THREAD_COUNT 1000
 long double money = 0;
@@ -10,6 +11,7 @@ int numberOfBills = 0;
 int numberOfItems = 0;
 mutex billsMutex;
 mutex audit;
+shared_mutex sharedMutex;
 
 Inventory* getInventory() {
 	Inventory* inventory = new Inventory();
@@ -44,7 +46,9 @@ vector<Order*> generateOrders(int numberOfProducts, int numberOfOrders) {
 long double computeIncomeFromOrders(vector<Order*> orders) {
 	double long realIncome = 0;
 	for (auto& order : orders) {
-		realIncome += order->getProfit();
+		if (order->getIsRegistered() == true) {
+			realIncome += order->getProfit();
+		}
 	}
 
 	return realIncome;
@@ -57,33 +61,35 @@ void billingAudit(vector<Order*> orders) {
 			billsMutex.unlock();
 			continue;
 		}
+		
 		if (numberOfBills == THREAD_COUNT) {
 			billsMutex.unlock();
 			break;
 		}
-		audit.lock();
+
 		double long realIncome = computeIncomeFromOrders(orders);
 		long double epsilon = 0.0001;
-
+		audit.lock();
+		cout << "Real Income = " << realIncome << " and Current Income = " << money << " ";
 		if (abs(realIncome - money) <= epsilon) {
 			cout << "OK\n";
 		}
 		else {
-			cout << "Real Income = " << realIncome << " and Income = " << money << "\n";
+			cout << "Fraudulent\n";
 		}
 		audit.unlock();
 		billsMutex.unlock();
-
 	}
 }
 
-
 void executeOrders(Inventory* inventory, Order* order) {
-	billsMutex.lock();
 	order->execute(inventory);
+	billsMutex.lock();
+	order->setIsRegistered(true);
 	money += order->getProfit();
 	numberOfBills++;
 	billsMutex.unlock();
+
 }
 
 int main()
@@ -96,12 +102,12 @@ int main()
 
 	thread* auditThread = new thread(billingAudit, orders);
 
-	for (size_t index = 0; index < THREAD_COUNT; index++)
+	for (int index = 0; index < THREAD_COUNT; index++)
 	{
 		threads[index] = thread(executeOrders, inventory, orders[index]);
 	}
 
-	for (size_t index = 0; index < THREAD_COUNT; index++)
+	for (int index = 0; index < THREAD_COUNT; index++)
 	{
 		threads[index].join();
 	}
@@ -109,7 +115,7 @@ int main()
 	auditThread->join();
 
 	cout << numberOfBills << "\n";
-	cout << money<<"\n";
+	cout << money << "\n";
 	cout << computeIncomeFromOrders(orders);
 
 	return 0;

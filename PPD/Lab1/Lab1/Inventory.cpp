@@ -33,11 +33,9 @@ long double Inventory::sale(int productId, int quantity)
 
 void Inventory::addProduct(double price, int quantity)
 {
-	lock.lock();
 	int id = products.size() + 1;
 	auto product = new Product(id, quantity, price);
 	products[id] = product;
 	mutexes[id] = new mutex();
-	lock.unlock();
 }
 
