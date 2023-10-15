@@ -6,11 +6,12 @@ private:
 	int quantity;
 	int id;
 	long double profit = 0;
+	mutex lock;
 public:
 	int getQuantity();
 	void setQuantity(int quantity);
 	long double getProfit();
-	void setProfit(double profit);
+	void setProfit(long double profit);
 	void setId(int id);
 	int getId();
 

@@ -15,7 +15,7 @@ long double Order::getProfit()
     return this->profit;
 }
 
-void Order::setProfit(double profit)
+void Order::setProfit(long double profit)
 {
     this->profit = profit;
 }
@@ -32,6 +32,9 @@ int Order::getId()
 
 void Order::execute(Inventory* inventory)
 {
+    lock.lock();
     auto profit = inventory->sale(this->id, this->quantity);
-    this->profit += (long double)profit;
+    this->setQuantity(0);
+    this->profit += profit;
+    lock.unlock();
 }

@@ -17,11 +17,11 @@ vector<Product*> Inventory::getAllProducts()
 	return allProducts;
 }
 
-double Inventory::sale(int productId, int quantity)
+long double Inventory::sale(int productId, int quantity)
 {
 	mutexes[productId]->lock();
 	auto product = products[productId];
-	double amount = 0;
+	long double amount = 0;
 	if (quantity <= product->getQuantity()) {
 		amount = product->getPrice() * quantity;
 		product->setQuantity(product->getQuantity() - quantity);
