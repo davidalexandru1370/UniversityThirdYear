@@ -1,6 +1,7 @@
 #include <unordered_map>
 #include <mutex>
 #include <vector>
+#include <algorithm>
 #include "Product.h"
 using namespace std;
 

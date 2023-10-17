@@ -22,12 +22,12 @@ void Order::setProfit(long double profit)
 
 void Order::setId(int id)
 {
-    this->id = id;
+    this->productId = id;
 }
 
 int Order::getId()
 {
-    return this->id;
+    return this->productId;
 }
 
 void Order::setIsRegistered(bool isRegistered)
@@ -42,7 +42,10 @@ bool Order::getIsRegistered()
 
 void Order::execute(Inventory* inventory)
 {
-    auto profit = inventory->sale(this->id, this->quantity);
+    mutexes[productId]->lock();
+    auto profit = inventory->sale(this->productId, this->quantity);
     this->setQuantity(0);
     this->profit += profit;
+    mutexes[productId]->unlock();
 }
+

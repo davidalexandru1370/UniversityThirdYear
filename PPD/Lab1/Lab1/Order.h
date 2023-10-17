@@ -4,9 +4,9 @@ class Order
 {
 private: 
 	int quantity;
-	int id;
+	int productId;
 	long double profit = 0;
-	mutex lock;
+	unordered_map<int, mutex*> mutexes;
 	bool isRegistered = false;
 public:
 	int getQuantity();
@@ -17,11 +17,12 @@ public:
 	int getId();
 	void setIsRegistered(bool isRegistered);
 	bool getIsRegistered();
-
 	void execute(Inventory* inventory);
 
-	Order(int productId,int quantity) : id(productId), quantity(quantity)
+
+	Order(int productId, int quantity) : productId(productId), quantity(quantity)
 	{
+		mutexes[productId] = new mutex();
 	}
 };
 

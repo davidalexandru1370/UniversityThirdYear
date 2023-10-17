@@ -3,15 +3,14 @@
 #include <mutex>
 #include <cmath>
 #include "Order.h"
-#include <shared_mutex>
 
 #define THREAD_COUNT 1000
+
 long double money = 0;
 int numberOfBills = 0;
 int numberOfItems = 0;
 mutex billsMutex;
 mutex audit;
-shared_mutex sharedMutex;
 
 Inventory* getInventory() {
 	Inventory* inventory = new Inventory();
@@ -89,7 +88,6 @@ void executeOrders(Inventory* inventory, Order* order) {
 	money += order->getProfit();
 	numberOfBills++;
 	billsMutex.unlock();
-
 }
 
 int main()
@@ -120,4 +118,3 @@ int main()
 
 	return 0;
 }
-

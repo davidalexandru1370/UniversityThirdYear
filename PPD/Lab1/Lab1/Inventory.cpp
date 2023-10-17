@@ -1,4 +1,3 @@
-
 #include "Inventory.h"
 
 Product* Inventory::getProductById(int id)
@@ -22,11 +21,12 @@ long double Inventory::sale(int productId, int quantity)
 	mutexes[productId]->lock();
 	auto product = products[productId];
 	long double amount = 0;
+	
 	if (quantity <= product->getQuantity()) {
 		amount = product->getPrice() * quantity;
 		product->setQuantity(product->getQuantity() - quantity);
 	}
-
+	
 	mutexes[productId]->unlock();
 	return amount;
 }
