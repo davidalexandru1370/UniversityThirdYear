@@ -54,7 +54,7 @@ namespace rt
             double epsilon = 0.0001;
 
             return intersection.T > (light.Position - point).Length();
-           
+
         }
 
         public void Render(Camera camera, int width, int height, string filename)
@@ -69,7 +69,6 @@ namespace rt
             {
                 for (var j = 0; j < height; j++)
                 {
-                    
                     // ADD CODE HERE: Implement pixel color calculation
                     var pointOnView = camera.Position + camera.Direction * camera.ViewPlaneDistance +
                                       (camera.Up ^ camera.Direction) * ImageToViewPlane(i, width, camera.ViewPlaneWidth) +
@@ -80,15 +79,17 @@ namespace rt
                     {
                         var color = new Color();
                         var lightningColor = new Color();
-                         foreach (var light in _lights)
-                         {
-                             if (IsLit(intersection.Position, light))
-                             {
-                                 lightningColor += intersection.Geometry.Material.Ambient * light.Ambient;
-                             }
-                    }
+                        foreach (var light in _lights)
+                        {
+                            lightningColor += intersection.Geometry.Material.Ambient * light.Ambient;
+                            
+                            if (IsLit(intersection.Position, light))
+                            {
+                                
+                            }
+                        }
 
-                    color += lightningColor;
+                        color += lightningColor;
                         image.SetPixel(i, j, color);
                     }
                     else
