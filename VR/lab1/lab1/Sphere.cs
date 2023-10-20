@@ -18,7 +18,7 @@ namespace rt
             // ADD CODE HERE: Calculate the intersection between the given line and this sphere
 
             double a = line.Dx * line.Dx;
-            double b = 2 * (line.X0 * line.Dx) - (line.Dx * Center) * 2;
+            double b = 2 * ((line.X0 * line.Dx) - (line.Dx * Center));
             double c = line.X0 * line.X0 + Center * Center - Radius * Radius - (line.X0 * Center) * 2;
             double delta = b * b - 4 * a * c;
             double epsilon = 0.0001;
@@ -48,9 +48,9 @@ namespace rt
                 return new Intersection(true, true, this, line, t2);
             }
 
-            double t = Math.Min(t1, t2);
+            double distanceFactorToShortestPoint = Math.Min(t1, t2);
 
-            return new Intersection(true, true, this, line, t);
+            return new Intersection(true, true, this, line, distanceFactorToShortestPoint);
         }
 
         private Tuple<double, double> ComputeSolutionsForSecondDegreeEquation(double delta, double a, double b)
