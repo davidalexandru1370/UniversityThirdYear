@@ -95,14 +95,14 @@
         "C:\\Users\\david\\.nuget\\packages\\microsoft.codeanalysis.csharp/3.8.0\\lib/netcoreapp3.1/Microsoft.CodeAnalysis.CSharp.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.codeanalysis.visualbasic/3.8.0\\lib/netcoreapp3.1/Microsoft.CodeAnalysis.VisualBasic.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration/3.1.6\\lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll",
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.abstractions/3.1.6\\lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.abstractions/5.0.0\\lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.binder/3.1.6\\lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection/3.1.6\\lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll",
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions/3.1.6\\lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions/5.0.0\\lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging/3.1.6\\lib/netcoreapp3.1/Microsoft.Extensions.Logging.dll",
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions/3.1.6\\lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.options/3.1.6\\lib/netcoreapp3.1/Microsoft.Extensions.Options.dll",
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.primitives/3.1.6\\lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions/5.0.0\\lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.options/5.0.0\\lib/net5.0/Microsoft.Extensions.Options.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.primitives/5.0.0\\lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.management.infrastructure.cimcmdlets/7.1.0\\runtimes/win/lib/net5.0/Microsoft.Management.Infrastructure.CimCmdlets.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.management.infrastructure.runtime.win/2.0.0\\runtimes/win10-x64/lib/netstandard1.6/Microsoft.Management.Infrastructure.Native.dll",
         "C:\\Users\\david\\.nuget\\packages\\microsoft.management.infrastructure.runtime.win/2.0.0\\runtimes/win10-x64/lib/netstandard1.6/Microsoft.Management.Infrastructure.dll",
@@ -187,6 +187,25 @@
         "C:\\Users\\david\\.nuget\\packages\\uipath.vision/3.1.4\\lib/net5.0-windows7.0/UiPath.Vision.dll"
       ],
       "Path": "C:\\Users\\david\\.nuget\\packages\\uipath.uiautomation.activities\\21.10.6"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Omex.Extensions.Activities",
+        "Version": "20.0.5"
+      },
+      "Assemblies": [
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.abstractions/5.0.0\\lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions/5.0.0\\lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions/5.0.0\\lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.hosting.abstractions/5.0.0\\lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions/5.0.0\\lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.objectpool/5.0.10\\lib/net5.0/Microsoft.Extensions.ObjectPool.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.options/5.0.0\\lib/net5.0/Microsoft.Extensions.Options.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.primitives/5.0.0\\lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.omex.extensions.abstractions/20.0.5\\lib/net5.0/Microsoft.Omex.Extensions.Abstractions.dll",
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.omex.extensions.activities/20.0.5\\lib/net5.0/Microsoft.Omex.Extensions.Activities.dll"
+      ],
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.omex.extensions.activities\\20.0.5"
     }
   ],
   "Conflicts": [],
@@ -549,11 +568,11 @@
     },
     "Microsoft.Extensions.Configuration.Abstractions": {
       "Id": "Microsoft.Extensions.Configuration.Abstractions",
-      "Version": "3.1.6",
+      "Version": "5.0.0",
       "Dependencies": [
         {
           "Item1": "Microsoft.Extensions.Primitives",
-          "Item2": "[3.1.6, )"
+          "Item2": "[5.0.0, )"
         }
       ]
     },
@@ -579,13 +598,41 @@
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions": {
       "Id": "Microsoft.Extensions.DependencyInjection.Abstractions",
-      "Version": "3.1.6",
+      "Version": "5.0.0",
       "Dependencies": []
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions": {
+      "Id": "Microsoft.Extensions.FileProviders.Abstractions",
+      "Version": "5.0.0",
+      "Dependencies": [
+        {
+          "Item1": "Microsoft.Extensions.Primitives",
+          "Item2": "[5.0.0, )"
+        }
+      ]
     },
     "Microsoft.Extensions.FileSystemGlobbing": {
       "Id": "Microsoft.Extensions.FileSystemGlobbing",
       "Version": "5.0.0",
       "Dependencies": []
+    },
+    "Microsoft.Extensions.Hosting.Abstractions": {
+      "Id": "Microsoft.Extensions.Hosting.Abstractions",
+      "Version": "5.0.0",
+      "Dependencies": [
+        {
+          "Item1": "Microsoft.Extensions.Configuration.Abstractions",
+          "Item2": "[5.0.0, )"
+        },
+        {
+          "Item1": "Microsoft.Extensions.DependencyInjection.Abstractions",
+          "Item2": "[5.0.0, )"
+        },
+        {
+          "Item1": "Microsoft.Extensions.FileProviders.Abstractions",
+          "Item2": "[5.0.0, )"
+        }
+      ]
     },
     "Microsoft.Extensions.Logging": {
       "Id": "Microsoft.Extensions.Logging",
@@ -611,26 +658,31 @@
     },
     "Microsoft.Extensions.Logging.Abstractions": {
       "Id": "Microsoft.Extensions.Logging.Abstractions",
-      "Version": "3.1.6",
+      "Version": "5.0.0",
+      "Dependencies": []
+    },
+    "Microsoft.Extensions.ObjectPool": {
+      "Id": "Microsoft.Extensions.ObjectPool",
+      "Version": "5.0.10",
       "Dependencies": []
     },
     "Microsoft.Extensions.Options": {
       "Id": "Microsoft.Extensions.Options",
-      "Version": "3.1.6",
+      "Version": "5.0.0",
       "Dependencies": [
         {
           "Item1": "Microsoft.Extensions.DependencyInjection.Abstractions",
-          "Item2": "[3.1.6, )"
+          "Item2": "[5.0.0, )"
         },
         {
           "Item1": "Microsoft.Extensions.Primitives",
-          "Item2": "[3.1.6, )"
+          "Item2": "[5.0.0, )"
         }
       ]
     },
     "Microsoft.Extensions.Primitives": {
       "Id": "Microsoft.Extensions.Primitives",
-      "Version": "3.1.6",
+      "Version": "5.0.0",
       "Dependencies": []
     },
     "Microsoft.Graph": {
@@ -722,6 +774,42 @@
       "Id": "Microsoft.NETCore.Windows.ApiSets",
       "Version": "1.0.1",
       "Dependencies": []
+    },
+    "Microsoft.Omex.Extensions.Abstractions": {
+      "Id": "Microsoft.Omex.Extensions.Abstractions",
+      "Version": "20.0.5",
+      "Dependencies": [
+        {
+          "Item1": "Microsoft.Extensions.Hosting.Abstractions",
+          "Item2": "[5.0.0, )"
+        },
+        {
+          "Item1": "Microsoft.Extensions.Logging.Abstractions",
+          "Item2": "[5.0.0, )"
+        },
+        {
+          "Item1": "System.Diagnostics.DiagnosticSource",
+          "Item2": "[6.0.0-rc.1.21451.13, )"
+        }
+      ]
+    },
+    "Microsoft.Omex.Extensions.Activities": {
+      "Id": "Microsoft.Omex.Extensions.Activities",
+      "Version": "20.0.5",
+      "Dependencies": [
+        {
+          "Item1": "Microsoft.Omex.Extensions.Abstractions",
+          "Item2": "[20.0.5, )"
+        },
+        {
+          "Item1": "Microsoft.Extensions.ObjectPool",
+          "Item2": "[5.0.10, )"
+        },
+        {
+          "Item1": "Microsoft.Extensions.Options",
+          "Item2": "[5.0.0, )"
+        }
+      ]
     },
     "Microsoft.PowerShell.Commands.Diagnostics": {
       "Id": "Microsoft.PowerShell.Commands.Diagnostics",
@@ -2018,8 +2106,13 @@
     },
     "System.Diagnostics.DiagnosticSource": {
       "Id": "System.Diagnostics.DiagnosticSource",
-      "Version": "4.7.1",
-      "Dependencies": []
+      "Version": "6.0.0-rc.1.21451.13",
+      "Dependencies": [
+        {
+          "Item1": "System.Runtime.CompilerServices.Unsafe",
+          "Item2": "[6.0.0-rc.1.21451.13, )"
+        }
+      ]
     },
     "System.Diagnostics.EventLog": {
       "Id": "System.Diagnostics.EventLog",
@@ -3049,7 +3142,7 @@
     },
     "System.Runtime.CompilerServices.Unsafe": {
       "Id": "System.Runtime.CompilerServices.Unsafe",
-      "Version": "5.0.0",
+      "Version": "6.0.0-rc.1.21451.13",
       "Dependencies": []
     },
     "System.Runtime.Extensions": {
@@ -4597,12 +4690,12 @@
     {
       "Package": {
         "Id": "Microsoft.Extensions.Configuration.Abstractions",
-        "Version": "3.1.6"
+        "Version": "5.0.0"
       },
       "Assemblies": [
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.6\\lib\\netcoreapp3.1\\Microsoft.Extensions.Configuration.Abstractions.dll"
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\lib\\netstandard2.0\\Microsoft.Extensions.Configuration.Abstractions.dll"
       ],
-      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.6"
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0"
     },
     {
       "Package": {
@@ -4627,12 +4720,22 @@
     {
       "Package": {
         "Id": "Microsoft.Extensions.DependencyInjection.Abstractions",
-        "Version": "3.1.6"
+        "Version": "5.0.0"
       },
       "Assemblies": [
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.6\\lib\\netstandard2.0\\Microsoft.Extensions.DependencyInjection.Abstractions.dll"
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\lib\\netstandard2.0\\Microsoft.Extensions.DependencyInjection.Abstractions.dll"
       ],
-      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.6"
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Extensions.FileProviders.Abstractions",
+        "Version": "5.0.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\lib\\netstandard2.0\\Microsoft.Extensions.FileProviders.Abstractions.dll"
+      ],
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0"
     },
     {
       "Package": {
@@ -4643,6 +4746,16 @@
         "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\lib\\netstandard2.0\\Microsoft.Extensions.FileSystemGlobbing.dll"
       ],
       "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Extensions.Hosting.Abstractions",
+        "Version": "5.0.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\5.0.0\\lib\\netstandard2.1\\Microsoft.Extensions.Hosting.Abstractions.dll"
+      ],
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\5.0.0"
     },
     {
       "Package": {
@@ -4657,32 +4770,42 @@
     {
       "Package": {
         "Id": "Microsoft.Extensions.Logging.Abstractions",
-        "Version": "3.1.6"
+        "Version": "5.0.0"
       },
       "Assemblies": [
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.6\\lib\\netstandard2.0\\Microsoft.Extensions.Logging.Abstractions.dll"
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\lib\\netstandard2.0\\Microsoft.Extensions.Logging.Abstractions.dll"
       ],
-      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.6"
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Extensions.ObjectPool",
+        "Version": "5.0.10"
+      },
+      "Assemblies": [
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.objectpool\\5.0.10\\lib\\net5.0\\Microsoft.Extensions.ObjectPool.dll"
+      ],
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.objectpool\\5.0.10"
     },
     {
       "Package": {
         "Id": "Microsoft.Extensions.Options",
-        "Version": "3.1.6"
+        "Version": "5.0.0"
       },
       "Assemblies": [
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.options\\3.1.6\\lib\\netcoreapp3.1\\Microsoft.Extensions.Options.dll"
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\lib\\net5.0\\Microsoft.Extensions.Options.dll"
       ],
-      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.options\\3.1.6"
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.options\\5.0.0"
     },
     {
       "Package": {
         "Id": "Microsoft.Extensions.Primitives",
-        "Version": "3.1.6"
+        "Version": "5.0.0"
       },
       "Assemblies": [
-        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.6\\lib\\netcoreapp3.1\\Microsoft.Extensions.Primitives.dll"
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\lib\\netcoreapp3.0\\Microsoft.Extensions.Primitives.dll"
       ],
-      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.6"
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0"
     },
     {
       "Package": {
@@ -4775,6 +4898,26 @@
       },
       "Assemblies": [],
       "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.netcore.windows.apisets\\1.0.1"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Omex.Extensions.Abstractions",
+        "Version": "20.0.5"
+      },
+      "Assemblies": [
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.omex.extensions.abstractions\\20.0.5\\lib\\net5.0\\Microsoft.Omex.Extensions.Abstractions.dll"
+      ],
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.omex.extensions.abstractions\\20.0.5"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Omex.Extensions.Activities",
+        "Version": "20.0.5"
+      },
+      "Assemblies": [
+        "C:\\Users\\david\\.nuget\\packages\\microsoft.omex.extensions.activities\\20.0.5\\lib\\net5.0\\Microsoft.Omex.Extensions.Activities.dll"
+      ],
+      "Path": "C:\\Users\\david\\.nuget\\packages\\microsoft.omex.extensions.activities\\20.0.5"
     },
     {
       "Package": {
@@ -5466,12 +5609,12 @@
     {
       "Package": {
         "Id": "System.Diagnostics.DiagnosticSource",
-        "Version": "4.7.1"
+        "Version": "6.0.0-rc.1.21451.13"
       },
       "Assemblies": [
-        "C:\\Users\\david\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\lib\\netstandard1.3\\System.Diagnostics.DiagnosticSource.dll"
+        "C:\\Users\\david\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0-rc.1.21451.13\\lib\\net6.0\\System.Diagnostics.DiagnosticSource.dll"
       ],
-      "Path": "C:\\Users\\david\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1"
+      "Path": "C:\\Users\\david\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0-rc.1.21451.13"
     },
     {
       "Package": {
@@ -5912,12 +6055,12 @@
     {
       "Package": {
         "Id": "System.Runtime.CompilerServices.Unsafe",
-        "Version": "5.0.0"
+        "Version": "6.0.0-rc.1.21451.13"
       },
       "Assemblies": [
-        "C:\\Users\\david\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\lib\\netcoreapp2.0\\System.Runtime.CompilerServices.Unsafe.dll"
+        "C:\\Users\\david\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0-rc.1.21451.13\\lib\\net6.0\\System.Runtime.CompilerServices.Unsafe.dll"
       ],
-      "Path": "C:\\Users\\david\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0"
+      "Path": "C:\\Users\\david\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0-rc.1.21451.13"
     },
     {
       "Package": {

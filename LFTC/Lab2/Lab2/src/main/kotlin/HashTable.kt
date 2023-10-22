@@ -31,11 +31,18 @@ class HashTable<T>(private var size: Int) {
     private fun computeHashValue(key: T): Int{
         var value: Int = -1;
 
-        if(key is String){
-            value = hash(key as String);
-        }
-        else if(key is Int){
-            value = hash(key as Int);
+        when (key) {
+            is Char -> {
+                value = hash(key as Char);
+            }
+
+            is String -> {
+                value = hash(key as String);
+            }
+
+            is Int -> {
+                value = hash(key as Int);
+            }
         }
 
         return value;
