@@ -21,7 +21,7 @@
             Normal = null;
         }
 
-        public Intersection(bool valid, bool visible, Geometry geometry, Line line, double t, Vector normal = null) {
+        public Intersection(bool valid, bool visible, Geometry geometry, Line line, double t, Vector normal = default) {
             Geometry = geometry;
             Line = line;
             Valid = valid;

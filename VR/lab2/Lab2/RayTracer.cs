@@ -48,9 +48,7 @@ namespace rt
 
             Line lineStartingFromLightPoint = new Line(light.Position, point);
             Intersection intersection = FindFirstIntersection(lineStartingFromLightPoint, 0, 1000000);
-
-            double epsilon = 0.0001;
-
+            
             return intersection.T > (light.Position - point).Length();
         }
 
