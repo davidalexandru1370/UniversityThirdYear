@@ -16,5 +16,7 @@
         }
 
         public abstract Intersection GetIntersection(Line line, double minDist, double maxDist);
+
+        public abstract Vector Normal(Vector position);
     }
 }

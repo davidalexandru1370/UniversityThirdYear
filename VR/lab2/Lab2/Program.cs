@@ -13,7 +13,8 @@ namespace rt
             if (Directory.Exists(frames))
             {
                 var d = new DirectoryInfo(frames);
-                foreach (var file in d.EnumerateFiles("*.png")) {
+                foreach (var file in d.EnumerateFiles("*.png"))
+                {
                     file.Delete();
                 }
             }
@@ -23,23 +24,23 @@ namespace rt
             var geometries = new Geometry[]
             {
                 new Ellipsoid(new Vector(  0.0, -25.0, 100.0), new Vector(1.0, 1.0, 1.0), 5.0, Color.WHITE),
-                
+
                 new Ellipsoid(new Vector( 15.0, -25.0, 100.0), new Vector(2.0, 0.5, 0.5), 5.0, Color.RED),
                 new Ellipsoid(new Vector( 35.0, -25.0, 100.0), new Vector(2.0, 0.5, 0.5), 5.0, Color.RED),
                 new Ellipsoid(new Vector( 55.0, -25.0, 100.0), new Vector(2.0, 0.5, 0.5), 5.0, Color.RED),
-                
+
                 new Ellipsoid(new Vector(  0.0, -10.0, 100.0), new Vector(0.5, 2.0, 0.5), 5.0, Color.GREEN),
                 new Ellipsoid(new Vector(  0.0,  10.0, 100.0), new Vector(0.5, 2.0, 0.5), 5.0, Color.GREEN),
                 new Ellipsoid(new Vector(  0.0,  30.0, 100.0), new Vector(0.5, 2.0, 0.5), 5.0, Color.GREEN),
-                
+
                 new Ellipsoid(new Vector(  0.0, -25.0, 115.0), new Vector(0.5, 0.5, 2.0), 5.0, Color.BLUE),
                 new Ellipsoid(new Vector(  0.0, -25.0, 135.0), new Vector(0.5, 0.5, 2.0), 5.0, Color.BLUE),
                 new Ellipsoid(new Vector(  0.0, -25.0, 155.0), new Vector(0.5, 0.5, 2.0), 5.0, Color.BLUE),
-                
+
                 new Ellipsoid(new Vector( 35.0,  10.0, 100.0), new Vector(5.0, 5.0, 0.5), 5.0, Color.YELLOW),
                 new Ellipsoid(new Vector(  0.0,  10.0, 135.0), new Vector(0.5, 5.0, 5.0), 5.0, Color.CYAN),
                 new Ellipsoid(new Vector( 35.0, -25.0, 135.0), new Vector(5.0, 0.5, 5.0), 5.0, Color.MAGENTA),
-                
+
                 new Sphere(   new Vector(-25.0, -50.0,  75.0),                           25.0, Color.ORANGE)
             };
 
@@ -62,20 +63,20 @@ namespace rt
             const double dist = 95.0;
             const int n = 90;
             const double step = 360.0 / n;
-            
+
             var tasks = new Task[n];
             for (var i = 0; i < n; i++)
             {
-                var ind = new[]{i};
+                var ind = new[] { i };
                 tasks[i] = Task.Run(() =>
                 {
                     var k = ind[0];
                     var a = (step * k) * Math.PI / 180.0;
-                    var ca =  Math.Cos(a);
-                    var sa =  Math.Sin(a);
-            
+                    var ca = Math.Cos(a);
+                    var sa = Math.Sin(a);
+
                     var dir = first * ca + (up ^ first) * sa + up * (up * first) * (1.0 - ca);
-            
+
                     var camera = new Camera(
                         middle - dir * dist,
                         dir,
@@ -86,14 +87,14 @@ namespace rt
                         0.0,
                         1000.0
                     );
-            
-                    var filename = frames+"/" + $"{k + 1:000}" + ".png";
-            
+
+                    var filename = frames + "/" + $"{k + 1:000}" + ".png";
+
                     rt.Render(camera, width, height, filename);
-                    Console.WriteLine($"Frame {k+1}/{n} completed");
+                    Console.WriteLine($"Frame {k + 1}/{n} completed");
                 });
             }
-            
+
             Task.WaitAll(tasks);
         }
     }

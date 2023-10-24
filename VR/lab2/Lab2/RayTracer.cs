@@ -48,8 +48,21 @@ namespace rt
 
             Line lineStartingFromLightPoint = new Line(light.Position, point);
             Intersection intersection = FindFirstIntersection(lineStartingFromLightPoint, 0, 1000000);
-            
-            return intersection.T > (light.Position - point).Length();
+            double epsilon = 0.001;
+
+            if(!intersection.Valid || !intersection.Visible)
+            {
+                return true;
+            }
+
+            var difference =  intersection.T - (light.Position - point).Length();
+            //-epsilon < difference < epsilon
+            if(-epsilon < difference  && difference < epsilon)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public void Render(Camera camera, int width, int height, string filename)
@@ -78,7 +91,23 @@ namespace rt
 
                             if (IsLit(intersection.Position, light))
                             {
+                                var normal = intersection.Normal.Normalize();
+                                var cameraVector = (camera.Position - intersection.Position).Normalize();
+                                var vectorFromLight = (light.Position - intersection.Position).Normalize();
+                                var reflectionVector = (normal * (normal * vectorFromLight) * 2 - vectorFromLight).Normalize();
 
+                                if(normal * vectorFromLight > 0)
+                                {
+                                    lightningColor += intersection.Geometry.Material.Diffuse * light.Diffuse * (normal * vectorFromLight);
+                                }
+
+                                if(cameraVector * reflectionVector > 0)
+                                {
+                                    lightningColor += intersection.Geometry.Material.Specular * light.Specular *
+                                        Math.Pow(cameraVector * reflectionVector, intersection.Geometry.Material.Shininess);
+                                }
+
+                                lightningColor *= light.Intensity;
                             }
                         }
 

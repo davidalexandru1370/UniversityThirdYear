@@ -6,9 +6,9 @@ namespace rt
 {
     public class Ellipsoid : Geometry
     {
-        private Vector Center { get; }
-        private Vector SemiAxesLength { get; }
-        private double Radius { get; }
+        protected Vector Center { get; }
+        protected Vector SemiAxesLength { get; }
+        protected double Radius { get; }
 
         public Ellipsoid(Vector center, Vector semiAxesLength, double radius, Material material, Color color) : base(
             material, color)
@@ -29,34 +29,42 @@ namespace rt
         {
             // TODO: ADD CODE HERE
 
+            double semiAxesXSquared = SemiAxesLength.X * SemiAxesLength.X;
+            double semiAxesYSquared = SemiAxesLength.Y * SemiAxesLength.Y;
+            double semiAxesZSquared = SemiAxesLength.Z * SemiAxesLength.Z;
+
             //double a = line.Dx * line.Dx;
-            double a = line.Dx.X * line.Dx.X / (SemiAxesLength.X * SemiAxesLength.X) +
-                       line.Dx.Y * line.Dx.Y / (SemiAxesLength.Y * SemiAxesLength.X) +
-                       line.Dx.Z * line.Dx.Z / (SemiAxesLength.Z * SemiAxesLength.Z);
+            double a = line.Dx.X * line.Dx.X / semiAxesXSquared +
+                       line.Dx.Y * line.Dx.Y / semiAxesYSquared +
+                       line.Dx.Z * line.Dx.Z / semiAxesZSquared;
 
             //double b = 2 * ((line.X0 * line.Dx) - (line.Dx * Center));
-            double b = 
-                2 * line.Dx.X * (line.X0.X - Center.X) / (SemiAxesLength.X * SemiAxesLength.X) +
-                2 * line.Dx.Y * (line.X0.Y - Center.Y) / (SemiAxesLength.Y * SemiAxesLength.Y) +
-                2 * line.Dx.Z * (line.X0.Z - Center.Z) / (SemiAxesLength.Z * SemiAxesLength.Z)
-            ;
+            double b = 2 *
+                ((line.Dx.X * (line.X0.X - Center.X)) / semiAxesXSquared +
+                (line.Dx.Y * (line.X0.Y - Center.Y)) / semiAxesYSquared +
+                (line.Dx.Z * (line.X0.Z - Center.Z)) / semiAxesZSquared);
 
             //double c = (line.X0 * line.X0 + Center * Center)  - Radius * Radius - (line.X0 * Center) * 2;
-            double c = (line.X0.X - Center.X) * (line.X0.X - Center.X) / (SemiAxesLength.X * SemiAxesLength.X) +
-                       (line.X0.Y - Center.Y) * (line.X0.Y - Center.Y) / (SemiAxesLength.Y * SemiAxesLength.Y) +
-                       (line.X0.Z - Center.Z) * (line.X0.Z - Center.Z) / (SemiAxesLength.Z * SemiAxesLength.Z) +
+            double c = ((line.X0.X * line.X0.X) + (Center.X * Center.X)) / semiAxesXSquared +
+                       ((line.X0.Y * line.X0.Y) + (Center.Y * Center.Y)) / semiAxesYSquared +
+                       ((line.X0.Z * line.X0.Z) + (Center.Z * Center.Z)) / semiAxesZSquared +
+                        -2 * (
+                        line.X0.X * Center.X / semiAxesXSquared +
+                        line.X0.Y * Center.Y / semiAxesYSquared +
+                        line.X0.Z * Center.Z / semiAxesZSquared
+                        )
                        - Radius * Radius;
 
             double delta = b * b - 4.0f * a * c;
             double epsilon = 0.0001;
+            Vector intersectionPoint;
 
-            Intersection intersection = new();
             Vector normal = new();
 
             if (delta <= epsilon)
             {
                 normal = new Vector(0, 0, 0);
-                return new Intersection(false, false, this, line, 0, normal);
+                return new Intersection(false, false, this, line, 0, null);
             }
 
             var (t1, t2) = ComputeSolutionsForSecondDegreeEquation(delta, a, b);
@@ -67,39 +75,26 @@ namespace rt
 
             if (isT1Valid == false && isT2Valid == false)
             {
-                return new Intersection(false, false, this, line, 0, new Vector());
+                return new Intersection(false, false, this, line, 0, null);
             }
 
             else if (isT1Valid == true && isT2Valid == false)
             {
-                intersection = new Intersection(true, true, this, line, t1);
-                normal = ComputeNormalForEllipsoidIntersectionPoint(intersection.Position);
-                intersection.Normal = normal;
-
-                return intersection;
+                intersectionPoint = line.X0 + line.Dx * t1;
+                normal = Normal(intersectionPoint);
+                return new Intersection(true, true, this, line, t1, normal);
             }
             else if (isT1Valid == false && isT2Valid == true)
             {
-                intersection = new Intersection(true, true, this, line, t2);
-                normal = ComputeNormalForEllipsoidIntersectionPoint(intersection.Position);
-                intersection.Normal = normal;
-
-                return intersection;
+                intersectionPoint = line.X0 + line.Dx * t2;
+                normal = Normal(intersectionPoint);
+                return new Intersection(true, true, this, line, t2, normal);
             }
 
             double distanceFactorToShortestPoint = Math.Min(t1, t2);
-            intersection = new Intersection(true, true, this, line, distanceFactorToShortestPoint);
-            normal = ComputeNormalForEllipsoidIntersectionPoint(intersection.Position);
-            intersection.Normal = normal;
-
-            return intersection;
-        }
-
-        private Vector ComputeNormalForEllipsoidIntersectionPoint(Vector position)
-        {
-            return new Vector(2 * position.X / SemiAxesLength.X * SemiAxesLength.X,
-                2 * position.Y / SemiAxesLength.Y * SemiAxesLength.Y,
-                2 * position.Z / SemiAxesLength.Z * SemiAxesLength.Z);
+            intersectionPoint = line.X0 + line.Dx * distanceFactorToShortestPoint;
+            normal = Normal(intersectionPoint);
+            return new Intersection(true, true, this, line, distanceFactorToShortestPoint, normal);
         }
 
         private Tuple<double, double> ComputeSolutionsForSecondDegreeEquation(double delta, double a, double b)
@@ -108,6 +103,13 @@ namespace rt
             double t2 = (-b + Math.Sqrt(delta)) / ((double)2.0 * a);
 
             return new Tuple<double, double>(t1, t2);
+        }
+
+        public override Vector Normal(Vector position)
+        {
+            return new Vector(2 * position.X / (SemiAxesLength.X * SemiAxesLength.X),
+               2 * position.Y / (SemiAxesLength.Y * SemiAxesLength.Y),
+               2 * position.Z / (SemiAxesLength.Z * SemiAxesLength.Z)).Normalize();
         }
     }
 }

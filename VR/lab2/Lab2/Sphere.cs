@@ -10,5 +10,12 @@ namespace rt
         public Sphere(Vector center, double radius, Color color) : base(center, new Vector(1, 1, 1), radius, color)
         {
         }
+
+        public override Vector Normal(Vector position)
+        {
+            var n = position - this.Center;
+            n.Normalize();
+            return n;
+        }
     }
 }
