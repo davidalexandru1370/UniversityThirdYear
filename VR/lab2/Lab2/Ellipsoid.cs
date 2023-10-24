@@ -107,9 +107,9 @@ namespace rt
 
         public override Vector Normal(Vector position)
         {
-            return new Vector(2 * position.X / (SemiAxesLength.X * SemiAxesLength.X),
-               2 * position.Y / (SemiAxesLength.Y * SemiAxesLength.Y),
-               2 * position.Z / (SemiAxesLength.Z * SemiAxesLength.Z)).Normalize();
+            return new Vector(2 * (position.X - Center.X) / (SemiAxesLength.X * SemiAxesLength.X),
+               2 * (position.Y - Center.Y) / (SemiAxesLength.Y * SemiAxesLength.Y),
+               2 * (position.Z - Center.Z) / (SemiAxesLength.Z * SemiAxesLength.Z)).Normalize();
         }
     }
 }
