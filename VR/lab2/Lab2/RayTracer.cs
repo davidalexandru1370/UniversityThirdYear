@@ -91,7 +91,7 @@ namespace rt
 
                             if (IsLit(intersection.Position, light))
                             {
-                                var normal = intersection.Normal.Normalize();
+                                var normal = intersection.Normal;
                                 var cameraVector = (camera.Position - intersection.Position).Normalize();
                                 var vectorFromLight = (light.Position - intersection.Position).Normalize();
                                 var reflectionVector = (normal * (normal * vectorFromLight) * 2 - vectorFromLight).Normalize();
