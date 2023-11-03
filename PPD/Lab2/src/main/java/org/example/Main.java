@@ -7,8 +7,10 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static java.lang.Thread.sleep;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int length = 100;
         List<Vector> firstVectors = generateVector(length);
         List<Vector> secondVectors = generateVector(length);
@@ -21,8 +23,9 @@ public class Main {
         Thread producer = new Producer(mutex, condition, firstVectors, secondVectors,queue, maximumQueueSize);
         Consumer consumer = new Consumer(mutex, condition, queue, maximumQueueSize, length);
 
-        producer.start();
         consumer.start();
+        sleep(1000);
+        producer.start();
 
         try{
             producer.join();

@@ -45,10 +45,11 @@ namespace rt
         private bool IsLit(Vector point, Light light)
         {
             // TODO: ADD CODE HERE
+            double epsilon = 0.001;
 
             Line lineStartingFromLightPoint = new Line(light.Position, point);
-            Intersection intersection = FindFirstIntersection(lineStartingFromLightPoint, 0, 1000000);
-            double epsilon = 0.001;
+            var directionVector = light.Position - point;
+            Intersection intersection = FindFirstIntersection(lineStartingFromLightPoint, 0, directionVector.Length() - epsilon);
 
             if(!intersection.Valid || !intersection.Visible)
             {

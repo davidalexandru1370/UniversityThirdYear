@@ -25,13 +25,15 @@ public class Producer extends Thread {
     @Override
     public void run() {
         for(int index = 0; index < firstVectors.size(); index++) {
+            int product = firstVectors.get(index).multiply(secondVectors.get(index));
+
             this.lock.lock();
             try{
                 while(queue.size() >= maximumQueueSize){
                     System.out.println("Queue is full, producer is waiting");
                     this.condition.await();
                 }
-                int product = firstVectors.get(index).multiply(secondVectors.get(index));
+
                 System.out.println("Producer produced: " + product);
                 this.queue.add(product);
                 this.condition.signalAll();
