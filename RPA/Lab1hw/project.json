@@ -3,7 +3,6 @@
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
-    "Microsoft.Omex.Extensions.Activities": "[20.0.5]",
     "UiPath.Excel.Activities": "[2.11.4]",
     "UiPath.Mail.Activities": "[1.12.3]",
     "UiPath.System.Activities": "[21.10.5]",
