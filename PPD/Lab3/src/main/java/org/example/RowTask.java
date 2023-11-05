@@ -24,7 +24,6 @@ public class RowTask extends AbstractStrategyTask {
                 row++;
             }
         }
-
         return cells;
     }
 }
