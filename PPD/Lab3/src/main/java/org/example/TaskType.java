@@ -1,6 +1,6 @@
 package org.example;
 
-public enum ThreadApproach {
+public enum TaskType {
     RowByRow,
     ColumnByColumn,
     KthCell,

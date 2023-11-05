@@ -5,11 +5,11 @@ import java.util.concurrent.Executors;
 
 public class ThreadPoolStrategy extends AbstractThreadStrategy {
 
-    public Matrix run(Matrix m1, Matrix m2, int numberOfThreads, ThreadApproach threadApproach) {
+    public static Matrix run(Matrix m1, Matrix m2, int numberOfThreads, TaskType taskType) {
         Matrix result = new Matrix(m1.getRows(), m2.getColumns());
         try (ExecutorService threadPool = Executors.newFixedThreadPool(numberOfThreads)) {
 
-            switch (threadApproach) {
+            switch (taskType) {
                 case RowByRow -> getRowAfterRow(m1, m2, result, numberOfThreads).forEach(threadPool::execute);
                 case ColumnByColumn -> getColAfterCol(m1, m2, result, numberOfThreads).forEach(threadPool::execute);
                 case KthCell -> getKth(m1, m2, result, numberOfThreads).forEach(threadPool::execute);

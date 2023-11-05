@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Matrix {
@@ -47,5 +48,14 @@ public class Matrix {
 
     public int getColumns() {
         return columns;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int[] row : matrix) {
+            stringBuilder.append(Arrays.toString(row)).append("\n");
+        }
+        return stringBuilder.toString();
     }
 }
