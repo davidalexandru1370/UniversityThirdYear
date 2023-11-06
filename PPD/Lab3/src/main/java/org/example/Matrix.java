@@ -58,4 +58,22 @@ public class Matrix {
         }
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        var matrix = (Matrix) obj;
+        if (rows != matrix.getRows() || columns != matrix.getColumns()) {
+            return false;
+        }
+
+        for (int row = 0; row < this.rows; row++) {
+            for (int col = 0; col < this.columns; col++) {
+                if (this.matrix[row][col] != matrix.getElement(row, col)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

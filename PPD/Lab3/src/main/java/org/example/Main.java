@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        final int NUMBER_OF_THREADS = 10;
-        final TaskType TASK_TYPE = TaskType.RowByRow;
+        final int NUMBER_OF_THREADS = 4;
+        final TaskType TASK_TYPE = TaskType.ColumnByColumn;
         int rowsMatrix1;
         int columnsMatrix1;
         int rowsMatrix2;
@@ -52,7 +52,7 @@ public class Main {
         System.out.println("Matrix 2: ");
         System.out.println(matrix2);
         System.out.println("Result: ");
-        System.out.println(resultNormal);
+        System.out.println(resultNormal.equals(resultThreadPool));
     }
 
 }
