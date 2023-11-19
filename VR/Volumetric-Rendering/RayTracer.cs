@@ -50,6 +50,11 @@ namespace rt
             var directionVector = light.Position - point;
             Intersection intersection = FindFirstIntersection(lineStartingFromLightPoint, 0, directionVector.Length() - epsilon);
 
+            if(intersection.GetType() == typeof(RawCtMask))
+            {
+                return false;
+            }
+
             if (!intersection.Valid || !intersection.Visible)
             {
                 return true;
@@ -89,7 +94,7 @@ namespace rt
                         {
                             lightningColor += intersection.Geometry.Material.Ambient * light.Ambient;
 
-                            if (IsLit(intersection.Position, light))
+                            if (intersection.GetType() != typeof(RawCtMask) && IsLit(intersection.Position, light))
                             {
                                 var normal = intersection.Normal;
                                 var cameraVector = (camera.Position - intersection.Position).Normalize();

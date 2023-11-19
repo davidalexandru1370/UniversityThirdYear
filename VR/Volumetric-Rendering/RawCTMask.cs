@@ -11,6 +11,7 @@ public class RawCtMask : Geometry
 
     private readonly int[] _resolution = new int[3];
     private readonly double[] _thickness = new double[3];
+    //cubul este definit de v0 v1
     private readonly Vector _v0;
     private readonly Vector _v1;
 
@@ -63,22 +64,101 @@ public class RawCtMask : Geometry
     public override Intersection GetIntersection(Line line, double minDist, double maxDist)
     {
         // ADD CODE HERE
-        double step = 10;
+        //double maxSamplingDistance = 1000;
+        double step = _thickness[0] * _scale;
         double currentFactor = minDist;
-        double maxSamplingDistance = 1000;
-        while (currentFactor <= Math.Min(maxDist,maxSamplingDistance))
+
+        double transparency = 1.0f;
+
+        var facesIntersected = GetBoundingBox(line);
+        
+        if(facesIntersected.All(i => i.Visible == false))
         {
-            var position = line.CoordinateToPosition(currentFactor);
+            return Intersection.NONE;
+        }
+
+        var entryBoundingBox = facesIntersected.Where(i => i.Visible == true).Min(i => i.T);
+        var exitBoundingBox = facesIntersected.Where(i => i.Visible == true).Max(i => i.T);
+
+        var start = entryBoundingBox;
+        var stop = exitBoundingBox;
+
+        while (start < stop)
+        {
+            var position = line.CoordinateToPosition(stop);
             var indexes = GetIndexes(position);
             var value = Value(indexes[0], indexes[1], indexes[2]);
+
             if (value > 0)
             {
-                return new Intersection(true, true, this, line, currentFactor, GetNormal(position) , Material, GetColor(position));
+                var color = GetColor(position);
+                color += color * transparency * color.Alpha;
+                return new Intersection(true, true, this, line, currentFactor, GetNormal(position), Material, color);
             }
-            currentFactor += step;
+
+            start += step;
         }
 
         return Intersection.NONE;
+    }
+
+    private List<Intersection> GetBoundingBox(Line line)
+    {
+        List<Intersection> intersections = new();
+
+        var t0x = (_v0.X - line.X0.X) / (line.Dx.X);
+        var t1x = (_v1.X - line.X0.X) / (line.Dx.X);
+        var t0y = (_v0.Y - line.X0.Y) / (line.Dx.Y);
+        var t1y = (_v1.Y - line.X0.Y) / (line.Dx.Y);
+        var t0z = (_v0.Z - line.X0.Z) / (line.Dx.Z);
+        var t1z = (_v1.Z - line.X0.Z) / (line.Dx.Z);
+
+        var tmin = t0x > t0y ? t0x : t0y;
+        var tmax = t1x < t1y ? t1x : t1y;
+
+        if (t0x > t1y)
+        {
+            intersections.Add(Intersection.NONE);
+            intersections.Add(Intersection.NONE);
+        }
+        else
+        {
+            intersections.Add(new Intersection(true, true, this, line, t0x, GetNormal(line.CoordinateToPosition(t0x)), Material, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1y)), Material, Color.NONE));
+        }
+
+        if (t0y > t1x)
+        {
+            intersections.Add(Intersection.NONE);
+            intersections.Add(Intersection.NONE);
+        }
+        else
+        {
+            intersections.Add(new Intersection(true, true, this, line, t0x, GetNormal(line.CoordinateToPosition(t0y)), Material, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1x)), Material, Color.NONE));
+        }
+
+        if (tmin > t1z)
+        {
+            intersections.Add(Intersection.NONE);
+            intersections.Add(Intersection.NONE);
+        }
+        else
+        {
+            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1z)), Material, Color.NONE));
+        }
+
+        if (t0z > tmax)
+        {
+            intersections.Add(Intersection.NONE);
+            intersections.Add(Intersection.NONE);
+        }
+        else
+        {
+            intersections.Add(new Intersection(true, true, this, line, t0z, GetNormal(line.CoordinateToPosition(t0z)), Material, Color.NONE));
+        }
+
+        return intersections;
     }
 
     private int[] GetIndexes(Vector v)

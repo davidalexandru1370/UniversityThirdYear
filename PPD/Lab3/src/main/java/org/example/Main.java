@@ -53,6 +53,7 @@ public class Main {
         System.out.println(matrix2);
         System.out.println("Result: ");
         System.out.println(resultNormal.equals(resultThreadPool));
+        System.out.println(resultThreadPool.getMatrix()[0][0]);
     }
 
 }

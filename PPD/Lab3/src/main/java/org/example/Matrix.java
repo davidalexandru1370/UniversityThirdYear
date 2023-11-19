@@ -16,7 +16,7 @@ public class Matrix {
     public void setRandomValues() {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                this.matrix[row][col] = new Random().nextInt(25);
+                this.matrix[row][col] = 1;
             }
         }
     }
