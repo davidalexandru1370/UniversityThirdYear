@@ -24,6 +24,7 @@ namespace rt
 
             foreach (var geometry in _geometries)
             {
+               
                 var intr = geometry.GetIntersection(ray, minDist, maxDist);
 
                 if (!intr.Valid || !intr.Visible) continue;

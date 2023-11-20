@@ -75,6 +75,11 @@ namespace rt
                 var ind = new[]{i};
                 tasks[i] = Task.Run(() =>
                 {
+                    if(ind[0] < 20)
+                    {
+                        return;
+                    }
+
                     var k = ind[0];
                     var a = (step * k) * Math.PI / 180.0;
                     var ca =  Math.Cos(a);

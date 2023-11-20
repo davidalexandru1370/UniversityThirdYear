@@ -14,7 +14,7 @@ public class RawCtMask : Geometry
     //cubul este definit de v0 v1
     private readonly Vector _v0;
     private readonly Vector _v1;
-
+    private readonly Ellipsoid _boundingEllipsoid;
     public RawCtMask(string datFile, string rawFile, Vector position, double scale, ColorMap colorMap) : base(Color.NONE)
     {
         _position = position;
@@ -40,7 +40,10 @@ public class RawCtMask : Geometry
         }
 
         _v0 = position;
-        _v1 = position + new Vector(_resolution[0] * _thickness[0] * scale, _resolution[1] * _thickness[1] * scale, _resolution[2] * _thickness[2] * scale);
+        var diameter = new Vector(_resolution[0] * _thickness[0] * scale, _resolution[1] * _thickness[1] * scale, _resolution[2] * _thickness[2] * scale);
+        _v1 = position + diameter;
+        var center = diameter / 2;
+        _boundingEllipsoid = new Ellipsoid(_v0 + center, diameter, 1, Color.NONE);
 
         var len = _resolution[0] * _resolution[1] * _resolution[2];
         _data = new byte[len];
@@ -65,14 +68,15 @@ public class RawCtMask : Geometry
     {
         // ADD CODE HERE
         //double maxSamplingDistance = 1000;
-        double step = _thickness[0] * _scale;
-        double currentFactor = minDist;
+        //uble step = 0.2f;
+        double step = 10;
 
-        double transparency = 1.0f;
+        double alpha = 1.0f;
+        var epsilon = 0.01;
+        var resultColor = Color.NONE;
+        var facesIntersected = _boundingEllipsoid.GetAllIntersections(line);
 
-        var facesIntersected = GetBoundingBox(line);
-        
-        if(facesIntersected.All(i => i.Visible == false))
+        if (facesIntersected.Count == 0)
         {
             return Intersection.NONE;
         }
@@ -80,31 +84,47 @@ public class RawCtMask : Geometry
         var entryBoundingBox = facesIntersected.Where(i => i.Visible == true).Min(i => i.T);
         var exitBoundingBox = facesIntersected.Where(i => i.Visible == true).Max(i => i.T);
 
-        var start = entryBoundingBox;
-        var stop = exitBoundingBox;
-
-        while (start < stop)
+        var start = Math.Max(entryBoundingBox, minDist);
+        var stop = Math.Min(exitBoundingBox, maxDist);
+        bool passed = false;
+        //Console.WriteLine($"start = {start} stop = {stop}");
+        double tt = start;
+        while (start <= stop)
         {
-            var position = line.CoordinateToPosition(stop);
-            var indexes = GetIndexes(position);
-            var value = Value(indexes[0], indexes[1], indexes[2]);
+            var position = line.CoordinateToPosition(start);
 
-            if (value > 0)
+            var color = GetColor(position);
+
+            var indexes = GetIndexes(position);
+
+            if (color.Alpha == 0)
             {
-                var color = GetColor(position);
-                color += color * transparency * color.Alpha;
-                return new Intersection(true, true, this, line, currentFactor, GetNormal(position), Material, color);
+                continue;
             }
 
+            if (passed == false)
+            {
+                tt = start;
+                passed = true;
+            }
+            // return new Intersection(true, true, this, line, start, GetNormal(position), Material, color);
+
+            resultColor += color * color.Alpha * alpha;
+            alpha *= 1 - color.Alpha;
+            if (alpha <= epsilon)
+            {
+                break;
+            }
             start += step;
         }
 
-        return Intersection.NONE;
+        return new Intersection(true, passed, this, line, tt, GetNormal(line.CoordinateToPosition(tt)), Material.FromColor(resultColor), resultColor);
     }
 
     private List<Intersection> GetBoundingBox(Line line)
     {
         List<Intersection> intersections = new();
+
 
         var t0x = (_v0.X - line.X0.X) / (line.Dx.X);
         var t1x = (_v1.X - line.X0.X) / (line.Dx.X);
@@ -123,8 +143,8 @@ public class RawCtMask : Geometry
         }
         else
         {
-            intersections.Add(new Intersection(true, true, this, line, t0x, GetNormal(line.CoordinateToPosition(t0x)), Material, Color.NONE));
-            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1y)), Material, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t0x, GetNormal(line.CoordinateToPosition(t0x)), Material.BLANK, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1y)), Material.BLANK, Color.NONE));
         }
 
         if (t0y > t1x)
@@ -134,28 +154,26 @@ public class RawCtMask : Geometry
         }
         else
         {
-            intersections.Add(new Intersection(true, true, this, line, t0x, GetNormal(line.CoordinateToPosition(t0y)), Material, Color.NONE));
-            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1x)), Material, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t0x, GetNormal(line.CoordinateToPosition(t0y)), Material.BLANK, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1x)), Material.BLANK, Color.NONE));
         }
 
         if (tmin > t1z)
         {
             intersections.Add(Intersection.NONE);
-            intersections.Add(Intersection.NONE);
         }
         else
         {
-            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1z)), Material, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t1y, GetNormal(line.CoordinateToPosition(t1z)), Material.BLANK, Color.NONE));
         }
 
         if (t0z > tmax)
         {
             intersections.Add(Intersection.NONE);
-            intersections.Add(Intersection.NONE);
         }
         else
         {
-            intersections.Add(new Intersection(true, true, this, line, t0z, GetNormal(line.CoordinateToPosition(t0z)), Material, Color.NONE));
+            intersections.Add(new Intersection(true, true, this, line, t0z, GetNormal(line.CoordinateToPosition(t0z)), Material.BLANK, Color.NONE));
         }
 
         return intersections;
@@ -188,5 +206,18 @@ public class RawCtMask : Geometry
         double z1 = Value(idx[0], idx[1], idx[2] + 1);
 
         return new Vector(x0 - x1, y0 - y1, z0 - z1).Normalize();
+    }
+
+    private Color BlendColors(Color color1, Color color2)
+    {
+        double alpha2 = color2.Alpha;
+
+        double blendedRed = (alpha2 * color2.Red + (1 - alpha2) * color1.Red);
+        double blendedGreen = (alpha2 * color2.Green + (1 - alpha2) * color1.Green);
+        double blendedBlue = (alpha2 * color2.Blue + (1 - alpha2) * color1.Blue);
+
+        double blendedAlpha = Math.Max(alpha2, color1.Alpha);
+
+        return new Color(blendedRed, blendedGreen, blendedBlue, blendedAlpha);
     }
 }
