@@ -20,7 +20,7 @@ namespace Lab4.Implementations
             foreach (var (url, index) in _urls.Enumerate())
             {
                 StartRequest(url, index);
-                Thread.Sleep(2000);
+                Thread.Sleep(10000);
             }
         }
 
@@ -42,12 +42,12 @@ namespace Lab4.Implementations
                 Hostname = url,
                 HostInfo = hostInfo,
                 RequestId = requestId,
+                Response = new(),
                 IpAddress = ipAddress
             };
 
             socket.BeginConnect(endpoint, OnConnect, state);
         }
-
 
         private void OnConnect(IAsyncResult ar)
         {
@@ -76,22 +76,30 @@ namespace Lab4.Implementations
         {
             var state = ar.AsyncState as State;
             var numberOfBytesRead = state.Socket.EndReceive(ar);
-            StringBuilder stringBuilder = new();
 
             try
             {
-                stringBuilder.Append(Encoding.ASCII.GetString(state.Buffer, 0, numberOfBytesRead));
-                if (stringBuilder.Length > 1)
+                var response = Encoding.ASCII.GetString(state.Buffer, 0, numberOfBytesRead);
+                Console.WriteLine(response);
+                state.Response.Append(response);
+                if (HttpUtilities.IsHttpHeaderObtained(state.Response.ToString()) == true)
                 {
-                    Console.WriteLine($"Id = {state.RequestId} received {stringBuilder.Length} from {state.Endpoint}");
-                    Console.WriteLine(stringBuilder.ToString());
+                    string header = state.Response.ToString();
+
+                    Console.WriteLine($"Id = {state.RequestId} received {numberOfBytesRead} from {state.Endpoint}");
+                    Console.WriteLine(header);
+                    var contentLength = HttpUtilities.GetContentLength(header);
+                    Console.WriteLine("Content length = " + contentLength.ToString());
                 }
                 else
                 {
-                    Console.WriteLine($"Id = {state.RequestId} received nothing from {state.Endpoint}");
-                }   
+
+                    state.Socket.BeginReceive(state.Buffer, 0, State.BufferSize, SocketFlags.None, OnReceive, state);
+                }
+
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }

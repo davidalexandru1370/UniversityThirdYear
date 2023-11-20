@@ -14,6 +14,7 @@ namespace Lab4.Domain
         public IPEndPoint Endpoint { get; init; }
         public int RequestId { get; init; }
         public byte[] Buffer { get; init; } = new byte[BufferSize];
-        public static int BufferSize { get; private set; } = 1024;
+        public static int BufferSize { get; private set; } = 256;
+        public StringBuilder Response { get; set; }
     }
 }
