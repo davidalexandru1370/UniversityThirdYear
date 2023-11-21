@@ -20,7 +20,7 @@ namespace Lab4.Implementations
             foreach (var (url, index) in _urls.Enumerate())
             {
                 StartRequest(url, index);
-                Thread.Sleep(10000);
+                Thread.Sleep(3000);
             }
         }
 
