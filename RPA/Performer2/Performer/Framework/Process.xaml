@@ -1,0 +1,239 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>958,3247</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="644,3182" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="582,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="582,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString]" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Descopera stilistii din zona ta - Stailer" sap:VirtualizedContainerService.HintSize="582,2592" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="5dd748a8-afa6-457d-95b0-c240873c9439" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="548,2375" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Alege locatia'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="486,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="5dd748a8-afa6-457d-95b0-c240873c9439" Text="[in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://stailer.ro/" CvElementArea="158, 400, 374, 46" CvType="InputBox" DesignTimeRectangle="168, 402, 344, 42" DesignTimeScaleFactor="1" FriendlyName="'Alege locatia'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;label&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span&amp;gt;span' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='SPAN' class='select2-selection__placeholder' aaname='' check:innerText='Alege locatia' /&gt;" Guid="76bc4f66-936b-4ff4-8f61-280611bbc609" InformativeScreenshot="3cdb178fde0486f0d0e26261aaeac5b7.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Descopera stilistii din zona ta - Stailer' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Alege locatia'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="486,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="5dd748a8-afa6-457d-95b0-c240873c9439" Text="[in_TransactionItem.SpecificContent(&quot;ServiceType&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://stailer.ro/" CvTextArea="193, 521, 40, 14" CvTextArgument="Tuns" CvType="Text" DesignTimeRectangle="160, 508, 372, 42" DesignTimeScaleFactor="1" FriendlyName="'Tuns'" FullSelectorArgument="&lt;webctrl aria-role='textbox' parentid='salons-search' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='textbox' parentid='salons-search' tag='SPAN' type='' class='select2-selection__rendered' aaname='' check:innerText='Tuns' /&gt;" Guid="ac7e4b7b-5fc0-42f1-99aa-8c02d338bd9f" InformativeScreenshot="6776b8d645fc0ae9ae4daedbe5961401.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Descopera stilistii din zona ta - Stailer' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CvTextArea="174, 414, 107, 19" CvTextArgument="Alege locatia" CvType="Text" DesignTimeRectangle="160, 402, 372, 42" FriendlyName="'Alege locatia'" FullSelectorArgument="&lt;webctrl aria-role='textbox' parentid='nav-tabContent' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='textbox' parentid='nav-tabContent' tag='SPAN' type='' class='select2-selection__rendered' aaname='' check:innerText='Alege locatia' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <If Condition="[in_TransactionItem.SpecificContent(&quot;ServiceType&quot;).ToString.Equals(&quot;M&quot;)]" sap:VirtualizedContainerService.HintSize="486,672" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Double" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5dd748a8-afa6-457d-95b0-c240873c9439" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://stailer.ro/" CvTextArea="421, 618, 60, 15" CvTextArgument="Barbati" CvType="Text" DesignTimeRectangle="423, 615, 58, 24" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl aaname='Barbati' parentid='salons-search' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Barbati' parentid='salons-search' tag='LABEL' type='' class='custom-control-label' check:innerText='Barbati' /&gt;" Guid="d8001c2e-001f-43bb-991b-b168cfe882e3" InformativeScreenshot="3fe1632beadf4c2b176b5a71b857a1db.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Descopera stilistii din zona ta - Stailer' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Double" DisplayName="Click 'checked'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5dd748a8-afa6-457d-95b0-c240873c9439" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://stailer.ro/" CvTextArea="239, 618, 50, 15" CvTextArgument="Femei" CvType="Text" DesignTimeRectangle="240, 615, 48, 24" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'checked'" FullSelectorArgument="&lt;webctrl parentid='salons-search' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='salons-search' tag='LABEL' type='' class='custom-control-label' aaname='Femei' check:innerText='Femei' /&gt;" Guid="cb1e6f6c-f6c8-4582-8bef-fb6a04aa97e3" InformativeScreenshot="1799183e5ef1856c912684089313d421.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Descopera stilistii din zona ta - Stailer' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Else>
+            </If>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Cauta servicii'" sap:VirtualizedContainerService.HintSize="486,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5dd748a8-afa6-457d-95b0-c240873c9439" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://stailer.ro/" CvElementArea="156, 686, 378, 50" CvTextArea="235, 703, 221, 20" CvTextArgument="Cauta servicii in apropiere" CvType="Button" DesignTimeRectangle="159, 688, 374, 50" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Cauta servicii'" FullSelectorArgument="&lt;webctrl parentid='salons-search' tag='BUTTON' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='salons-search' tag='BUTTON' type='submit' class='general-btn' aaname='Cauta servicii in apropiere' check:innerText='Cauta servicii in apropiere' /&gt;" Guid="ed612112-19c2-4520-936d-1bfc2cc87c6c" InformativeScreenshot="ac423afbf15adf81ab1aa0363f32b195.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Descopera stilistii din zona ta - Stailer' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='New column 1' ReferenceName='Column1'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='New column 2' ReferenceName='Column2'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='h5' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='ul' idx='1' /&gt;&lt;webctrl tag='li' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="486,157" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="5dd748a8-afa6-457d-95b0-c240873c9439" Version="V3">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="428, 303, 798, 5026" DesignTimeScaleFactor="1" FriendlyName="'Stailer recomanda PROMO'" FullSelectorArgument="&lt;webctrl class='fashion-search-result' parentid='search-results-row' tag='DIV' /&gt;" Guid="0cc3d99a-66b4-4f7e-b6c5-8d2a2fa980fd" InformativeScreenshot="6227d4f90dafb320b9b608694e0cb6cc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='56 saloane ofera tuns femei in Bucuresti - Stailer' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ExtractDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="486,638" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="452,452" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="410,364" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ExtractDataTable.Columns]">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="sd:DataColumn">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="currentItem" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[&quot;Name: &quot; + CurrentRow(currentItem.ColumnName).ToString]" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEach.Body>
+                    </ui:ForEach>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1382, 744" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACHEAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABG2lDQ1BpY2MAACjPY2BgMnB0cXJlEmBgyM0rKQpyd1KIiIxSYD/PwMbAzAAGicnFBY4BAT4gdl5+XioDKmBkYPh2DUQyMFzWBZnFQBrgSi4oKgHSf4DYKCW1OBlopAGQnV1eUgAUZ5wDZIskZYPZG0DsopAgZyD7CJDNlw5hXwGxkyDsJyB2EdATQPYXkPp0MJuJA2wOhC0DYpekVoDsZXDOL6gsykzPKFEwtLS0VHBMyU9KVQiuLC5JzS1W8MxLzi8qyC9KLElNAaqFuA8MBCEKQSGmAdRooclAZQCKBwjrcyA4fBnFziDEECC5tKgMFhdMxoT5CDPmSDAw+C9lYGD5gxAz6WVgWKDDwMA/FSGmZsjAIKDPwLBvDgDCs0/+DKZ5ZgAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+QKCAswBW187ucAAAQESURBVFhHxZfvT1tVGMf3fu/9Z2TRxb1RljiGZDJdnHOJeyEzS9wrhRCHhYVEjC8Mky3biC8UpA0Tiom8ECQrBGIJtnXlh5sUelv6Y73l3tt7e3vv13Oenq5GpD3XqHySJ+15zqXP95zz3IfnHANQs+PM3mI2z6zIzP2Xjf8m/20eg8eiuLXgzzEbYWYw+6/hMXgsHpMEcDXc8X/DYx7nAi4y07jHC67rolgsYnd3F5lMBrZtixlpeMyLXMAcDT2QSGxjaOhTdHa+jra2Mzh3rgPXr3+AUCgEx3HEU1LMcQFq9bsc4XAYZ8+24cKFN+D3+xGJRLC6uoo7d27j/PlOjI19Q7sjicoFSD+tKAo6Ol6j1ebzeeGtE4tFcfnyO1hZWRaeprieBIyMfInTp19h574jPAcJBqcxMNAvuwvyAizLwqVLb6O/3yc8f4+iJNHT0w1d14WnIfICVFVlCfcqRkfvC0+VSqVCViOVUnDz5gBM0xSehsgLMAyDsn7osyHhqcJ3JpFIoFwu0xsQDAYRCATEbFO85YDP9wlLwnbkcjnhqcK3fWHhJzx4MInJyUlomnRZ8SYgGo3i5MkXaYv5jvyZUqlEhcljHfAmgBMI+NHS8jyuXXufvW4rssl2GN4F8BXOz8+xQvQmTpxooc979+5SHvwDvAuosb+v4WFokeWFj9WGVrS2voyJiW8pGT3gXYDrWLC1x7DyK7CLa3DMNNLpFIaHh1l+vEAl2UMeeBNg69sobHyB3NpHyEdvIPdLL7JrH0Lb/hqOXcB3U1M4deoldkS875BCXoBt7LCgfSg+vk9C3IoOp6zCfBpmfh8K65+jYhUwODiIK1fepbdCAjkBrmtD3bqN4pOv2BEcPONKKY185GMYySlsbW2hvb2N/WOKidmGyAngK87HfBToMIy9OToWU8+hq+s9zMwExUxD5ASUsg9pB9jyhYf9iVuv/xxb/51yo2Ik0dvbS2+EBHIC9hMTMFI/iBHbcjPDkm5fjKqUtd9YUvagbCjo7u7G7Gz9+QY0F+A6JtTNWxSAxrYGS/2Vf6NxDT05jUJ8CLmsgqtXu7C5uSlmGtJcgFWIsMwffZZ8TrnAjiTEldGYY6kxWr1dCGNqehp9fTdkm9TGAipmloLzwlPHRSmzAF35HmZuGVrCT6+nlfkR8fgjatfi8bh4tikk4GBTyhLM1p9A2wnAKj4Szjq8GlqFNZRSMyilZ6E/3cDS0iKtfHlZuh/kUFNabcvZljrlIgucgJn/GaXcEissWZr6K7zbSSYVrK9vsFZ8kXXCYxgfH6c7gkeoLRcXE5cSzmFJxj/5+DB4w8kr3d7eHhOyS32Ah1a8xrOLyZFfzbgd6eW0ZkdwPcexPwDsNDqmcJWS8AAAAABJRU5ErkJggg==" InformativeScreenshot="df9782001317286f7c0aa7085288c08d.jpg" Selector="&lt;html app='chrome.exe' title='Descopera stilistii din zona ta - Stailer' /&gt;" Title="Descopera stilistii din zona ta - Stailer" Url="https://stailer.ro/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="582,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+  </Sequence>
+</Activity>

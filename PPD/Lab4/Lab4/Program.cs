@@ -3,9 +3,7 @@ using Lab4.Implementations;
 
 List<string> hosts = new List<string>
 {
-    "www.wikipedia.com",
-    "www.olx.ro",
-    "www.cs.ubbcluj.ro/files/orar/2023-1/tabelar/IE3.html",
+    "www.cnatdcu.ro"
 };
 
 //Callback callback = new Callback(hosts);
@@ -14,15 +12,15 @@ List<string> hosts = new List<string>
 
 Console.WriteLine("---------------------------------------------------");
 
-//CallbackWithTask callbackWithTask = new CallbackWithTask(hosts);
+CallbackWithTask callbackWithTask = new CallbackWithTask(hosts);
 
-//callbackWithTask.Start();
+callbackWithTask.Start();
 
 Console.WriteLine("---------------------------------------------------");
 
-AsyncAwaitTask asyncAwaitTask = new AsyncAwaitTask(hosts);
+//AsyncAwaitTask asyncAwaitTask = new AsyncAwaitTask(hosts);
 
-asyncAwaitTask.Start().Wait();
+//asyncAwaitTask.Start().Wait();
 
 
 public static class ExtensionMethods
