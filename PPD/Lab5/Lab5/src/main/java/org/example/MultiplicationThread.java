@@ -27,9 +27,9 @@ public class MultiplicationThread implements Runnable {
             }
             for (int j = 0; j <= i; j++) {
                 if (j <= p1.getDegree() && (i - j) <= p2.getDegree()) {
-                    var value = p1.getCoefficients()[j] * p2.getCoefficients()[i - j];
+                    var value = p1.getCoefficients().get(j) * p2.getCoefficients().get(i - j);
                     //lock.lock();
-                    result.setCoefficient(i, result.getCoefficients()[i] + value);
+                    result.setCoefficient(i, result.getCoefficients().get(i) + value);
                     //lock.unlock();
                 }
             }
