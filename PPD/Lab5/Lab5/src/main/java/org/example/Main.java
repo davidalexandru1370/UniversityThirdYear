@@ -28,7 +28,7 @@ class Multiplication {
         long end = System.currentTimeMillis();
         System.out.println("Normal multiply took: " + (end - start) + " ms");
         Polynomial result = new Polynomial(degree, coefficients);
-        //System.out.println(result);
+        System.out.println(result);
 
         return result;
     }
@@ -118,16 +118,16 @@ class Multiplication {
 public class Main {
     public static void main(String[] args) {
         var mul = new Multiplication();
-        final Polynomial p1 = new Polynomial(100_000);
-        final Polynomial p2 = new Polynomial(100_000);
-        //var normalMultiplyResult = mul.normalMultiply(p1, p2);
+        final Polynomial p1 = new Polynomial(100);
+        final Polynomial p2 = new Polynomial(100);
+        var normalMultiplyResult = mul.normalMultiply(p1, p2);
         try {
             mul.normalMultiplyThreaded(p1, p2);
         } catch (InterruptedException e) {
             System.out.println("Interrupted");
         }
 
-        //var karatsubaResult = mul.karatsubaSequential(p1, p2);
+        var karatsubaResult = mul.karatsubaSequential(p1, p2);
         try {
             mul.karatsubaParallel(p1, p2);
         } catch (ExecutionException | InterruptedException e) {
