@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 public class Main {
     private static final int THREAD_COUNT = 10;
@@ -18,6 +19,7 @@ public class Main {
     private static List<Boolean> visited;
     private static List<Integer> path;
     private static AtomicBoolean cycleFound = new AtomicBoolean(false);
+    private static List<Integer> finalPath = new ArrayList<>();
 
     private static List<List<Integer>> generateRandomGraph(int nodesCount, int edgeCount) {
         List<List<Integer>> graph = new ArrayList<>();
@@ -46,7 +48,7 @@ public class Main {
         List<List<Integer>> graph = new ArrayList<>();
         int vertices, edges;
 
-        Scanner scanner = new Scanner(new File("src/main/java/org/example/1.txt"));
+        Scanner scanner = new Scanner(new File("src/main/java/org/example/3.txt"));
         vertices = scanner.nextInt();
         edges = scanner.nextInt();
 
@@ -103,6 +105,7 @@ public class Main {
         if (path.size() > vertices) {
             if (path.getLast().intValue() == path.getFirst().intValue()) {
                 cycleFound.set(true);
+                finalPath.addAll(path);
             }
             return;
         }
@@ -124,7 +127,7 @@ public class Main {
                         }
                 );
                 if (result.get() == null) {
-                    if (path2.size() > 0) {
+                    if (!path2.isEmpty()) {
                         path2.remove(path2.size() - 1);
                     }
                     visited.set(nextNode, false);
@@ -147,12 +150,18 @@ public class Main {
         }
         var startNode = 0;
         path.add(startNode);
+        float startTime = System.nanoTime();
         findHamiltonianCycleSequential(graph, path, startNode);
         if (cycleFound.get()) {
             System.out.println("Hamiltonian cycle found");
         } else {
             System.out.println("Hamiltonian cycle not found");
         }
+        float endTime = System.nanoTime();
+        cycleFound.set(false);
+        System.out.println("Time taken: " + (endTime - startTime) / 1000000 + " ms");
+
+        startTime = System.nanoTime();
 
         var result = threadPool.submit(() -> {
             try {
@@ -165,8 +174,15 @@ public class Main {
         });
 
         if (result.get() == null) {
+            endTime = System.nanoTime();
             if (cycleFound.get()) {
+                System.out.println("Time taken Parallel: " + (endTime - startTime) / 1000000 + " ms");
                 System.out.println("Hamiltonian cycle found");
+                String path = finalPath
+                        .stream()
+                        .map(i -> i.toString())
+                        .collect(Collectors.joining(" -> "));
+                System.out.println(path);
             } else {
                 System.out.println("Hamiltonian cycle not found");
             }
