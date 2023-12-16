@@ -1,0 +1,141 @@
+package org.example;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class Main {
+    private static final int THREAD_COUNT = 10;
+    private static final ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
+
+    private static List<Boolean> visited;
+    private static List<Integer> path;
+    private static AtomicBoolean cycleFound = new AtomicBoolean(false);
+
+    private static List<List<Integer>> generateRandomGraph(int nodesCount, int edgeCount) {
+        List<List<Integer>> graph = new ArrayList<>();
+
+
+        for (int i = 0; i < nodesCount; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        int edges = 1;
+
+        while (edges < edgeCount) {
+            int node1 = new Random().nextInt(nodesCount);
+            int node2 = new Random().nextInt(nodesCount);
+
+            if (node1 != node2 && !graph.get(node1).contains(node2)) {
+                graph.get(node1).add(node2);
+                edges++;
+            }
+        }
+
+        return graph;
+    }
+
+    private static List<List<Integer>> loadGraph() throws FileNotFoundException {
+        List<List<Integer>> graph = new ArrayList<>();
+        int vertices, edges;
+
+        Scanner scanner = new Scanner(new File("src/main/java/org/example/1.txt"));
+        vertices = scanner.nextInt();
+        edges = scanner.nextInt();
+
+        for (int i = 0; i < vertices; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < edges; i++) {
+            int node1 = scanner.nextInt();
+            int node2 = scanner.nextInt();
+            graph.get(node1).add(node2);
+        }
+
+        return graph;
+    }
+
+    private static void findHamiltonianCycle(List<List<Integer>> graph, List<Integer> path, int node) throws ExecutionException, InterruptedException {
+        int vertices = graph.size();
+
+        if (cycleFound.get()) {
+            return;
+        }
+
+        if (path.size() >= vertices) {
+            if (path.getLast() == path.getFirst()) {
+                cycleFound.set(true);
+            }
+            return;
+        }
+
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            int nextNode = graph.get(node).get(i);
+            List<Integer> path2 = new ArrayList<>(path);
+            if (!visited.get(nextNode)) {
+                var result = threadPool.submit(() -> {
+                            visited.set(nextNode, true);
+                            try {
+                                findHamiltonianCycle(graph, path2, nextNode);
+                            } catch (ExecutionException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                );
+                if (result.get() == null) {
+                    if(path2.size() > 0){
+                        path2.remove(path.size() - 1);
+                    }
+                    visited.set(nextNode, false);
+                }
+            }
+        }
+
+
+    }
+
+
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException, ExecutionException {
+        List<List<Integer>> graph = loadGraph();
+        int vertices = graph.size();
+        visited = new ArrayList<>(vertices);
+        path = new ArrayList<>(vertices);
+
+        for (int i = 0; i < vertices; i++) {
+            visited.add(false);
+        }
+
+        var result = threadPool.submit(() -> {
+            try {
+                findHamiltonianCycle(graph, path,  0);
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        if(result.get() == null){
+            if (cycleFound.get()) {
+                System.out.println("Hamiltonian cycle found");
+            } else {
+                System.out.println("Hamiltonian cycle not found");
+            }
+            threadPool.awaitTermination(10, java.util.concurrent.TimeUnit.SECONDS);
+            threadPool.shutdown();
+        }
+
+
+    }
+}
