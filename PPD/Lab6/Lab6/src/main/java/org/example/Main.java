@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 public class Main {
-    private static final int THREAD_COUNT = 10;
+    private static final int THREAD_COUNT = 32;
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
 
     private static List<Boolean> visited;
@@ -48,7 +48,7 @@ public class Main {
         List<List<Integer>> graph = new ArrayList<>();
         int vertices, edges;
 
-        Scanner scanner = new Scanner(new File("src/main/java/org/example/3.txt"));
+        Scanner scanner = new Scanner(new File("src/main/java/org/example/1.txt"));
         vertices = scanner.nextInt();
         edges = scanner.nextInt();
 
