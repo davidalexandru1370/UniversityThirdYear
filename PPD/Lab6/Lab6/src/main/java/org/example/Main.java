@@ -9,7 +9,6 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Main {
@@ -64,15 +63,45 @@ public class Main {
         return graph;
     }
 
-    private static void findHamiltonianCycle(List<List<Integer>> graph, List<Integer> path, int node) throws ExecutionException, InterruptedException {
+    private static void findHamiltonianCycleSequential(List<List<Integer>> graph, List<Integer> path, int node) throws ExecutionException, InterruptedException {
         int vertices = graph.size();
 
         if (cycleFound.get()) {
             return;
         }
 
-        if (path.size() >= vertices) {
+        if (path.size() > vertices) {
             if (path.getLast() == path.getFirst()) {
+                cycleFound.set(true);
+            }
+            return;
+        }
+
+        for (int i = 0; i < graph.get(node).size(); i++) {
+            int nextNode = graph.get(node).get(i);
+            List<Integer> path2 = new ArrayList<>(path);
+            if (!visited.get(nextNode)) {
+                path2.add(nextNode);
+                visited.set(nextNode, true);
+                findHamiltonianCycleSequential(graph, path2, nextNode);
+                if (path2.size() > 0) {
+                    path2.remove(path2.size() - 1);
+                }
+                visited.set(nextNode, false);
+            }
+        }
+    }
+
+
+    private static void findHamiltonianCycleParallel(List<List<Integer>> graph, List<Integer> path, int node) throws ExecutionException, InterruptedException {
+        int vertices = graph.size();
+
+        if (cycleFound.get()) {
+            return;
+        }
+
+        if (path.size() > vertices) {
+            if (path.getLast().intValue() == path.getFirst().intValue()) {
                 cycleFound.set(true);
             }
             return;
@@ -84,8 +113,9 @@ public class Main {
             if (!visited.get(nextNode)) {
                 var result = threadPool.submit(() -> {
                             visited.set(nextNode, true);
+                            path2.add(nextNode);
                             try {
-                                findHamiltonianCycle(graph, path2, nextNode);
+                                findHamiltonianCycleParallel(graph, path2, nextNode);
                             } catch (ExecutionException e) {
                                 throw new RuntimeException(e);
                             } catch (InterruptedException e) {
@@ -94,8 +124,8 @@ public class Main {
                         }
                 );
                 if (result.get() == null) {
-                    if(path2.size() > 0){
-                        path2.remove(path.size() - 1);
+                    if (path2.size() > 0) {
+                        path2.remove(path2.size() - 1);
                     }
                     visited.set(nextNode, false);
                 }
@@ -115,10 +145,18 @@ public class Main {
         for (int i = 0; i < vertices; i++) {
             visited.add(false);
         }
+        var startNode = 0;
+        path.add(startNode);
+        findHamiltonianCycleSequential(graph, path, startNode);
+        if (cycleFound.get()) {
+            System.out.println("Hamiltonian cycle found");
+        } else {
+            System.out.println("Hamiltonian cycle not found");
+        }
 
         var result = threadPool.submit(() -> {
             try {
-                findHamiltonianCycle(graph, path,  0);
+                findHamiltonianCycleParallel(graph, path, startNode);
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             } catch (InterruptedException e) {
@@ -126,13 +164,13 @@ public class Main {
             }
         });
 
-        if(result.get() == null){
+        if (result.get() == null) {
             if (cycleFound.get()) {
                 System.out.println("Hamiltonian cycle found");
             } else {
                 System.out.println("Hamiltonian cycle not found");
             }
-            threadPool.awaitTermination(10, java.util.concurrent.TimeUnit.SECONDS);
+            threadPool.awaitTermination(1, java.util.concurrent.TimeUnit.SECONDS);
             threadPool.shutdown();
         }
 
