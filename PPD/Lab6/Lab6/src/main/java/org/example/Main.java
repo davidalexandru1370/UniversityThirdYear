@@ -24,7 +24,6 @@ public class Main {
     private static List<List<Integer>> generateRandomGraph(int nodesCount, int edgeCount) {
         List<List<Integer>> graph = new ArrayList<>();
 
-
         for (int i = 0; i < nodesCount; i++) {
             graph.add(new ArrayList<>());
         }
@@ -172,6 +171,10 @@ public class Main {
                 throw new RuntimeException(e);
             }
         });
+
+        for (int i = 0; i < vertices; i++) {
+            visited.set(i, false);
+        }
 
         if (result.get() == null) {
             endTime = System.nanoTime();
