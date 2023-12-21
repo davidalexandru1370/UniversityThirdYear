@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
@@ -47,7 +48,7 @@ public class Main {
         List<List<Integer>> graph = new ArrayList<>();
         int vertices, edges;
 
-        Scanner scanner = new Scanner(new File("src/main/java/org/example/1.txt"));
+        Scanner scanner = new Scanner(new File("src/main/java/org/example/3.txt"));
         vertices = scanner.nextInt();
         edges = scanner.nextInt();
 
@@ -113,24 +114,36 @@ public class Main {
             int nextNode = graph.get(node).get(i);
             List<Integer> path2 = new ArrayList<>(path);
             if (!visited.get(nextNode)) {
-                var result = threadPool.submit(() -> {
-                            visited.set(nextNode, true);
-                            path2.add(nextNode);
-                            try {
-                                findHamiltonianCycleParallel(graph, path2, nextNode);
-                            } catch (ExecutionException e) {
-                                throw new RuntimeException(e);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
+                if (((ThreadPoolExecutor) threadPool).getPoolSize() < THREAD_COUNT - 1) {
+                    var result = threadPool.submit(() -> {
+                                visited.set(nextNode, true);
+                                path2.add(nextNode);
+                                try {
+                                    findHamiltonianCycleParallel(graph, path2, nextNode);
+                                } catch (ExecutionException e) {
+                                    throw new RuntimeException(e);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
+                                }
                             }
+                    );
+                    if (result.get() == null) {
+                        if (!path2.isEmpty()) {
+                            path2.remove(path2.size() - 1);
                         }
-                );
-                if (result.get() == null) {
+                        visited.set(nextNode, false);
+                    }
+                } else {
+                    visited.set(nextNode, true);
+                    path2.add(nextNode);
+                    findHamiltonianCycleParallel(graph, path2, nextNode);
                     if (!path2.isEmpty()) {
                         path2.remove(path2.size() - 1);
                     }
                     visited.set(nextNode, false);
+
                 }
+
             }
         }
 
