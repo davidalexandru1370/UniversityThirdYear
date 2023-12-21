@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 public class Main {
-    private static final int THREAD_COUNT = 5;
+    private static final int THREAD_COUNT = 32;
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
 
     private static List<Boolean> visited;
@@ -114,7 +114,7 @@ public class Main {
             int nextNode = graph.get(node).get(i);
             List<Integer> path2 = new ArrayList<>(path);
             if (!visited.get(nextNode)) {
-                if (((ThreadPoolExecutor) threadPool).getPoolSize() < THREAD_COUNT - 1) {
+                if (((ThreadPoolExecutor) threadPool).getPoolSize() <= THREAD_COUNT - 1) {
                     var result = threadPool.submit(() -> {
                                 //System.out.println("threaded");
                                 visited.set(nextNode, true);
@@ -170,8 +170,18 @@ public class Main {
             System.out.println("Hamiltonian cycle not found");
         }
         float endTime = System.nanoTime();
-        cycleFound.set(false);
+
+
+
         System.out.println("Time taken: " + (endTime - startTime) / 1000000 + " ms");
+
+
+        cycleFound.set(false);
+        path.clear();
+        path.add(startNode);
+        for (int i = 0; i < vertices; i++) {
+            visited.set(i, false);
+        }
 
         startTime = System.nanoTime();
 
@@ -185,9 +195,7 @@ public class Main {
             }
         });
 
-        for (int i = 0; i < vertices; i++) {
-            visited.set(i, false);
-        }
+
 
         if (result.get() == null) {
             endTime = System.nanoTime();
