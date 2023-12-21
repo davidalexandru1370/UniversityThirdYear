@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 public class Main {
-    private static final int THREAD_COUNT = 32;
+    private static final int THREAD_COUNT = 5;
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
 
     private static List<Boolean> visited;
@@ -116,6 +116,7 @@ public class Main {
             if (!visited.get(nextNode)) {
                 if (((ThreadPoolExecutor) threadPool).getPoolSize() < THREAD_COUNT - 1) {
                     var result = threadPool.submit(() -> {
+                                //System.out.println("threaded");
                                 visited.set(nextNode, true);
                                 path2.add(nextNode);
                                 try {
@@ -141,7 +142,6 @@ public class Main {
                         path2.remove(path2.size() - 1);
                     }
                     visited.set(nextNode, false);
-
                 }
 
             }
