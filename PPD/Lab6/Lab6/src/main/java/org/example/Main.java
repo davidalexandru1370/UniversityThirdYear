@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 public class Main {
-    private static final int THREAD_COUNT = 32;
+    private static final int THREAD_COUNT = 1;
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
 
     private static List<Boolean> visited;
