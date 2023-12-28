@@ -1,0 +1,58 @@
+Quiz Lab 1
+
+Required
+1) Name
+2) Consider the BNF rules:
+
+expr::= term "+" factor | term
+
+term::= term "*" factor
+
+factor::= const | id
+
+const::="1"|"2"|"3"|....|"9"
+
+id::="a"|"b"|....|"z"
+
+Sequence a+2*b corresponds to this description? (2 Points)
+yes
+no
+
+3) Consider the EBNF rules:
+
+id::=letter|letter{letter}{digit}
+
+letter::="a"|"b"|.....|"z"
+
+digit::="0"|"1"|..."9"
+
+Which of the following is NOT generated using these rules?
+(2 Points)
+2a
+a2
+a2a
+a22
+
+4) Alphabet of a language contains:
+(2 Points)
+only digits
+only letters
+all symbols used in writing tokens of the language
+only letters and digits
+5.Consider the BNF rules:
+
+digit::="2"|"4"|"6"|"8"
+
+nr::="0"|digit nr
+
+Which of the following can be generated using these rules?
+(2 Points)
+22
+240
+028
+470
+Never give out your password.Report abuse
+This content is created by the owner of the form. The data you submit will be sent to the form owner.
+Powered by Microsoft Forms
+| Privacy and cookies
+| Terms of use
