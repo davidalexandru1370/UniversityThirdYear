@@ -9,7 +9,7 @@ public class Colors {
     public Colors(int n) {
 
         for (int i = 0; i < n; i++) {
-            colors.put(i, "");
+            colors.put(i, "color " + i);
         }
     }
 

@@ -9,7 +9,7 @@ public class Graph {
     private final List<List<Integer>> edges = new ArrayList<>();
 
     public Graph() throws FileNotFoundException {
-        readGraphFromFile("1.txt");
+        readGraphFromFile("src/main/java/org/example/input/1.txt");
     }
 
     public void addEdge(int from, int to) {
@@ -20,7 +20,7 @@ public class Graph {
         return numberOfNodes;
     }
 
-    public List<Integer> getOutgoingNeighbours(int node) {
+    public List<Integer> getNeighbours(int node) {
         return edges.get(node);
     }
 
@@ -31,6 +31,8 @@ public class Graph {
         vertices = scanner.nextInt();
         edges = scanner.nextInt();
 
+        this.numberOfNodes = vertices;
+
         for (int i = 0; i < vertices; i++) {
             this.edges.add(new ArrayList<>());
         }
@@ -39,6 +41,7 @@ public class Graph {
             int node1 = scanner.nextInt();
             int node2 = scanner.nextInt();
             this.edges.get(node1).add(node2);
+            this.edges.get(node2).add(node1);
         }
 
     }
