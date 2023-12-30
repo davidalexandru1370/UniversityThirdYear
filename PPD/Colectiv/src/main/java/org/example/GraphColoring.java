@@ -21,8 +21,10 @@ public class GraphColoring {
         if (codes[0] == -1) {
             throw new Exception("No solution for this graph");
         }
-
-        return colors.getColorsForNodes(codes);
+        var colorsForNodes = colors.getColorsForNodes(codes);
+        System.out.println(Arrays.stream(codes).skip(1).boxed().toList().toString());
+        System.out.println(colorsForNodes);
+        return colorsForNodes;
     }
 
     private int[] nColoringGraph(int nodeId, int colorsNumber, int[] colorCodes, int mpiRank, int mpiSize, int power) {
@@ -48,7 +50,7 @@ public class GraphColoring {
         int nextNode = nodeId + 1;
         int nextPower = power + 1;
 
-        for (int currentColorCode = 1; currentColorCode < colorsNumber; currentColorCode++) {
+        for (int currentColorCode = 1; currentColorCode < colorCode; currentColorCode++) {
             destination = mpiRank + coefficient * currentColorCode;
             int[] message = new int[]{mpiRank, nextNode, nextPower};
             MPI.COMM_WORLD.Send(message, 0, message.length, MPI.INT, destination, 0);
@@ -116,7 +118,6 @@ public class GraphColoring {
         //send data to parent
         MPI.COMM_WORLD.Send(result, 0, nodesNumber, MPI.INT, parent, 0);
     }
-
 
     private boolean isColorValid(int node, int[] colors) {
         for (int neighbour : graph.getNeighbours(node)) {
