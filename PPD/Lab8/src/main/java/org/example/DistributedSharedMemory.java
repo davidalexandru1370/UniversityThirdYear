@@ -42,28 +42,30 @@ public class DistributedSharedMemory {
 
     public void checkAndReplace(String name, int oldValue, int newValue) {
         lock.lock();
-        try {
-            if (variables.get(name) == oldValue) {
-                updateVariable(name, newValue);
-            }
-        } finally {
-            lock.unlock();
+        if (variables.get(name) == oldValue) {
+            variables.put(name, newValue);
+            sendMessageToSubscribers(name, new UpdateMessage(name, newValue));
         }
+        lock.unlock();
     }
 
     public void sendMessageToSubscribers(String name, AbstractMessage message) {
-        for(int index = 0; index < MPI.COMM_WORLD.Size(); index++){
-            if(subscribers.get(name).contains(index) && MPI.COMM_WORLD.Rank() != index){
-                MPI.COMM_WORLD.Send(new Object[]{message}, 0, 1, MPI.OBJECT, index, 0);
+        for (int index = 0; index < MPI.COMM_WORLD.Size(); index++) {
+            if (!subscribers.get(name).contains(index) || MPI.COMM_WORLD.Rank() == index) {
+                continue;
             }
+            MPI.COMM_WORLD.Send(new Object[]{message}, 0, 1, MPI.OBJECT, index, 0);
+
         }
     }
 
     public void broadcastMessage(AbstractMessage message) {
         for (int index = 0; index < MPI.COMM_WORLD.Size(); index++) {
-            if (MPI.COMM_WORLD.Rank() != index && !(message instanceof CloseMessage)) {
-                MPI.COMM_WORLD.Send(new Object[]{message}, 0, 1, MPI.OBJECT, index, 0);
+            if (MPI.COMM_WORLD.Rank() == index || !(message instanceof CloseMessage)) {
+                continue;
             }
+            MPI.COMM_WORLD.Send(new Object[]{message}, 0, 1, MPI.OBJECT, index, 0);
+
         }
     }
 

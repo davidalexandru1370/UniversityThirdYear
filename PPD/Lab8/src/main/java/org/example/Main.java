@@ -3,7 +3,7 @@ package org.example;
 import mpi.MPI;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         MPI.Init(args);
 
         int me = MPI.COMM_WORLD.Rank();
@@ -22,6 +22,7 @@ public class Main {
             distributedSharedMemory.updateVariable("1", 1);
             distributedSharedMemory.updateVariable("2", 2);
             distributedSharedMemory.updateVariable("3", 3);
+            System.out.println(distributedSharedMemory);
             distributedSharedMemory.close();
             try {
                 thread.join();
@@ -42,7 +43,7 @@ public class Main {
             Thread thread = new Thread(new Subscriber(distributedSharedMemory));
             thread.start();
             distributedSharedMemory.subscribeTo("2");
-            distributedSharedMemory.checkAndReplace("2",1, 4);
+            distributedSharedMemory.checkAndReplace("2", 5, 4);
             try {
                 thread.join();
             } catch (InterruptedException e) {
