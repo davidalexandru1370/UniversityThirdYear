@@ -1,50 +1,57 @@
 package org.example;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import org.example.Node;
+
 import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Graph {
-    private int numberOfNodes;
-    private final List<List<Integer>> edges = new ArrayList<>();
 
-    public Graph() throws FileNotFoundException {
-        readGraphFromFile("src/main/java/org/example/input/1.txt");
-    }
+    private final Set<Node> nodes;
 
-    public void addEdge(int from, int to) {
-        edges.get(from).add(to);
-    }
+    private final int threadCount = 16;
 
-    public int getNodesNumber() {
-        return numberOfNodes;
-    }
+    public Graph(int size) {
 
-    public List<Integer> getNeighbours(int node) {
-        return edges.get(node);
-    }
+        nodes = new HashSet<>(size);
 
-    public void readGraphFromFile(String filename) throws FileNotFoundException {
-        int vertices, edges;
+        for (int id = 0; id < size; id++) {
 
-        Scanner scanner = new Scanner(new File(filename));
-        vertices = scanner.nextInt();
-        edges = scanner.nextInt();
-
-        this.numberOfNodes = vertices;
-
-        for (int i = 0; i < vertices; i++) {
-            this.edges.add(new ArrayList<>());
+            nodes.add(new Node(id));
         }
+    }
 
-        for (int i = 0; i < edges; i++) {
-            int node1 = scanner.nextInt();
-            int node2 = scanner.nextInt();
-            this.edges.get(node1).add(node2);
-            this.edges.get(node2).add(node1);
-        }
+    public void setEdge(Integer n1, Integer n2) {
 
+        Node node1 = nodes.stream().filter((n) -> Objects.equals(n.getId(), n1)).findFirst().get();
+        Node node2 = nodes.stream().filter((n) -> Objects.equals(n.getId(), n2)).findFirst().get();
+
+        node1.setAdjacentNode(node2);
+        node2.setAdjacentNode(node1);
+    }
+
+    public boolean isEdge(Integer n1, Integer n2) {
+
+        Node node1 = nodes.stream().filter((n) -> Objects.equals(n.getId(), n1)).findFirst().get();
+        Node node2 = nodes.stream().filter((n) -> Objects.equals(n.getId(), n2)).findFirst().get();
+
+        return node1.isAdjacent(node2);
     }
 
 
+    public List<Node> getNodes() {
+
+        return nodes.stream().toList().stream().sorted().toList();
+    }
+
+    public Node getNodeById(int id) {
+
+        return nodes.stream().filter((n) -> Objects.equals(n.getId(), id)).findFirst().get();
+    }
+
+    public int getNoNodes() {
+
+        return nodes.size();
+    }
 }

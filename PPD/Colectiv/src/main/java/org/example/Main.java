@@ -1,41 +1,55 @@
 package org.example;
 
-import mpi.MPI;
-
-import java.io.FileNotFoundException;
+import mpi.*;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+
+    static int nodeCount = 5;
+    static int coloringDegree = 3;
+    public static void main(String[] args) throws InterruptedException {
+
         MPI.Init(args);
-        int me = MPI.COMM_WORLD.Rank();
+
+        final String[] c = {"color 1", "color 2", "color 3", "color 4", "color 5", "color 6", "color 7"};
+
+        int id = MPI.COMM_WORLD.Rank();
         int size = MPI.COMM_WORLD.Size();
-        Graph graph = new Graph();
-        Colors colors2 = new Colors(5);
-        GraphColoring graphColoring = new GraphColoring(graph);
-        if (me == 0) {
-            System.out.println("Main process");
+
+        var graph = new Graph(nodeCount);
+
+        graph.setEdge(0,1);
+        graph.setEdge(1,2);
+        graph.setEdge(1,4);
+        graph.setEdge(2,0);
+        graph.setEdge(2,3);
+        graph.setEdge(3,1);
+        graph.setEdge(3,4);
+        graph.setEdge(4,0);
+
+        Colors.setNoColors(coloringDegree);
+
+        for (int i = 1; i <= coloringDegree; i++) Colors.setColorName(i, c[i-1]);
+
+        // n = the coloring degree
+        // Rationale: Each of the n processes (excluding the main process) will handle
+        // the partial solutions ending in color k (1 <= k <= n)
+        assert size-1 == Colors.getNoColors();
+
+        if (id == 0) {
 
             try {
-                long start = System.nanoTime();
-                try {
-                    System.out.println(graphColoring.colorGraph(size, colors2));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                long stop = System.nanoTime();
 
-                long time = stop - start;
-                System.out.println("Time: " + time / 1000000 + " ms");
-            } catch (Exception e) {
-                e.printStackTrace();
+                GraphColoring.graphColoringMain(graph);
             }
-        } else {
-            System.out.println("Process number: " + me);
-
-            int colorsNumber = colors2.getColors().size();
-
-            graphColoring.graphColoringReceive(me, size, colorsNumber);
+            catch (Exception gce) {
+                gce.printStackTrace();
+            }
         }
+        else {
+
+            GraphColoring.graphColoringWorker(id, graph);
+        }
+
         MPI.Finalize();
     }
 }

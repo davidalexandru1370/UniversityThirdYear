@@ -4,28 +4,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Colors {
-    private final Map<Integer, String> colors = new HashMap<>();
+    private static String[] colors;
 
-    public Colors(int n) {
+    public static void setNoColors(int noColors) {
 
-        for (int i = 0; i <= n; i++) {
-            colors.put(i, "color " + i);
+        colors = new String[noColors];
+    }
+
+    public static void setColorName(int colorId, String color) {
+        colors[colorId-1] = color;
+    }
+
+    public static Map<Integer, String> getNodesToColors(int[] codes) {
+
+        Map<Integer, String> map = new HashMap<>();
+
+        for (int index = 0; index < codes.length; index++) {
+
+            String color = colors[codes[index]-1];
+            map.put(index, color);
         }
+
+        return map;
     }
 
-    public void addColor(int code, String color) {
-        colors.put(code, color);
-    }
-
-    public Map<Integer, String> getColors() {
-        return colors;
-    }
-
-    public Map<Integer, String> getColorsForNodes(int[] nodes) {
-        Map<Integer, String> colorsForNodes = new HashMap<>();
-        for (int node : nodes) {
-            colorsForNodes.put(node, colors.get(node));
-        }
-        return colorsForNodes;
+    public static int getNoColors() {
+        return colors.length;
     }
 }
