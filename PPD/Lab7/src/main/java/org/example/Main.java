@@ -158,7 +158,7 @@ public class Main {
 
         int me = MPI.COMM_WORLD.Rank();
         int size = MPI.COMM_WORLD.Size();
-        boolean shouldExecuteNormalMultiplication = true;
+        boolean shouldExecuteNormalMultiplication = false;
 
         if (me == 0) {
             Polynomial p1 = new Polynomial(100);

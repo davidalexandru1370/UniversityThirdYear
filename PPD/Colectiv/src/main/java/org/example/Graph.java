@@ -1,14 +1,12 @@
 package org.example;
 
-import org.example.Node;
 
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicBoolean;
+
 
 public class Graph {
 
-    private final Set<Node> nodes;
+    private Set<Node> nodes;
 
     private final int threadCount = 16;
 
@@ -19,6 +17,34 @@ public class Graph {
         for (int id = 0; id < size; id++) {
 
             nodes.add(new Node(id));
+        }
+    }
+
+    public void generateRandomGraph(int nodesCount, int edgeCount) {
+        Random random = new Random();
+
+        nodes = new HashSet<>(nodesCount);
+
+        for (int id = 0; id < nodesCount; id++) {
+
+            nodes.add(new Node(id));
+        }
+
+//        for (int i = 0; i < nodesCount - 1; i++) {
+//            setEdge(i, i + 1);
+//        }
+
+        for (int i = nodesCount; i < edgeCount; i++) {
+
+            int n1 = random.nextInt(nodesCount);
+            int n2 = random.nextInt(nodesCount);
+
+            while (n1 == n2 || isEdge(n1, n2)) {
+                n1 = random.nextInt(nodesCount);
+                n2 = random.nextInt(nodesCount);
+            }
+
+            setEdge(n1, n2);
         }
     }
 

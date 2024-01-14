@@ -37,7 +37,7 @@ public class GraphColoring {
         }
 
         // If a solution is valid and complete until its last index, we return it.
-        if (solutionNode+1 == graph.getNoNodes()) {
+        if (solutionNode + 1 == graph.getNoNodes()) {
             return solution;
         }
 
@@ -100,9 +100,9 @@ public class GraphColoring {
 
             if (currentCode != mpiId) {
 
-                int[] buf = new int[noNodes+1];
+                int[] buf = new int[noNodes + 1];
 
-                MPI.COMM_WORLD.Recv(buf, 0, noNodes+1, MPI.INT, source, 0);
+                MPI.COMM_WORLD.Recv(buf, 0, noNodes + 1, MPI.INT, source, 0);
 
                 int prevNode = buf[0];
 
@@ -120,8 +120,7 @@ public class GraphColoring {
                     if (result[0] != -1) {
                         return result;
                     }
-                }
-                else {
+                } else {
 
                     // After the main process has received the final solution, it shows it if it's valid.
                     if (codes[0] != -1) {
@@ -141,10 +140,10 @@ public class GraphColoring {
         int noNodes = graph.getNoNodes();
         int noColors = Colors.getNoColors();
 
-        int[] initialSolution = new int[noNodes+1];
+        int[] initialSolution = new int[noNodes + 1];
 
         // At first, the worker processes receive partial solutions that are 0-index complete.
-        MPI.COMM_WORLD.Recv(initialSolution, 0, noNodes+1, MPI.INT, 0, 0);
+        MPI.COMM_WORLD.Recv(initialSolution, 0, noNodes + 1, MPI.INT, 0, 0);
 
         int prevNode = initialSolution[0];
 
@@ -155,13 +154,13 @@ public class GraphColoring {
         int[] newCodes = graphColoringRec(prevNode, graph, noColors, initialCodes, mpiId);
 
         // The final solution, valid or not, will be sent back to the main process.
-        int[] buf = new int[noNodes+1];
+        int[] buf = new int[noNodes + 1];
 
-        buf[0] = graph.getNoNodes()-1;
+        buf[0] = graph.getNoNodes() - 1;
 
         System.arraycopy(newCodes, 0, buf, 1, newCodes.length);
 
-        MPI.COMM_WORLD.Isend(buf, 0, noNodes+1, MPI.INT, 0, 0);
+        MPI.COMM_WORLD.Isend(buf, 0, noNodes + 1, MPI.INT, 0, 0);
 
         // System.out.println("Process " + mpiId + " sent " + Arrays.toString(newCodes) + " to process 0");
     }

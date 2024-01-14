@@ -43,7 +43,7 @@ public class Main {
             Thread thread = new Thread(new Subscriber(distributedSharedMemory));
             thread.start();
             distributedSharedMemory.subscribeTo("2");
-            distributedSharedMemory.checkAndReplace("2", 5, 4);
+            distributedSharedMemory.checkAndReplace("2", 2, 5);
             try {
                 thread.join();
             } catch (InterruptedException e) {
