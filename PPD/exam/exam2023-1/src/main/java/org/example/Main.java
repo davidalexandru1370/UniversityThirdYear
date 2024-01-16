@@ -53,7 +53,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         List<List<Integer>> matrix = List.of(List.of(1, 2, 3, 4), List.of(5, 6, 7, 8), List.of(9, 10, 11, 12), List.of(13, 14, 15, 16));
 
 
@@ -62,18 +62,28 @@ public class Main {
 //        }
 //
 //        System.out.println("Sum: " + sum.get());
-        for (var line : matrix) {
-            threadPool.submit(() -> {
-                solve(line);
-            });
-        }
+//        for (var line : matrix) {
+//            threadPool.submit(() -> {
+//                solve(line);
+//            });
+//        }
+//
+//        while (true) {
+//            if (((ThreadPoolExecutor) threadPool).getActiveCount() == 0) {
+//                System.out.println("Sum: " + sum);
+//                threadPool.shutdown();
+//                break;
+//            }
+//        }
+//        var vectorProductProblem = new ScalarProductTree();
+//
+//        var result = vectorProductProblem.scalarProduct(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 4);
+//
+//        System.out.println(result);
 
-        while (true) {
-            if (((ThreadPoolExecutor) threadPool).getActiveCount() == 0) {
-                System.out.println("Sum: " + sum);
-                threadPool.shutdown();
-                break;
-            }
-        }
+        var matrixMultiplication = new MatrixMultiplication();
+
+        matrixMultiplication.solve(4);
+
     }
 }
