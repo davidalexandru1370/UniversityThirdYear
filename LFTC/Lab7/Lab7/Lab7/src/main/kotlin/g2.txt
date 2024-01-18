@@ -1,0 +1,39 @@
+program statement statement_list expression_list array_statement compound_statement expression term factor assignment_statement if_statement while_statement condition relation function_call_statement
+; { } + - * / ) ( 1 2 3 4 5 6 7 8 9 0 a b c d e f h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z = if else while for < <= == != >= > \n | #
+compound_statement
+compound_statement -> statement \n
+compound_statement -> statement \n compound_statement
+statement -> assignment_statement
+statement -> if_statement
+statement -> while_statement
+statement -> for_statement
+statement -> function_call_statement
+expression -> expression + term
+expression -> expression - term
+expression -> term
+term -> term * factor
+term -> term / factor
+term -> factor
+factor -> ( expression )
+factor -> identifier
+factor -> integer_constant
+function_call_statement -> <-- ( identifier )
+function_call_statement -> --> ( identifier )
+function_call_statement -> --> ( integer_constant )
+function_call_statement -> --> ( string_constant )
+assignment_statement -> identifier = expression
+assignment_statement -> identifier = array_statement
+array_statement -> [ ]
+array_statement -> [ expression_list ]
+expression_list -> expression
+expression_list -> expression , expression_list
+if_statement -> if ( condition ) \n # \n compound_statement #
+if_statement -> if ( condition ) \n # \n compound_statement # else \n # \n compound_statement #
+while_statement -> while ( condition ) \n # \n compound_statement #
+condition -> expression relation expression
+relation -> <
+relation -> <=
+relation -> ==
+relation -> !=
+relation -> >=
+relation -> >

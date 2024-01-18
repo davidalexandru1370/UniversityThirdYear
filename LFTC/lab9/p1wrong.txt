@@ -1,0 +1,22 @@
+//minimum of three numbers, illegal tokens
+program{
+begin
+
+	int 23a; //a variable can not start with a number
+	int b;
+	int c; 
+
+	readInt(a);
+	readInt(b);
+	readInt(c);
+
+	if (minimum ~ b) { //invalid operator
+		minimum = b;
+	}
+	if (minimum > c) {
+		minimum = c;
+	}
+
+	display(minimum);
+end
+}

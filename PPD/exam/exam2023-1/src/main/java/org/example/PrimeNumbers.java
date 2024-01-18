@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public class PrimeNumbers {
@@ -31,7 +30,6 @@ public class PrimeNumbers {
 
         return workload;
     }
-
 
     public void execute(int numberOfThreads) throws InterruptedException {
 

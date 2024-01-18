@@ -1,0 +1,12 @@
+S C E R I T
+if then else id const := = <>
+S
+S -> if C then I T
+T -> epsilon
+T -> else I
+C -> E R E
+E -> id
+E -> const
+R -> =
+R -> <>
+I -> id := E

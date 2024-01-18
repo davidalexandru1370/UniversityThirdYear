@@ -1,0 +1,70 @@
+
+%{ 	 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "y.tab.h"
+int currentLine = 1;
+%} 
+%option noyywrap
+%option caseless
+
+IDENTIFIER		[a-zA-Z][a-zA-Z0-9_]*
+NUMBER_CONST	0|[+|-]?[1-9][0-9]*([.][0-9]*)?|[+|-]?0[.][0-9]*
+STRING_CONST	[\"].*[\"]
+CHAR_CONST		[\'][a-zA-Z0-9 ][\']
+COMMENT		[//].*
+%%
+
+
+"program" { printf("%s - reserved word\n", yytext); return PROGRAM; }
+"begin" { printf("%s - reserved word\n", yytext); return MYBEGIN; }
+"end" { printf("%s - reserved word\n", yytext); return END; }
+"int" { printf("%s - reserved word\n", yytext); return INT; }
+"string" { printf("%s - reserved word\n", yytext); return STRING; }
+"char" { printf("%s - reserved word\n", yytext); return CHAR; }
+"readInt" { printf("%s - reserved word\n", yytext); return READINT; }
+"if" { printf("%s - reserved word\n", yytext); return IF; }
+"else" { printf("%s - reserved word\n", yytext); return ELSE; }
+"display" { printf("%s - reserved word\n", yytext); return DISPLAY; }
+"while" { printf("%s - reserved word\n", yytext); return WHILE; }
+
+
+"+" { printf("%s - operator\n", yytext); return PLUS; }
+"-" { printf("%s - operator\n", yytext); return MINUS; }
+"*" { printf("%s - operator\n", yytext); return TIMES; }
+"/" { printf("%s - operator\n", yytext); return DIV; }
+"<" { printf("%s - operator\n", yytext); return LESS; }
+"<=" { printf("%s - operator\n", yytext); return LESSEQ; }
+"=" { printf("%s - operator\n", yytext); return EQ; }
+">=" { printf("%s - operator\n", yytext); return BIGGEREQ; }
+"==" { printf("%s - operator\n", yytext); return EQQ; }
+"!=" { printf("%s - operator\n", yytext); return NEQ; }
+">" { printf("%s - operator\n", yytext); return BIGGER; }
+
+"[" { printf("%s - separator\n", yytext); return BRACKETOPEN; }
+"]" { printf("%s - separator\n", yytext); return BRACKETCLOSE; } 
+";" { printf("%s - separator\n", yytext); return SEMICOLON; } 
+"(" { printf("%s - separator\n", yytext); return OPEN; } 
+")" { printf("%s - separator\n", yytext); return CLOSE; }
+"{" { printf("%s - separator\n", yytext); return BRACKETOPEN; } 
+"}" { printf("%s - separator\n", yytext); return BRACKETCLOSE; } 
+"," { printf("%s - separator\n", yytext); return COMMA; }
+
+
+{IDENTIFIER}		{printf("Identifier: %s\n", yytext); return IDENTIFIER;}
+{NUMBER_CONST}		{printf("Number: %s\n", yytext); return INTCONSTANT;}
+{STRING_CONST}		{printf("String: %s\n", yytext); return STRINGCONSTANT;}
+{CHAR_CONST}		{printf("Character: %s\n", yytext); return CHAR;}
+
+[ \t]+		{}
+[\n]+	{currentLine++;}
+
+[0-9][a-zA-Z0-9_]*		{printf("Illegal identifier at line %d\n", currentLine); exit(1);}
+[+|-]0		{printf("Illegal numeric constant at line %d\n", currentLine); exit(1);}
+[+|-]?[0][0-9]*([.][0-9]*)?		{printf("Illegal numeric constant at line %d\n", currentLine); exit(1);}
+[\'][a-zA-Z0-9 ]{2,}[\']|[\'][a-zA-Z0-9 ][a-zA-Z0-9 ][\']		{printf("Illegal character constant at line %d\n", currentLine); exit(1);}
+[~&$#@`] {printf("Illegal operator at line %d\n", currentLine); exit(1);}
+%%
+
+

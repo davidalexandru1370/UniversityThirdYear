@@ -1,0 +1,161 @@
+Program CompoundStatement Statement AssignStatement IfStatement WhileStatement VariableStatement AssignmentStatement ArrayDeclarationStatement ConditionalStatement MethodStatement Identifier Expression Letter Digit Boolean IntExpression StringExpression CharExpression BooleanExpression MathematicalSymbol RelationalSymbol Sign Number CharacterOrDigit Symbol LogicalOperator VariableType LetterOrDigit ArrayContentStatement IntConstant StringConstant CharConstant ArrayContentInt ArrayContentString ArrayContentChar NonZeroDigit ArrayContent
+a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 0 1 2 3 4 5 6 7 8 9 [ ] ' ; ? , . ( ) " ! : { * + newline space && || / = } <= >= < > _ - == != int string char read readInt if else display while def return true false
+Program
+Program -> CompoundStatement
+CompoundStatement -> Statement CompoundStatement
+CompoundStatement -> epsilon
+Statement -> AssignStatement
+Statement -> IfStatement
+Statement -> WhileStatement
+Statement -> VariableStatement
+Statement -> ArrayDeclarationStatement
+Statement -> ConditionalStatement
+Statement -> MethodStatement
+AssignStatement -> VariableStatement
+AssignStatement -> ArrayDeclarationStatement
+AssignStatement -> Identifier = Expression
+VariableStatement -> VariableType Identifier = Expression
+VariableStatement -> VariableType Identifier
+Identifier -> Letter CharacterOrDigit
+CharacterOrDigit -> Letter CharacterOrDigit
+CharacterOrDigit -> Digit CharacterOrDigit
+CharacterOrDigit -> epsilon
+Boolean -> true
+Boolean -> false
+Expression -> IntExpression
+Expression -> StringExpression
+Expression -> CharExpression
+Expression -> BooleanExpression
+IntExpression -> IntConstant
+IntExpression -> Identifier
+IntExpression -> IntExpression MathematicalSymbol IntExpression
+IntExpression -> ( IntExpression )
+StringExpression -> StringConstant
+StringExpression -> Identifier
+IntConstant -> 0
+IntConstant -> Sign Number
+Number -> NonZeroDigit Digit
+Number -> 0
+Sign -> +
+Sign -> -
+Sign -> epsilon
+Digit -> 0
+Digit -> NonZeroDigit
+NonZeroDigit -> 1
+NonZeroDigit -> 2
+NonZeroDigit -> 3
+NonZeroDigit -> 4
+NonZeroDigit -> 5
+NonZeroDigit -> 6
+NonZeroDigit -> 7
+NonZeroDigit -> 8
+NonZeroDigit -> 9
+MathematicalSymbol -> +
+MathematicalSymbol -> -
+MathematicalSymbol -> *
+MathematicalSymbol -> /
+StringConstant -> " LetterOrDigit "
+LetterOrDigit -> Letter LetterOrDigit
+LetterOrDigit -> Digit LetterOrDigit
+LetterOrDigit -> Symbol LetterOrDigit
+LetterOrDigit -> epsilon
+Symbol -> ?
+Symbol -> !
+Symbol -> space
+Symbol -> :
+Symbol -> ;
+Symbol -> ,
+Symbol -> .
+Symbol -> (
+Symbol -> )
+Symbol -> {
+Symbol -> }
+Symbol -> [
+Symbol -> ]
+Symbol -> _
+Symbol -> -
+Symbol -> MathematicalSymbol
+Symbol -> RelationalSymbol
+RelationalSymbol -> <
+RelationalSymbol -> >
+RelationalSymbol -> <=
+RelationalSymbol -> >=
+RelationalSymbol -> ==
+RelationalSymbol -> !=
+CharExpression -> ' LetterOrDigit '
+BooleanExpression -> Boolean
+BooleanExpression -> BooleanExpression LogicalOperator BooleanExpression
+BooleanExpression -> ( BooleanExpression LogicalOperator BooleanExpression )
+BooleanExpression -> ! BooleanExpression
+LogicalOperator -> &&
+LogicalOperator -> ||
+ArrayDeclarationStatement ->  Identifier [ IntExpression ] = ArrayContentStatement
+ArrayContentStatement -> [ ArrayContent ]
+ArrayContent -> epsilon
+ArrayContent -> ArrayContentInt
+ArrayContent -> ArrayContentString
+ArrayContent -> ArrayContentChar
+ArrayContentInt -> IntExpression , ArrayContentInt
+ArrayContentInt -> epsilon
+ArrayContentString -> StringExpression , ArrayContentString
+ArrayContentString -> epsilon
+ArrayContentChar -> CharExpression , ArrayContentChar
+ArrayContentChar -> epsilon
+IfStatement -> if ( BooleanExpression ) { CompoundStatement }
+IfStatement -> if ( BooleanExpression ) { CompoundStatement } else { CompoundStatement }
+IfStatement -> if ( BooleanExpression )  Statement else Statement
+IfStatement -> if ( BooleanExpression )  Statement
+WhileStatement -> while ( BooleanExpression ) { CompoundStatement }
+WhileStatement -> while ( BooleanExpression ) Statement
+Letter -> a
+Letter -> b
+Letter -> c
+Letter -> d
+Letter -> e
+Letter -> f
+Letter -> g
+Letter -> h
+Letter -> i
+Letter -> j
+Letter -> k
+Letter -> l
+Letter -> m
+Letter -> n
+Letter -> o
+Letter -> p
+Letter -> q
+Letter -> r
+Letter -> s
+Letter -> t
+Letter -> u
+Letter -> v
+Letter -> w
+Letter -> x
+Letter -> y
+Letter -> z
+Letter -> A
+Letter -> B
+Letter -> C
+Letter -> D
+Letter -> E
+Letter -> F
+Letter -> G
+Letter -> H
+Letter -> I
+Letter -> J
+Letter -> K
+Letter -> L
+Letter -> M
+Letter -> N
+Letter -> O
+Letter -> P
+Letter -> Q
+Letter -> R
+Letter -> S
+Letter -> T
+Letter -> U
+Letter -> V
+Letter -> W
+Letter -> X
+Letter -> Y
+Letter -> Z
