@@ -81,9 +81,12 @@ public class Main {
 //
 //        System.out.println(result);
 
-        var matrixMultiplication = new MatrixMultiplication();
+//        var matrixMultiplication = new MatrixMultiplication();
+//
+//        matrixMultiplication.solve(4);
 
-        matrixMultiplication.solve(4);
+        var primeNumbers = new PrimeNumbers();
+        primeNumbers.execute(7);
 
     }
 }
