@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:template_mobile/presentation/price_screen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'dates_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  var navigatorKey = GlobalKey<NavigatorState>();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      builder: FToastBuilder(),
+      navigatorKey: navigatorKey,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -22,6 +27,8 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
     );
   }
+
+
 }
 
 class MyHomePage extends StatefulWidget {
@@ -42,21 +49,23 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DatesScreen()),
-                );
-              },
-              child: const Text("Dates")),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ProgressScreen()));
-              },
-              child: const Text("Progress")),
-        ]),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DatesScreen()),
+                    );
+                  },
+                  child: const Text("Dates")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProgressScreen()));
+                  },
+                  child: const Text("Progress")),
+            ]),
       ),
     );
   }

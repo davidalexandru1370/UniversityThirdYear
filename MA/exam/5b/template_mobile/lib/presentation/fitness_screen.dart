@@ -30,6 +30,9 @@ class _FitnessScreenState extends State<FitnessScreen> {
   void initState() {
     try {
       itemService.getAllFitness(date).then((value) {
+        if (mounted == false) {
+          return;
+        }
         setState(() {
           _isLoading = false;
           items = value;

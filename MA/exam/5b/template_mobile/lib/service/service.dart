@@ -13,7 +13,7 @@ class FitnessService extends AbstractService<Fitness> {
   Future<List<String>> getAllDates() async {
     var url = Uri.parse("${baseUrl}dates");
 
-    final response = await http.get(url).timeout(const Duration(seconds: 15));
+    final response = await http.get(url).timeout(const Duration(seconds: 45));
 
     if (response.statusCode == 200) {
       var items = <String>[];

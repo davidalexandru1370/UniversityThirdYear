@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:template_mobile/common/utilities.dart';
 import 'package:template_mobile/domain/Fitness.dart';
 import 'package:template_mobile/presentation/add_fitness.dart';
+import 'package:template_mobile/presentation/widgets/toast.dart';
 import 'package:template_mobile/service/service.dart';
 import 'package:template_mobile/service/web_socket.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../persistence/Repository.dart';
 
 import '../service/network.dart';
@@ -47,12 +47,14 @@ class _CategoriesScreenState extends State<_CategoriesScreen> {
   var connectivity = ConnectivityResult.none;
   final WebSocketConnection _webSocketConnection = WebSocketConnection.instance;
   final NetworkConnectivity _connectivity = NetworkConnectivity.instance;
+  late FToast fToast;
 
   @override
   void initState() {
     repository = Repository();
     itemService = FitnessService();
-
+    fToast = FToast();
+    fToast.init(context);
     connection();
 
     fetchDates();
@@ -63,16 +65,21 @@ class _CategoriesScreenState extends State<_CategoriesScreen> {
             var json = jsonDecode(data);
             var item = Fitness.fromMap(json);
             print("Received item" + item.toString());
-            Fluttertoast.showToast(
-                msg: "Received item" + item.toString(),
-                toastLength: Toast.LENGTH_LONG,
-                backgroundColor: Colors.green,
-                gravity: ToastGravity.TOP);
+            // Fluttertoast.showToast(
+            //     msg: "Received item" + item.toString(),
+            //     toastLength: Toast.LENGTH_LONG,
+            //
+            //     backgroundColor: Colors.green,
+            //     gravity: ToastGravity.TOP);
+            fToast.showToast(child: MyToast.getToast(item.toString()));
             repository.insert(item.toMap(), Utilities.principalTable);
           },
           () {},
           () {},
           (status) {
+            if(mounted == false){
+              return;
+            }
             setState(() {
               _isOnline = status;
             });
