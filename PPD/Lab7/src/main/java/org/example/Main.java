@@ -160,18 +160,18 @@ public class Main {
         int size = MPI.COMM_WORLD.Size();
         boolean shouldExecuteNormalMultiplication = false;
 
-        if (me == 0) {
-            Polynomial p1 = new Polynomial(100);
-            Polynomial p2 = new Polynomial(100);
-
-            initializeMPI(p1, p2, size);
-        } else {
-            if (shouldExecuteNormalMultiplication) {
-                normalMultiplication(me);
-            } else {
-                karatsubaMultiplication(me);
-            }
-        }
+//        if (me == 0) {
+//            Polynomial p1 = new Polynomial(100);
+//            Polynomial p2 = new Polynomial(100);
+//
+//            initializeMPI(p1, p2, size);
+//        } else {
+//            if (shouldExecuteNormalMultiplication) {
+//                normalMultiplication(me);
+//            } else {
+//                karatsubaMultiplication(me);
+//            }
+//        }
 
         MPI.Finalize();
     }
