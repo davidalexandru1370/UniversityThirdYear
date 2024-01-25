@@ -1,36 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:template_mobile/common/utilities.dart';
 import 'package:template_mobile/service/service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../domain/Fitness.dart';
+import '../domain/Task.dart';
 import '../persistence/Repository.dart';
 
-class AddFitness extends StatefulWidget {
-  const AddFitness({super.key});
+class AddTask extends StatefulWidget {
+  const AddTask({super.key});
 
   @override
-  State<AddFitness> createState() => _AddFitnessState();
+  State<AddTask> createState() => _AddTaskState();
 }
 
-class _AddFitnessState extends State<AddFitness> {
+class _AddTaskState extends State<AddTask> {
   final _formKey = GlobalKey<FormState>();
 
   final FitnessService _itemService = FitnessService();
   final Repository repository = Repository();
   String _date = "";
   String _type = "";
-  int _duration = 1;
-  int _distance = 0;
-  int _calories = 0;
-  int _rate = 0;
+  double _duration = 1;
+  String priority = "";
+  String _category = "";
+  String _description = "";
   bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Item"),
+        title: const Text("Add Task"),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -72,54 +73,54 @@ class _AddFitnessState extends State<AddFitness> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Please enter an duration";
+                      return "Please enter a duration";
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _duration = int.parse(value!);
+                    _duration = double.parse(value!);
                   },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: "Distance",
+                    labelText: "Priority",
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Please enter the distance";
+                      return "Please enter the priority";
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _distance = int.parse(value!);
+                    priority = value!;
                   },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: "Calories",
+                    labelText: "Category",
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Please enter the calories";
+                      return "Please enter the category";
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _calories = int.parse(value!);
+                    _category = value!;
                   },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: "Rate",
+                    labelText: "Description",
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Please enter the rate";
+                      return "Please enter the description";
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _rate = int.parse(value!);
+                    _description = value!;
                   },
                 ),
                 ElevatedButton(
@@ -132,15 +133,15 @@ class _AddFitnessState extends State<AddFitness> {
                         _isLoading = true;
                       });
                       try {
-                        var result = await _itemService.addFitness(Fitness(
+                        var result = await _itemService.addTask(Task(
                           date: _date,
                           type: _type,
                           duration: _duration,
-                          distance: _distance,
-                          calories: _calories,
-                          rate: _rate,
+                          priority: priority,
+                          category: _category,
+                          description: _description,
                         ));
-                        repository.insert(result.toMap(), "fitness");
+                        repository.insert(result.toMap(), Utilities.principalTable);
                         setState(() {
                           _isLoading = false;
                         });
@@ -155,7 +156,7 @@ class _AddFitnessState extends State<AddFitness> {
                       }
                     },
                     child: _isLoading == false
-                        ? const Text("Add Fitness")
+                        ? const Text("Add Task")
                         : const CircularProgressIndicator()),
               ],
             ),

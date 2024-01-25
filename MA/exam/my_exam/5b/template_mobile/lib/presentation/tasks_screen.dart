@@ -4,32 +4,32 @@ import 'package:template_mobile/common/utilities.dart';
 import 'package:template_mobile/service/service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../domain/Fitness.dart';
+import '../domain/Task.dart';
 import '../persistence/Repository.dart';
 
-class FitnessScreen extends StatefulWidget {
-  final String category;
+class TaskScreen extends StatefulWidget {
+  final String date;
 
-  const FitnessScreen({super.key, required this.category});
+  const TaskScreen({super.key, required this.date});
 
   @override
-  State<FitnessScreen> createState() => _FitnessScreenState(category);
+  State<TaskScreen> createState() => _TaskScreenState(date);
 }
 
-class _FitnessScreenState extends State<FitnessScreen> {
-  List<Fitness> items = [];
+class _TaskScreenState extends State<TaskScreen> {
+  List<Task> items = [];
   final String date;
   FitnessService itemService = FitnessService();
   Repository repository = Repository();
   bool _isLoading = true;
   bool _isDeleteLoading = false;
 
-  _FitnessScreenState(this.date);
+  _TaskScreenState(this.date);
 
   @override
   void initState() {
     try {
-      itemService.getAllFitness(date).then((value) {
+      itemService.getAllTasks(date).then((value) {
         if (mounted == false) {
           return;
         }
@@ -42,7 +42,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
         }
       }).onError((error, _) {
         print(error);
-        repository.getAllFitness().then((value) {
+        repository.getAllTasks().then((value) {
           setState(() {
             _isLoading = false;
             items = value.where((element) => element.date == date).toList();
@@ -58,7 +58,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
         ? const Center(child: CircularProgressIndicator())
         : Scaffold(
             appBar: AppBar(
-              title: const Text("Items"),
+              title: const Text("Tasks"),
             ),
             body: ListView.builder(
                 itemCount: items.length,
@@ -70,10 +70,10 @@ class _FitnessScreenState extends State<FitnessScreen> {
                     child: Column(children: [
                       Text(items[index].date),
                       Text(items[index].type),
-                      Text(items[index].calories.toString()),
+                      Text(items[index].category.toString()),
                       Text(items[index].duration.toString()),
-                      Text(items[index].distance.toString()),
-                      Text(items[index].rate.toString()),
+                      Text(items[index].priority.toString()),
+                      Text(items[index].description.toString()),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -107,8 +107,6 @@ class _FitnessScreenState extends State<FitnessScreen> {
                               child: _isDeleteLoading == false
                                   ? const Text("Delete")
                                   : const CircularProgressIndicator()),
-                          ElevatedButton(
-                              onPressed: () {}, child: const Text("Update")),
                         ],
                       )
                     ]),

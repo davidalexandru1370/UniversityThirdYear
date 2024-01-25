@@ -6,13 +6,15 @@ import 'package:template_mobile/service/abstract_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
-import '../domain/Fitness.dart';
+import '../domain/Task.dart';
 
-class FitnessService extends AbstractService<Fitness> {
+class FitnessService extends AbstractService<Task> {
   FitnessService();
+
   var logger = Logger();
+
   Future<List<String>> getAllDates() async {
-    var url = Uri.parse("${baseUrl}dates");
+    var url = Uri.parse("${baseUrl}taskDays");
     logger.log(Level.info, 'Getting all dates from $url');
     final response = await http.get(url).timeout(const Duration(seconds: 45));
 
@@ -30,26 +32,29 @@ class FitnessService extends AbstractService<Fitness> {
     } else {
       var body = response.body;
       var errorMessage = jsonDecode(body) as String;
+      logger.log(Level.info, 'Error for getting all dates: $errorMessage');
       throw Exception(errorMessage);
     }
   }
 
-  Future<List<Fitness>> getAllFitness(String date) async {
-    var url = Uri.parse("${baseUrl}entries/$date");
+  Future<List<Task>> getAllTasks(String date) async {
+    var url = Uri.parse("${baseUrl}details/$date");
     try {
       final response = await http.get(url).timeout(const Duration(seconds: 15));
       if (response.statusCode == 200) {
-        var items = <Fitness>[];
+        var items = <Task>[];
         var body = response.body;
         var jsonList = jsonDecode(body) as List;
         for (var item in jsonList) {
-          var entity = Fitness.fromMap(item);
+          var entity = Task.fromMap(item);
           items.add(entity);
         }
         return items;
       } else {
         var body = response.body;
         var errorMessage = jsonDecode(body) as String;
+        logger.log(Level.info,
+            'Error for deleting all data by date: $date' + errorMessage);
         throw Exception(errorMessage);
       }
     } catch (e) {
@@ -59,7 +64,8 @@ class FitnessService extends AbstractService<Fitness> {
   }
 
   Future deleteItem(int id) async {
-    var url = Uri.parse("${baseUrl}entry/$id");
+    var url = Uri.parse("${baseUrl}task/$id");
+    logger.log(Level.info, 'Response for deleting all data by id: $id');
 
     final response =
         await http.delete(url).timeout(const Duration(seconds: 15));
@@ -68,12 +74,15 @@ class FitnessService extends AbstractService<Fitness> {
     } else {
       var body = response.body;
       var errorMessage = jsonDecode(body) as Map<String, dynamic>;
+      logger.log(Level.info,
+          'Error for deleting all data by id: $id' + errorMessage['text']);
       throw Exception(errorMessage['text']);
     }
   }
 
-  Future<Fitness> addFitness(Fitness item) async {
+  Future<Task> addTask(Task item) async {
     var url = Uri.parse("${baseUrl}${Utilities.addEndpoint}");
+    logger.log(Level.info, 'Trying to  add task: $item');
     try {
       final response = await http.post(url,
           headers: <String, String>{
@@ -83,11 +92,13 @@ class FitnessService extends AbstractService<Fitness> {
       if (response.statusCode == 200) {
         var body = response.body;
         var jsonItem = jsonDecode(body) as Map<String, dynamic>;
-        var entity = Fitness.fromMap(jsonItem);
+        var entity = Task.fromMap(jsonItem);
         return entity;
       } else {
         var body = response.body;
         var errorMessage = jsonDecode(body) as Map<String, dynamic>;
+        logger.log(
+            Level.info, 'Error for add task: $item' + errorMessage['text']);
         throw Exception(errorMessage['text']);
       }
     } catch (e) {
@@ -96,20 +107,21 @@ class FitnessService extends AbstractService<Fitness> {
     }
   }
 
-  Future<List<Fitness>> getAll(String endpoint) async {
+  Future<List<Task>> getAll(String endpoint) async {
     var url = Uri.parse(baseUrl + endpoint);
-
+    logger.log(Level.info, 'Request for get all from endpoint $endpoint');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      var items = <Fitness>[];
+      var items = <Task>[];
       var body = response.body;
       var jsonList = jsonDecode(body) as List;
       for (var item in jsonList) {
-        var entity = Fitness.fromMap(item);
+        var entity = Task.fromMap(item);
         items.add(entity);
       }
-
+      logger.log(Level.info,
+          'Response for get all from endpoint $endpoint : $items');
       return items;
     } else {
       var body = response.body;

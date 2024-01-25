@@ -20,8 +20,8 @@ class DatabaseContext {
 
   Future<Database> init() async {
     String createDatabaseQuery =
-        'CREATE TABLE ${Utilities.principalTable}(id INTEGER Primary Key, date TEXT, type TEXT, duration integer, distance integer, calories integer, rate integer)';
-    return openDatabase(join(await getDatabasesPath(), 'exam6_database.db'),
+        'CREATE TABLE ${Utilities.principalTable}(id INTEGER Primary Key, date TEXT, type TEXT, duration real , priority TEXT, category TEXT, description TEXT)';
+    return openDatabase(join(await getDatabasesPath(), 'exam8_database.db'),
         onCreate: (db, version) async {
       await db.execute(
         createDatabaseQuery,

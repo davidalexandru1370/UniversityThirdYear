@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:template_mobile/presentation/price_screen.dart';
+import 'package:template_mobile/presentation/progress_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:template_mobile/presentation/top_screen.dart';
 
 import 'dates_screen.dart';
 
@@ -27,8 +28,6 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
     );
   }
-
-
 }
 
 class MyHomePage extends StatefulWidget {
@@ -60,11 +59,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Text("Dates")),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
+                    Navigator.push(
+                        context,
                         MaterialPageRoute(
                             builder: (context) => const ProgressScreen()));
                   },
                   child: const Text("Progress")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TopScreen()));
+                  },
+                  child: const Text("Top")),
             ]),
       ),
     );

@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:template_mobile/common/utilities.dart';
-import 'package:template_mobile/domain/Fitness.dart';
-import 'package:template_mobile/presentation/add_fitness.dart';
+import 'package:template_mobile/domain/Task.dart';
+import 'package:template_mobile/presentation/add_task.dart';
 import 'package:template_mobile/presentation/widgets/toast.dart';
 import 'package:template_mobile/service/service.dart';
 import 'package:template_mobile/service/web_socket.dart';
@@ -12,7 +12,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../persistence/Repository.dart';
 
 import '../service/network.dart';
-import 'fitness_screen.dart';
+import 'tasks_screen.dart';
 
 class DatesScreen extends StatelessWidget {
   const DatesScreen({super.key});
@@ -63,7 +63,7 @@ class _CategoriesScreenState extends State<_CategoriesScreen> {
       _webSocketConnection.listen(
           (data) {
             var json = jsonDecode(data);
-            var item = Fitness.fromMap(json);
+            var item = Task.fromMap(json);
             print("Received item" + item.toString());
             // Fluttertoast.showToast(
             //     msg: "Received item" + item.toString(),
@@ -71,7 +71,8 @@ class _CategoriesScreenState extends State<_CategoriesScreen> {
             //
             //     backgroundColor: Colors.green,
             //     gravity: ToastGravity.TOP);
-            fToast.showToast(child: MyToast.getToast(item.toString()));
+            var fancyText = "Received new item: \n" + item.toString();
+            fToast.showToast(child: MyToast.getToast(fancyText));
             repository.insert(item.toMap(), Utilities.principalTable);
           },
           () {},
@@ -96,9 +97,10 @@ class _CategoriesScreenState extends State<_CategoriesScreen> {
           dates = value;
           _isLoading = false;
         });
-
+        repository.deleteAll(Utilities.secondTable);
         for (var element in value) {
           Map<String, dynamic> map = {"${Utilities.secondTable}": element};
+
           repository.insert(map, Utilities.secondTable);
         }
       }).onError((error, stackTrace) {
@@ -136,9 +138,9 @@ class _CategoriesScreenState extends State<_CategoriesScreen> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddFitness()));
+                MaterialPageRoute(builder: (context) => const AddTask()));
           },
-          tooltip: 'Add Fitness',
+          tooltip: 'Add Task',
           child: const Icon(Icons.add),
         ),
         appBar: AppBar(
@@ -181,7 +183,7 @@ class _CategoriesScreenState extends State<_CategoriesScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  FitnessScreen(category: dates[index])),
+                                  TaskScreen(date: dates[index])),
                         );
                       },
                       shape: RoundedRectangleBorder(
