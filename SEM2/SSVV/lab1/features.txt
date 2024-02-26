@@ -1,0 +1,6 @@
+Features:
+- User can add a student in the system
+- User can get all the students in the system
+- User can delete an existing user in the system
+- User can search an user by its id
+- User can get all the homeworks from the system
