@@ -4,3 +4,24 @@ Features:
 - User can delete an existing user in the system
 - User can search an user by its id
 - User can get all the homeworks from the system
+
+- Homework:
+Student features:
+	- User can add a student
+	- User can delete an existing student  in the system
+	- User can search an user by its id
+	- User can update an existing user
+	- User can get all students in the system
+Homework features:
+	- User can add a homework in the system
+	- User can schedule for later an existing homework in the system
+	- User can delete an existing homework
+	- User can search a homework by its id
+	- User can update an existing homework in the system
+	- User can get all existing homeworks in the system
+Grade features:
+	- User can add a new grade in the system
+	- User can delete an existing homework in the system
+	- User can search an existing homework in the system by its id
+	- User can get all existing homeworks in the system
+	
