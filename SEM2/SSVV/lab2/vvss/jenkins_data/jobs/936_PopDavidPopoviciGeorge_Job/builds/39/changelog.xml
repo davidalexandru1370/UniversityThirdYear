@@ -1,0 +1,11 @@
+commit 7f538208f03448c91465bf705d91c86f9ded7421
+tree 55911e1b8efc51b2ce837defd2f9ecade057fc45
+parent b77b1884d04e670bf91daad663ab2ea385ad4d70
+author David Alexandru <fanefaraon696@gmail.com> 2024-03-25 09:11:39 +0200
+committer David Alexandru <fanefaraon696@gmail.com> 2024-03-25 09:11:39 +0200
+
+    added: assignment tests
+
+
+:000000 100644 0000000000000000000000000000000000000000 8cd0739d3eaf32b2b02343cb52a342dc63b743e7 A	Lab02_BBT_Form.xls
+:000000 100644 0000000000000000000000000000000000000000 c6091cf93aef6e09d02cb18c3c5fcf521e96ff92 A	src/test/java/org/example/TestsAddAssignment.java

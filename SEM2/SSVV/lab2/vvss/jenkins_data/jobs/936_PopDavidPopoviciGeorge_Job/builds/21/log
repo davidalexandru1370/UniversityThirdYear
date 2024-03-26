@@ -1,0 +1,60 @@
+Started by user [8mha:////4Jikxv8wZWqGtCE/EHBJViYz1/q5Tns5Q8J+RCYjVWayAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL94pLSlNS8EgDnZMOBwgAAAA==[0mStudent
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/davidalexandru1370/SSVV/ # timeout=10
+Fetching upstream changes from https://github.com/davidalexandru1370/SSVV/
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/davidalexandru1370/SSVV/ +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535 # timeout=10
+Commit message: "changed: maven version"
+ > git rev-list --no-walk 3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535 # timeout=10
+[936_PopDavidPopoviciGeorge_Job] $ /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.8.1/bin/mvn compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.example:tests >--------------------------
+[INFO] Building tests 3.1
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[8mha:////4LBnaxi188GFKpvixYWoBr3FkdSYR++sCkXmdwrGUZvCAAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75Zek2mxOX+vh68DGxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAAAn9LoiYAAAAA==[0m[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/src/main/resources
+[INFO] 
+[8mha:////4LBnaxi188GFKpvixYWoBr3FkdSYR++sCkXmdwrGUZvCAAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75Zek2mxOX+vh68DGxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAAAn9LoiYAAAAA==[0m[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ tests ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.081 s
+[INFO] Finished at: 2024-03-23T12:55:55Z
+[INFO] ------------------------------------------------------------------------
+Preparing TestLink client API.
+Using TestLink URL: http://host.docker.internal:8090/lib/api/xmlrpc/v1/xmlrpc.php
+
+FATAL: Test Project (name:936_PopDavidPopoviciGeorge_TestPlan) does not exist.
+br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException: Test Project (name:936_PopDavidPopoviciGeorge_TestPlan) does not exist.
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.checkResponseError(BaseService.java:105)
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.executeXmlRpcCall(BaseService.java:84)
+	at br.eti.kinoshita.testlinkjavaapi.TestProjectService.getTestProjectByName(TestProjectService.java:100)
+	at br.eti.kinoshita.testlinkjavaapi.TestLinkAPI.getTestProjectByName(TestLinkAPI.java:464)
+	at hudson.plugins.testlink.TestLinkBuilder.getTestLinkSite(TestLinkBuilder.java:333)
+	at hudson.plugins.testlink.TestLinkBuilder.perform(TestLinkBuilder.java:206)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:818)
+	at hudson.model.Build$BuildExecution.build(Build.java:199)
+	at hudson.model.Build$BuildExecution.doRun(Build.java:164)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:526)
+	at hudson.model.Run.execute(Run.java:1895)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:44)
+	at hudson.model.ResourceController.execute(ResourceController.java:101)
+	at hudson.model.Executor.run(Executor.java:442)
+ERROR: Error communicating with TestLink. Check your TestLink configuration.
+Archiving artifacts
+Finished: FAILURE

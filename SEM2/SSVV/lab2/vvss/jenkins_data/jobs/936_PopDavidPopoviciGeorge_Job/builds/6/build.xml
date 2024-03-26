@@ -1,0 +1,137 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>student</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <hudson.plugins.git.util.BuildData plugin="git@5.2.1">
+      <buildsByBranchName>
+        <entry>
+          <string>refs/remotes/origin/main</string>
+          <hudson.plugins.git.util.Build>
+            <marked plugin="git-client@4.6.0">
+              <sha1>bf16abb44a2e3402062a53ae1f46a49631b581b4</sha1>
+              <branches class="list">
+                <hudson.plugins.git.Branch>
+                  <sha1 reference="../../../sha1"/>
+                  <name>refs/remotes/origin/main</name>
+                </hudson.plugins.git.Branch>
+              </branches>
+            </marked>
+            <revision reference="../marked"/>
+            <hudsonBuildNumber>6</hudsonBuildNumber>
+          </hudson.plugins.git.util.Build>
+        </entry>
+      </buildsByBranchName>
+      <lastBuild reference="../buildsByBranchName/entry/hudson.plugins.git.util.Build"/>
+      <scmName></scmName>
+      <remoteUrls>
+        <string>https://github.com/davidalexandru1370/SSVV/</string>
+      </remoteUrls>
+    </hudson.plugins.git.util.BuildData>
+    <hudson.scm.SCMRevisionState_-None/>
+    <hudson.plugins.testlink.TestLinkBuilder_-1 plugin="testlink@3.16">
+      <val_-iterativeEnvVars serialization="custom">
+        <unserializable-parents/>
+        <tree-map>
+          <default>
+            <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+          </default>
+          <int>4</int>
+          <string>TESTLINK_BUILD_NAME</string>
+          <string>build_6</string>
+          <string>TESTLINK_TESTCASE_TOTAL</string>
+          <string>0</string>
+          <string>TESTLINK_TESTPLAN_NAME</string>
+          <string>936_PopDavidPopoviciGeorge_TestPlan</string>
+          <string>TESTLINK_TESTPROJECT_NAME</string>
+          <string>Test_PopDavidPopoviciGeorge_TestSuit</string>
+        </tree-map>
+      </val_-iterativeEnvVars>
+      <outer-class>
+        <testLinkName>localhost</testLinkName>
+        <testProjectName>Test_PopDavidPopoviciGeorge_TestSuit</testProjectName>
+        <testPlanName>936_PopDavidPopoviciGeorge_TestPlan</testPlanName>
+        <buildName>build_$BUILD_ID</buildName>
+        <platformName></platformName>
+        <customFields>JavaClassName,JavaTestMethodName</customFields>
+        <testPlanCustomFields></testPlanCustomFields>
+        <singleBuildSteps>
+          <hudson.tasks.Maven>
+            <targets>verify</targets>
+            <usePrivateRepository>false</usePrivateRepository>
+            <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+            <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+            <injectBuildVariables>false</injectBuildVariables>
+          </hudson.tasks.Maven>
+          <hudson.tasks.Shell>
+            <command>#!/bin/bash
+printenv
+mv ./target/surefire-reports/TEST-$TESTLINK_TESTCASE_JAVACLASSNAME.xml ./target/surefire-reports/TEST-$TESTLINK_TESTCASE_JAVACLASSNAME.$TESTLINK_TESTCASE_ID.xml</command>
+            <configuredLocalRules/>
+          </hudson.tasks.Shell>
+        </singleBuildSteps>
+        <transactional>false</transactional>
+        <failedTestsMarkBuildAsFailure>false</failedTestsMarkBuildAsFailure>
+        <failIfNoResults>false</failIfNoResults>
+        <failOnNotRun>false</failOnNotRun>
+        <executionOrderComparator/>
+        <failure>true</failure>
+        <resultSeekers>
+          <hudson.plugins.testlink.result.JUnitMethodNameResultSeeker>
+            <includePattern>**/TEST-*.xml</includePattern>
+            <keyCustomField>JavaTestMethodName</keyCustomField>
+            <includeNotes>true</includeNotes>
+            <attachJUnitXML>true</attachJUnitXML>
+          </hudson.plugins.testlink.result.JUnitMethodNameResultSeeker>
+        </resultSeekers>
+      </outer-class>
+    </hudson.plugins.testlink.TestLinkBuilder_-1>
+    <hudson.plugins.testlink.TestLinkBuilder_-1 plugin="testlink@3.16">
+      <val_-iterativeEnvVars serialization="custom">
+        <unserializable-parents/>
+        <tree-map>
+          <default>
+            <comparator class="java.lang.String$CaseInsensitiveComparator" reference="../../../../../hudson.plugins.testlink.TestLinkBuilder_-1/val_-iterativeEnvVars/tree-map/default/comparator"/>
+          </default>
+          <int>4</int>
+          <string>TESTLINK_BUILD_NAME</string>
+          <string>build_6</string>
+          <string>TESTLINK_TESTCASE_TOTAL</string>
+          <string>0</string>
+          <string>TESTLINK_TESTPLAN_NAME</string>
+          <string>936_PopDavidPopoviciGeorge_TestPlan</string>
+          <string>TESTLINK_TESTPROJECT_NAME</string>
+          <string>Test_PopDavidPopoviciGeorge_TestSuit</string>
+        </tree-map>
+      </val_-iterativeEnvVars>
+      <outer-class reference="../../hudson.plugins.testlink.TestLinkBuilder_-1/outer-class"/>
+    </hudson.plugins.testlink.TestLinkBuilder_-1>
+  </actions>
+  <queueId>22</queueId>
+  <timestamp>1711186626241</timestamp>
+  <startTime>1711186626386</startTime>
+  <result>FAILURE</result>
+  <duration>294828</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>/var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job</workspace>
+  <hudsonVersion>2.440.1</hudsonVersion>
+  <scm class="hudson.plugins.git.GitChangeLogParser" plugin="git@5.2.1">
+    <authorOrCommitter>false</authorOrCommitter>
+    <showEntireCommitSummaryInChanges>true</showEntireCommitSummaryInChanges>
+  </scm>
+  <culprits class="java.util.Collections$UnmodifiableSet">
+    <c class="sorted-set">
+      <string>fanefaraon696</string>
+    </c>
+  </culprits>
+</build>

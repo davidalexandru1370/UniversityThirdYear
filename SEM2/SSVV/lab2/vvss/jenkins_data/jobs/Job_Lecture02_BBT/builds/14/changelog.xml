@@ -1,0 +1,10 @@
+commit 0482d4afc105637baa3d573aa7f2f6c5b7cf8c56
+tree d75cfda7a698ef4bfea50eff9f7f6d9f47beafd0
+parent be18a884e6bc99f4f462e311afa73e0374f927bd
+author f-transfer <ftransferworkshop@gmail.com> 2024-03-04 20:43:03 +0200
+committer f-transfer <ftransferworkshop@gmail.com> 2024-03-04 20:43:03 +0200
+
+    Fixes for the build
+
+
+:100644 100644 c284fc3a16d25d50bb5de93622428f3f06faf451 14642df7e7a446c782b8b597630086a0cac44512 M	pom.xml

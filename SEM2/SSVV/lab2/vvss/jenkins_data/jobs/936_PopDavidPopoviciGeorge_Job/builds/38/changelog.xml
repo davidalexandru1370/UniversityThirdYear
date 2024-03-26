@@ -1,0 +1,13 @@
+commit b77b1884d04e670bf91daad663ab2ea385ad4d70
+tree 648cea05897456a27f028b3e428b92cddada1968
+parent 3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535
+author David Alexandru <fanefaraon696@gmail.com> 2024-03-23 23:51:04 +0200
+committer David Alexandru <fanefaraon696@gmail.com> 2024-03-23 23:51:04 +0200
+
+    added: more tests
+
+
+:000000 100644 0000000000000000000000000000000000000000 6d50cd4da8dae4a3ad24b687d22e92eb6b56a514 A	.idea/uiDesigner.xml
+:100644 100644 4bf37960dbf900e5b54b8259cec0a6c2ec9c156d 30d513df5b0f86f0b0b811af1979844b5cbeeac8 M	fisiere/Studenti.xml
+:100644 100644 46592941bcde702ecf651ed77200b948e2a1b5de 87e2090ff2d3fa1d32bd82636f01eb65589ce1ec M	pom.xml
+:100644 100644 dfeb74f52d92e790fedba82686d943b476b48d35 2bdb38c04ab104cc6d27cee726cdd61a048cd0b0 M	src/test/java/org/example/AppTest.java

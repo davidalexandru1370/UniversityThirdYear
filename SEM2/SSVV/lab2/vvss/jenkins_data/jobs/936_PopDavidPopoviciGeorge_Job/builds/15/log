@@ -1,0 +1,25 @@
+Started by user [8mha:////4Jikxv8wZWqGtCE/EHBJViYz1/q5Tns5Q8J+RCYjVWayAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL94pLSlNS8EgDnZMOBwgAAAA==[0mStudent
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/davidalexandru1370/SSVV/ # timeout=10
+Fetching upstream changes from https://github.com/davidalexandru1370/SSVV/
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/davidalexandru1370/SSVV/ +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 80eba8132b59507390656fe84dc505f71d35fd32 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 80eba8132b59507390656fe84dc505f71d35fd32 # timeout=10
+Commit message: "added: maven version"
+ > git rev-list --no-walk 80eba8132b59507390656fe84dc505f71d35fd32 # timeout=10
+[936_PopDavidPopoviciGeorge_Job] $ /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.8.1/bin/mvn compile
+The JAVA_HOME environment variable is not defined correctly
+This environment variable is needed to run this program
+NB: JAVA_HOME should point to a JDK not a JRE
+Build step 'Invoke top-level Maven targets' marked build as failure
+Archiving artifacts
+Finished: FAILURE

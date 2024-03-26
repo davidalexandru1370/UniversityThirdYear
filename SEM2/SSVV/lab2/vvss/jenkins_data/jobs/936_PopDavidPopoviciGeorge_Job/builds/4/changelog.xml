@@ -1,0 +1,10 @@
+commit ac01577473da2660222026bea964fbd2fd130e38
+tree 4b53b83ae8a4986eec765f37b10036e1ed9a9cb2
+parent 3fbf08b80279d82be4caa7c881c6612e1eda51d7
+author David Alexandru <fanefaraon696@gmail.com> 2024-03-11 09:48:07 +0200
+committer David Alexandru <fanefaraon696@gmail.com> 2024-03-11 09:48:07 +0200
+
+    added: pom.xml
+
+
+:000000 100644 0000000000000000000000000000000000000000 4b96c60611ec72bf7a3536ce2c308b52282dcacb A	LabAssiAsseProjectV02/pom.xml

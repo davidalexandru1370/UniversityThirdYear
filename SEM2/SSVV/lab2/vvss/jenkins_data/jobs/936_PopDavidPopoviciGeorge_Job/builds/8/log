@@ -1,0 +1,166 @@
+Started by user [8mha:////4Jikxv8wZWqGtCE/EHBJViYz1/q5Tns5Q8J+RCYjVWayAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL94pLSlNS8EgDnZMOBwgAAAA==[0mStudent
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/davidalexandru1370/SSVV/ # timeout=10
+Fetching upstream changes from https://github.com/davidalexandru1370/SSVV/
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/davidalexandru1370/SSVV/ +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision bf16abb44a2e3402062a53ae1f46a49631b581b4 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f bf16abb44a2e3402062a53ae1f46a49631b581b4 # timeout=10
+Commit message: "changed: project structure"
+ > git rev-list --no-walk bf16abb44a2e3402062a53ae1f46a49631b581b4 # timeout=10
+[936_PopDavidPopoviciGeorge_Job] $ mvn compile
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------------------------< [0;36morg.example:tests[0;1m >--------------------------[m
+[[1;34mINFO[m] [1mBuilding tests 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  31.272 s
+[[1;34mINFO[m] Finished at: 2024-03-23T10:48:26Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Preparing TestLink client API.
+Using TestLink URL: http://host.docker.internal:8090/lib/api/xmlrpc/v1/xmlrpc.php
+
+Found 1 automated test cases in TestLink.
+
+Sorting automated test cases by TestLink test plan execution order.
+
+Executing single Build Steps.
+
+Merging build environment variables with data retrieved from TestLink.
+
+[936_PopDavidPopoviciGeorge_Job] $ mvn verify
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------------------------< [0;36morg.example:tests[0;1m >--------------------------[m
+[[1;34mINFO[m] [1mBuilding tests 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:2.4:jar[m [1m(default-jar)[m @ [36mtests[0;1m ---[m
+[[1;33mWARNING[m] JAR will be empty - no content was marked for inclusion!
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  01:06 min
+[[1;34mINFO[m] Finished at: 2024-03-23T10:49:47Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Merging build environment variables with data retrieved from TestLink.
+
+[936_PopDavidPopoviciGeorge_Job] $ /bin/bash /tmp/jenkins6405242776532671807.sh
+RUN_TESTS_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/8/display/redirect?page=tests
+HOSTNAME=2727a5b89970
+JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
+JENKINS_SERVER_COOKIE=27b70941f96f3dd0
+JAVA_HOME=/opt/java/openjdk
+JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
+RUN_CHANGES_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/8/display/redirect?page=changes
+TESTLINK_TESTCASE_TOTAL=1
+COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log
+PWD=/var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+HUDSON_HOME=/var/jenkins_home
+BUILD_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/8/
+JENKINS_SLAVE_AGENT_PORT=50000
+JOB_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/
+BUILD_NUMBER=8
+JENKINS_VERSION=2.440.1
+BUILD_DISPLAY_NAME=#8
+HOME=/var/jenkins_home
+LANG=C.UTF-8
+JENKINS_URL=http://localhost:8080/
+JOB_BASE_NAME=936_PopDavidPopoviciGeorge_Job
+JOB_NAME=936_PopDavidPopoviciGeorge_Job
+RUN_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/8/display/redirect
+JOB_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/display/redirect
+WORKSPACE=/var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+JENKINS_UC=https://updates.jenkins.io
+GIT_PREVIOUS_COMMIT=bf16abb44a2e3402062a53ae1f46a49631b581b4
+HUDSON_URL=http://localhost:8080/
+NODE_NAME=built-in
+HUDSON_SERVER_COOKIE=27b70941f96f3dd0
+TESTLINK_TESTPROJECT_NAME=Test_PopDavidPopoviciGeorge_TestSuit
+GIT_URL=https://github.com/davidalexandru1370/SSVV/
+SHLVL=1
+BUILD_TAG=jenkins-936_PopDavidPopoviciGeorge_Job-8
+EXECUTOR_NUMBER=0
+HUDSON_COOKIE=977f922e-6087-4df8-bf82-00b47f206865
+JENKINS_HOME=/var/jenkins_home
+TESTLINK_TESTPLAN_NAME=936_PopDavidPopoviciGeorge_TestPlan
+REF=/usr/share/jenkins/ref
+GIT_COMMIT=bf16abb44a2e3402062a53ae1f46a49631b581b4
+NODE_LABELS=built-in
+WORKSPACE_TMP=/var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job@tmp
+PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN_ARTIFACTS_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/8/display/redirect?page=artifacts
+CI=true
+GIT_BRANCH=origin/main
+BUILD_ID=8
+TESTLINK_BUILD_NAME=build_8
+_=/usr/bin/printenv
+mv: cannot stat './target/surefire-reports/TEST-.xml': No such file or directory
+Executing iterative Build Steps.
+
+Looking for the test results of TestLink test cases.
+
+Looking for test results in JUnit methods by its name.
+
+FATAL: hudson.AbortException: No test report files were found. Configuration error?
+hudson.plugins.testlink.result.ResultSeekerException: hudson.AbortException: No test report files were found. Configuration error?
+	at hudson.plugins.testlink.result.JUnitMethodNameResultSeeker.seek(JUnitMethodNameResultSeeker.java:112)
+	at hudson.plugins.testlink.TestLinkBuilder.perform(TestLinkBuilder.java:260)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:818)
+	at hudson.model.Build$BuildExecution.build(Build.java:199)
+	at hudson.model.Build$BuildExecution.doRun(Build.java:164)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:526)
+	at hudson.model.Run.execute(Run.java:1895)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:44)
+	at hudson.model.ResourceController.execute(ResourceController.java:101)
+	at hudson.model.Executor.run(Executor.java:442)
+Caused by: hudson.AbortException: No test report files were found. Configuration error?
+	at hudson.tasks.junit.JUnitParser$ParseResultCallable.invoke(JUnitParser.java:193)
+	at hudson.FilePath.act(FilePath.java:1236)
+	at hudson.FilePath.act(FilePath.java:1219)
+	at hudson.tasks.junit.JUnitParser.parseResult(JUnitParser.java:125)
+	at hudson.tasks.junit.JUnitParser.parseResult(JUnitParser.java:118)
+	at hudson.tasks.junit.JUnitParser.parseResult(JUnitParser.java:50)
+	at hudson.tasks.test.TestResultParser.parse(TestResultParser.java:157)
+	at hudson.tasks.junit.JUnitParser.parse(JUnitParser.java:110)
+	at hudson.plugins.testlink.result.JUnitMethodNameResultSeeker.seek(JUnitMethodNameResultSeeker.java:89)
+	... 10 more
+ERROR: An error occured while trying to retrieve the test results: hudson.AbortException: No test report files were found. Configuration error?
+Archiving artifacts
+Finished: FAILURE

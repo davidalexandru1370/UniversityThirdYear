@@ -1,0 +1,174 @@
+Started by user [8mha:////4Jikxv8wZWqGtCE/EHBJViYz1/q5Tns5Q8J+RCYjVWayAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL94pLSlNS8EgDnZMOBwgAAAA==[0mStudent
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Job_Lecture02_BBT
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Job_Lecture02_BBT/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/andreeavescan/2023_Lecture02_BBT.git # timeout=10
+Fetching upstream changes from https://github.com/andreeavescan/2023_Lecture02_BBT.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/andreeavescan/2023_Lecture02_BBT.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 0482d4afc105637baa3d573aa7f2f6c5b7cf8c56 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0482d4afc105637baa3d573aa7f2f6c5b7cf8c56 # timeout=10
+Commit message: "Fixes for the build"
+ > git rev-list --no-walk 0482d4afc105637baa3d573aa7f2f6c5b7cf8c56 # timeout=10
+[Job_Lecture02_BBT] $ mvn compile
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--< [0;36mLecture02MaxPointsParticipantsMV:Lecture02MaxPointsParticipants[0;1m >---[m
+[[1;34mINFO[m] [1mBuilding Lecture02MaxPointsParticipants 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.0.2:resources[m [1m(default-resources)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/Job_Lecture02_BBT/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:compile[m [1m(default-compile)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  5.382 s
+[[1;34mINFO[m] Finished at: 2024-03-04T19:23:05Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Preparing TestLink client API.
+Using TestLink URL: http://host.docker.internal:8090/lib/api/xmlrpc/v1/xmlrpc.php
+
+Found 1 automated test cases in TestLink.
+
+Sorting automated test cases by TestLink test plan execution order.
+
+Executing single Build Steps.
+
+Merging build environment variables with data retrieved from TestLink.
+
+[Job_Lecture02_BBT] $ mvn verify
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--< [0;36mLecture02MaxPointsParticipantsMV:Lecture02MaxPointsParticipants[0;1m >---[m
+[[1;34mINFO[m] [1mBuilding Lecture02MaxPointsParticipants 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.0.2:resources[m [1m(default-resources)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/Job_Lecture02_BBT/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:compile[m [1m(default-compile)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.0.2:testResources[m [1m(default-testResources)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/Job_Lecture02_BBT/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:testCompile[m [1m(default-testCompile)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.22.1:test[m [1m(default-test)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running Lecture02MaxPointsParticipantsMV.[1mAppTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.216 s - in Lecture02MaxPointsParticipantsMV.[1mAppTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 4, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.0.2:jar[m [1m(default-jar)[m @ [36mLecture02MaxPointsParticipants[0;1m ---[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  9.378 s
+[[1;34mINFO[m] Finished at: 2024-03-04T19:23:16Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Merging build environment variables with data retrieved from TestLink.
+
+[Job_Lecture02_BBT] $ /bin/bash /tmp/jenkins3091718177582883549.sh
+RUN_TESTS_DISPLAY_URL=http://localhost:8080/job/Job_Lecture02_BBT/16/display/redirect?page=tests
+HOSTNAME=e52fb4e08847
+JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
+JENKINS_SERVER_COOKIE=27b70941f96f3dd0
+GIT_PREVIOUS_SUCCESSFUL_COMMIT=be18a884e6bc99f4f462e311afa73e0374f927bd
+JAVA_HOME=/opt/java/openjdk
+JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
+RUN_CHANGES_DISPLAY_URL=http://localhost:8080/job/Job_Lecture02_BBT/16/display/redirect?page=changes
+TESTLINK_TESTCASE_TOTAL=1
+COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log
+PWD=/var/jenkins_home/workspace/Job_Lecture02_BBT
+HUDSON_HOME=/var/jenkins_home
+BUILD_URL=http://localhost:8080/job/Job_Lecture02_BBT/16/
+JENKINS_SLAVE_AGENT_PORT=50000
+JOB_URL=http://localhost:8080/job/Job_Lecture02_BBT/
+BUILD_NUMBER=16
+JENKINS_VERSION=2.440.1
+BUILD_DISPLAY_NAME=#16
+HOME=/var/jenkins_home
+LANG=C.UTF-8
+JENKINS_URL=http://localhost:8080/
+JOB_BASE_NAME=Job_Lecture02_BBT
+JOB_NAME=Job_Lecture02_BBT
+RUN_DISPLAY_URL=http://localhost:8080/job/Job_Lecture02_BBT/16/display/redirect
+JOB_DISPLAY_URL=http://localhost:8080/job/Job_Lecture02_BBT/display/redirect
+WORKSPACE=/var/jenkins_home/workspace/Job_Lecture02_BBT
+JENKINS_UC=https://updates.jenkins.io
+GIT_PREVIOUS_COMMIT=0482d4afc105637baa3d573aa7f2f6c5b7cf8c56
+HUDSON_URL=http://localhost:8080/
+NODE_NAME=built-in
+HUDSON_SERVER_COOKIE=27b70941f96f3dd0
+TESTLINK_TESTPROJECT_NAME=Lecture01_Demo_BBT
+GIT_URL=https://github.com/andreeavescan/2023_Lecture02_BBT.git
+SHLVL=1
+BUILD_TAG=jenkins-Job_Lecture02_BBT-16
+EXECUTOR_NUMBER=1
+HUDSON_COOKIE=ede0e587-5ebe-4c83-b5be-aab8932db636
+JENKINS_HOME=/var/jenkins_home
+TESTLINK_TESTPLAN_NAME=Lecture02_TestPlan_BBT
+REF=/usr/share/jenkins/ref
+GIT_COMMIT=0482d4afc105637baa3d573aa7f2f6c5b7cf8c56
+NODE_LABELS=built-in
+WORKSPACE_TMP=/var/jenkins_home/workspace/Job_Lecture02_BBT@tmp
+PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN_ARTIFACTS_DISPLAY_URL=http://localhost:8080/job/Job_Lecture02_BBT/16/display/redirect?page=artifacts
+CI=true
+GIT_BRANCH=origin/main
+BUILD_ID=16
+TESTLINK_BUILD_NAME=build_16
+_=/usr/bin/printenv
+mv: cannot stat './target/surefire-reports/TEST-.xml': No such file or directory
+Executing iterative Build Steps.
+
+Looking for the test results of TestLink test cases.
+
+Looking for test results in JUnit methods by its name.
+
+Updating TestLink test cases.
+
+br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException: (uploadExecutionAttachment) - Error inserting attachment on DB
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.checkResponseError(BaseService.java:105)
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.executeXmlRpcCall(BaseService.java:84)
+	at br.eti.kinoshita.testlinkjavaapi.TestCaseService.uploadExecutionAttachment(TestCaseService.java:537)
+	at br.eti.kinoshita.testlinkjavaapi.TestLinkAPI.uploadExecutionAttachment(TestLinkAPI.java:968)
+	at hudson.plugins.testlink.TestLinkSite.uploadAttachment(TestLinkSite.java:246)
+	at hudson.plugins.testlink.result.AbstractJUnitResultSeeker.handleResult(AbstractJUnitResultSeeker.java:106)
+	at hudson.plugins.testlink.result.JUnitMethodNameResultSeeker.seek(JUnitMethodNameResultSeeker.java:105)
+	at hudson.plugins.testlink.TestLinkBuilder.perform(TestLinkBuilder.java:260)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:818)
+	at hudson.model.Build$BuildExecution.build(Build.java:199)
+	at hudson.model.Build$BuildExecution.doRun(Build.java:164)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:526)
+	at hudson.model.Run.execute(Run.java:1895)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:44)
+	at hudson.model.ResourceController.execute(ResourceController.java:101)
+	at hudson.model.Executor.run(Executor.java:442)
+Found 1 test result(s).
+
+Build step 'Invoke TestLink' changed build result to UNSTABLE
+Archiving artifacts
+Finished: UNSTABLE

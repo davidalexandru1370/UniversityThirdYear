@@ -1,0 +1,11 @@
+commit ed27a7c7c7538deebf651c4401f672568a22bc3e
+tree 577e3eb909cacca7b6b362f2e4e89020fcd1e77f
+parent 7f538208f03448c91465bf705d91c86f9ded7421
+author David Alexandru <fanefaraon696@gmail.com> 2024-03-25 09:22:43 +0200
+committer David Alexandru <fanefaraon696@gmail.com> 2024-03-25 09:22:43 +0200
+
+    added: assignment tests
+
+
+:100644 100644 2bdb38c04ab104cc6d27cee726cdd61a048cd0b0 92dff276636b31ff8e54c8b727022cf4d2bdecab M	src/test/java/org/example/AppTest.java
+:100644 000000 c6091cf93aef6e09d02cb18c3c5fcf521e96ff92 0000000000000000000000000000000000000000 D	src/test/java/org/example/TestsAddAssignment.java

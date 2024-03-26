@@ -1,0 +1,155 @@
+Started by user [8mha:////4Jikxv8wZWqGtCE/EHBJViYz1/q5Tns5Q8J+RCYjVWayAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL94pLSlNS8EgDnZMOBwgAAAA==[0mStudent
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/davidalexandru1370/SSVV/ # timeout=10
+Fetching upstream changes from https://github.com/davidalexandru1370/SSVV/
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/davidalexandru1370/SSVV/ +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535 # timeout=10
+Commit message: "changed: maven version"
+ > git rev-list --no-walk 3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535 # timeout=10
+[936_PopDavidPopoviciGeorge_Job] $ /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.8.1/bin/mvn compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.example:tests >--------------------------
+[INFO] Building tests 3.1
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[8mha:////4LBnaxi188GFKpvixYWoBr3FkdSYR++sCkXmdwrGUZvCAAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75Zek2mxOX+vh68DGxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAAAn9LoiYAAAAA==[0m[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/src/main/resources
+[INFO] 
+[8mha:////4LBnaxi188GFKpvixYWoBr3FkdSYR++sCkXmdwrGUZvCAAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75Zek2mxOX+vh68DGxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAAAn9LoiYAAAAA==[0m[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ tests ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  16.360 s
+[INFO] Finished at: 2024-03-23T13:40:33Z
+[INFO] ------------------------------------------------------------------------
+Preparing TestLink client API.
+Using TestLink URL: http://host.docker.internal:8090/lib/api/xmlrpc/v1/xmlrpc.php
+
+Found 1 automated test cases in TestLink.
+
+Sorting automated test cases by TestLink test plan execution order.
+
+Executing single Build Steps.
+
+Merging build environment variables with data retrieved from TestLink.
+
+[936_PopDavidPopoviciGeorge_Job] $ mvn verify
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------------------------< [0;36morg.example:tests[0;1m >--------------------------[m
+[[1;34mINFO[m] [1mBuilding tests 3.1[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] Surefire report directory: /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.example.AppTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.148 sec
+
+Results :
+
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:2.4:jar[m [1m(default-jar)[m @ [36mtests[0;1m ---[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  30.517 s
+[[1;34mINFO[m] Finished at: 2024-03-23T13:41:08Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Merging build environment variables with data retrieved from TestLink.
+
+[936_PopDavidPopoviciGeorge_Job] $ /bin/bash /tmp/jenkins7701718263751125052.sh
+RUN_TESTS_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/30/display/redirect?page=tests
+HOSTNAME=2727a5b89970
+JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
+JENKINS_SERVER_COOKIE=27b70941f96f3dd0
+GIT_PREVIOUS_SUCCESSFUL_COMMIT=3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535
+JAVA_HOME=/opt/java/openjdk
+JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
+RUN_CHANGES_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/30/display/redirect?page=changes
+TESTLINK_TESTCASE_TOTAL=1
+COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log
+PWD=/var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+HUDSON_HOME=/var/jenkins_home
+BUILD_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/30/
+JENKINS_SLAVE_AGENT_PORT=50000
+JOB_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/
+BUILD_NUMBER=30
+JENKINS_VERSION=2.440.1
+BUILD_DISPLAY_NAME=#30
+HOME=/var/jenkins_home
+LANG=C.UTF-8
+JENKINS_URL=http://localhost:8080/
+JOB_BASE_NAME=936_PopDavidPopoviciGeorge_Job
+JOB_NAME=936_PopDavidPopoviciGeorge_Job
+RUN_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/30/display/redirect
+JOB_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/display/redirect
+WORKSPACE=/var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+JENKINS_UC=https://updates.jenkins.io
+GIT_PREVIOUS_COMMIT=3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535
+HUDSON_URL=http://localhost:8080/
+NODE_NAME=built-in
+HUDSON_SERVER_COOKIE=27b70941f96f3dd0
+TESTLINK_TESTPROJECT_NAME=Test_PopDavidPopoviciGeorge_TestSuit
+GIT_URL=https://github.com/davidalexandru1370/SSVV/
+SHLVL=1
+BUILD_TAG=jenkins-936_PopDavidPopoviciGeorge_Job-30
+EXECUTOR_NUMBER=0
+HUDSON_COOKIE=a9fa9956-42be-4db9-9a4c-180726b9dd41
+JENKINS_HOME=/var/jenkins_home
+TESTLINK_TESTPLAN_NAME=936_PopDavidPopoviciGeorge_TestPlan
+REF=/usr/share/jenkins/ref
+GIT_COMMIT=3bbc7b1199a5b5cb6955e0fc4302ba843b6e3535
+NODE_LABELS=built-in
+WORKSPACE_TMP=/var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job@tmp
+PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN_ARTIFACTS_DISPLAY_URL=http://localhost:8080/job/936_PopDavidPopoviciGeorge_Job/30/display/redirect?page=artifacts
+CI=true
+GIT_BRANCH=origin/main
+BUILD_ID=30
+TESTLINK_BUILD_NAME=build_30
+_=/usr/bin/printenv
+testlink testcase = 
+mv: cannot stat './target/surefire-reports/TEST-.xml': No such file or directory
+Executing iterative Build Steps.
+
+Looking for the test results of TestLink test cases.
+
+Looking for test results in JUnit methods by its name.
+
+Found 1 test result(s).
+
+Archiving artifacts
+Finished: SUCCESS

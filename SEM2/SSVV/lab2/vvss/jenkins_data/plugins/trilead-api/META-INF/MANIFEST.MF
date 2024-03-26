@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.6.0
+Build-Jdk-Spec: 11
+Specification-Title: Trilead API Plugin
+Specification-Version: 0.0
+Implementation-Title: Trilead API Plugin
+Implementation-Version: 2.133.vfb_8a_7b_9c5dd1
+Group-Id: org.jenkins-ci.plugins
+Artifact-Id: trilead-api
+Short-Name: trilead-api
+Long-Name: Trilead API Plugin
+Url: https://github.com/jenkinsci/trilead-api-plugin
+Compatible-Since-Version: 2.0.0
+Plugin-Version: 2.133.vfb_8a_7b_9c5dd1
+Hudson-Version: 2.401.3
+Jenkins-Version: 2.401.3
+Plugin-Dependencies: gson-api:2.10.1-3.vb_25b_599b_e4f8
+Plugin-Developers: Michael Clarke:mc1arke:michael.m.clarke@gmail.com,Iva
+ n Fernandez:kuisathaverat:kuisathaverat@gmail.com
+Support-Dynamic-Loading: true
+Plugin-License-Name: The MIT license
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/trilead-api-p
+ lugin.git
+Plugin-ScmTag: fb8a7b9c5dd1c5b029c631b4f2964a74935f70c9
+Plugin-ScmUrl: https://github.com/jenkinsci/trilead-api-plugin
+Plugin-GitHash: fb8a7b9c5dd1c5b029c631b4f2964a74935f70c9
+Implementation-Build: fb8a7b9c5dd1c5b029c631b4f2964a74935f70c9
+

@@ -1,0 +1,18 @@
+Started by user [8mha:////4Jikxv8wZWqGtCE/EHBJViYz1/q5Tns5Q8J+RCYjVWayAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL94pLSlNS8EgDnZMOBwgAAAA==[0mStudent
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/936_PopDavidPopoviciGeorge_Job
+Installing JDK jdk-9-oth-JPR
+Downloading JDK from https://download.oracle.com/otn/java/jdk/9+181/jdk-9_linux-x64_bin.tar.gz
+Downloading -1 bytes
+Installing /var/jenkins_home/tools/hudson.model.JDK/JDK_21/jdk.sh
+[JDK_21] $ /var/jenkins_home/tools/hudson.model.JDK/JDK_21/jdk.sh -noregister
+/var/jenkins_home/tools/hudson.model.JDK/JDK_21/jdk.sh: 2: Syntax error: newline unexpected
+ERROR: Failed to install JDK. Exit code=2
+Installing JDK jdk-9-oth-JPR
+Downloading JDK from https://download.oracle.com/otn/java/jdk/9+181/jdk-9_linux-x64_bin.tar.gz
+Downloading -1 bytes
+Installing /var/jenkins_home/tools/hudson.model.JDK/JDK_21/jdk.sh
+[JDK_21] $ /var/jenkins_home/tools/hudson.model.JDK/JDK_21/jdk.sh -noregister
+/var/jenkins_home/tools/hudson.model.JDK/JDK_21/jdk.sh: 2: Syntax error: newline unexpected
+ERROR: Step ‘Archive the artifacts’ failed: Failed to install JDK. Exit code=2
+Finished: FAILURE
