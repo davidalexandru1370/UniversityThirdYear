@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  code-panorama-server:
+    image: registry.gitlab.com/code_panorama/codepanorama/code-panorama-server:${TAG:-latest}
+    command: "/opt/ws/CodePanorama-Server-exe"
+    environment:
+      CP_LOCAL_REPOS_ENABLED: "true"
+      CP_PRIVATE_REPOS_ENABLED: "true"
+    ports:
+      - "6868:6868"
+    # Use the volume mapping below to persist the workspace
+    #volumes:
+    #  - "C:/dev/CodePanorama/ws:/opt/ws/workspace"
+
+  code-panorama-swagger-ui:
+    image: registry.gitlab.com/code_panorama/codepanorama/code-panorama-server:${TAG:-latest}
+    command: "/opt/ws/CodePanorama-SwaggerUI-exe"
+    environment:
+      CP_API_HOST: localhost:6868
+    ports:
+      - "6869:6869"
+
+  code-panorama-client:
+    image: registry.gitlab.com/code_panorama/codepanorama/code-panorama-client:${TAG:-latest}
+    environment:
+      API_BASE_PATH: http://localhost:6868
+    ports:
+      - "8080:80"
