@@ -1,0 +1,14 @@
+Bridge:
+https://github.com/serilog/serilog/blob/dev/src/Serilog/Core/Logger.cs ILogEventSink
+
+Singleton:
+https://github.com/snyk/snyk-visual-studio-plugin/blob/main/Snyk.VisualStudio.Extension.Shared/Commands/SnykScanCommand.cs
+Linia 42
+Instantiata in:
+https://github.com/snyk/snyk-visual-studio-plugin/blob/main/Snyk.VisualStudio.Extension.Shared/SnykVSPackage.cs#L210
+Linia 210
+
+Observer:
+https://github.com/snyk/snyk-intellij-plugin/blob/master/src/main/kotlin/io/snyk/plugin/SnykBulkFileListener.kt
+Folosite de catre message bus-ul pentru events in:
+https://github.com/snyk/snyk-intellij-plugin/blob/master/src/main/kotlin/io/snyk/plugin/SnykPostStartupActivity.kt#L68
