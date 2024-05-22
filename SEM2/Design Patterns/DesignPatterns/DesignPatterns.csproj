@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Behaviour\Command\" />
+    <Folder Include="Behaviour\Memento\" />
+    <Folder Include="Behaviour\" />
+    <Folder Include="Behaviour\Visitor\" />
+    <Folder Include="Behaviour\TemplateMethod\" />
+    <Folder Include="Behaviour\State\" />
+  </ItemGroup>
+
+</Project>
