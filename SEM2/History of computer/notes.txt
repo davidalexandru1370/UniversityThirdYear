@@ -1,0 +1,199 @@
+1.Now we should actually move to the theoretical foundations of computer science.
+Theoretical foundations of computer science are linked to three individuals that well, are
+very smart individuals, geniuses, but each of them had their own peculiarities. Each of them
+were in their own way “special” meaning they had traits that separate them from the rest of
+the population besides the fact that they were really, really smart. And those three
+individuals are Kurt Goedel who is an Austrian mathematician, logician and philosopher,
+Alan Turing who is a British mathematician and John von Neumann who is a HungarianAmerican mathematician, chemist, a physicist, computer scientist and many other things.
+John von Neumann was a lot of things and you will see that at the end of this section. All of
+them were really bright individuals. But the whole story starts with David Hilbert (see Fig.
+2.12), a German mathematician, and his list of unsolved mathematical problems. David
+Hilbert proposed in 1900 in Paris at a Math conference a list of 10 initial unsolved,
+important problems in the field of Mathematics. These problems are unsolved problems
+similar to the one I have talked about in previous sections, Fermat’s last theorem about the
+Pythagorean numbers. I have also told you the legend surrounding that theorem that
+remained unsolved for about 300 years when it was finally solved by Andrew Wiles in 1995
+
+
+2.John von Neumann was a consultant to build
+the important ENIAC and EDVAC American supercomputers
+
+3.We move to the first generation of electrical computers, those based on vacuum tubes. They
+were developed between 1940 and 1960. The vacuum tubes are made of a glass chamber
+and the chamber contains nothing, it's vacuum or it may contain some gas; inside this sealed
+chamber, you would find a cathode through which a hot filament passes and then a plate
+which is the anode. The anode has the opposite electrical charge and is actually a diode.
+There are more complicated vacuum tubes. They are also called valves by the British or
+thermionic valves. And the vacuum tubes are used exactly for the
+switches because they can be programmed by sending current through them or not. They can
+be programmed to close the circuit close the switch or release the switch they were later
+replaced by transistors which were a lot more reliable and perform the same function.
+Transistors are ubiquitous, a CPU is made of thousands and billions of transistors squashed
+together on a silicon plate. Ttransistors were invented in 1948 by John Bardeen, William
+Shockley and Walter Brattain. The transistors were a lot more reliable than vacuum tubes
+and the vacuum tubes were not so reliable because they heated and they would crash. And
+when the transistors came along, they were a lot cheaper to produce, they wouldn't dissipate
+heat (they also generate heat, but not that much), so they replaced pretty much all vacuum
+tubes in all electronic devices except as far as I know devices in the musical industry like
+amplifiers from musical instruments. The ones that are more expensive and used in concerts
+still use vacuum tubes because vacuum tubes produce the sort of distortion that it's also
+called warm distortion and is very sought by singers in the musical industry.
+The one of the first computers built by the United Kingdom's army was the Colossus. Built
+between 1943 and 1945, it was developed by the British code breakers from Bletchley Park
+and used in the cryptographic field. It was used to break the Lorenz german chipper. Just
+like Alan Turing built the bomb or in similar way it was Colossus built and used. It used a
+lot of vacuum tubes, it was programmed by switches and plugs and not by a store program
+which means that when I want to add let's say if I want to compute the s 1+2 I would have
+to operate a bunch of switches. Using some switches I would load the two values in the
+memory then I would use some other switch in order to choose between additions or
+subtractions and I would use some other switch to choose between multiplication and
+division. So you do all this programming using manual switches - that's what it means that it
+was programmed by switches and plugs and not by a stored program. Everything is based on
+simple circuits that have a switch, even my phone; if the switch is on the electric current
+passes through it, if it's not it doesn't pass. In the beginning, all those electrical circuits with
+a resistor and a switch would have to be turned on and off manually. Nowadays we write
+programs with instructions and those instructions are executed by the CPU and the CPU has
+components that are called transistors that allow us to automatically close and open circuits
+corresponding to individual bits so we now close and open electrical circuits using programs.
+using instruction using software. But the idea is the same. Back then you wouldn't have a
+program, but you have to do this manually. It had no memory, input on paper tape and for
+output there was an electric type writer. The next ones are two powerful computers, one is ENIAC built by the United States Army
+1946 and the other one is EDVAC. The ENIAC was a Turing-complete electrical general
+purpose computer. The name ENIAC comes from Electronic Numerical Integrator and
+Computer. It was built by John Mauchly and J. Presper Eckert from Univ. Pensylvannia for
+US Army. It could calculate a bomb trajectory in 30 seconds much faster than a human who
+would do it in 20 hours. It costed about 487.000 $ which would be equivalent to 6.887.000 $
+in today’s money. It contained 20,000 vacuum tubes, 7200 crystal diodes, 1500 relays,
+70,000 resistors, 10,000 capacitors and approximately 5,000,000 hand-soldered joints. It was
+big, it weighted 27 tons, occupied 167 squared meters and consumed 150 KWatts of
+electricity. The input and output was on IBM punched cards.
+Let's move on to EDVAC which was the next supercomputer built by US Army in 1949.
+built by the same people John Mauchly and J. Presper Eckert with John von Neumann as
+consultant for the US Ballistics Research Laboratory. EDVAC comes from Electronic
+Discrete Variable Automatic Computer. The cost of EDVAC was similar to ENIAC, 500.000
+$. EDVAC used a binary system (not decimal like ENIAC) and stored programs in memory.
+This was the idea of John von Neumann to store the program into the memory and don't have
+manual switches for everything, but just run the program from the memory. It could do an
+addition in 867 microseconds and a multiplication in 2,9 milliseconds. It had a memory of
+approximately 5.5 KB. It had almost 6,000 vacuum tubes and 12,000 diodes, and consumed
+56 kW of power;. It occupied 45.5 sq. meters, weighted 7,8 tons. It used to ran 20 hours per
+day.
+
+
+4. The second generation of computers of computers is based on transistors and built using
+transistors. They were built between 1950 and 1970 and the transistors are just an improved
+vacuum tube meaning that it's just an electrical switch, it allows current to pass or it stops
+current to pass between the source and the drain, depending on the inner state of the
+transistor. Transistors were invented by John Bardeen, William Shockley and Walter
+Brattain at Bell Labs in 1948. It can be used as an electric amplifier or electronic switch.
+Using transistors we can build logic gates and using logic gates, we can build an Adder (i.e.
+circuit that performs the addition of two numbers and using an adder we can create an
+ALU (Arithmetic and Logic Unit) which is an essential component in a CPU. 
+Transistors have replaced the vacuum tubes because they were more reliable, they wouldn't
+generate heat and then they wouldn't break so often as the vacuum tubes and also it's a lot
+cheaper to produce transistors. They pretty much function the same way as the vacuum
+tubes meaning they function as electrical electronic switches and this is very important in the
+computing world. It's very important to be able to turn on and off a switch that closes an
+electrical circuit because everything nowadays and for a lot of time, everything in computing
+is based on bits of information. The concept of a bit is the smallest quantity of information
+that can be stored in a binary computer. Pretty much all computers are binary systems. You
+can store on one bit the value zero or one, but as you as you know or imagine the bit is a
+software concept, it doesn't exist in the real world, it only exists in our mind. But the bit has
+an equivalent in the real world which is a bistable circuit which is just a simple circuit with a
+wire and a resistance and a switch on it. And when that switch is closed then the current
+passes through the circuit and we consider that from a software point of view that circuit has
+the software value one. And when the switch is open there's no current passing through the
+circuit and we consider that is equivalent to the software value zero. Everything that's done
+in computing is set bits to zero or one that's all a cpu does it just sets values to one and zero
+we how does it set well it depends on what we are trying to do. If we are trying to do an
+addition then it sets the zeros and one in the result depending on the operation and the actual
+data that we want to add and actually in the first version of computers, you would program
+them manually by switches. If you want to set the value 2 in binary in the memory you
+would have to use at least two switches and you have to turn on the first switch
+corresponding to one and turn off the second switch corresponding to zero so 10 is 2 in
+binary. If you have a larger value you would have to use more switches. And then you have
+to use a switch in order to load values into the memory. But later on using transistors and
+specialized transistors or specialized integrated circuits or microchips called mosfets, those
+were able to dictate / control the switch on some other circuit. So one circuit, one transistor
+would be able to control a circuit corresponding to a bit, would be able to close it and open
+the circuit depending on some state of the transistor. So we have electrical circuits that
+control other electrical circuits.
+
+
+5. The third generation of computers is based on the microchip and the fourth generation is
+based on the microprocessor, but the microprocessor is just a specialized microchip, so we
+may say that the fourth generation is kind of included in the third generation. That's why we
+say that the computers of the third generation was were produced from 1962 till the present
+but still the microprocessor-based ones are more specialized generation of computers than
+the third generation of computers based on the microchip. The integrated circuit (i.e.
+microchip) was invented independently by Jack Clair Kilby and Robert Noyce. It is a set of
+electronic circuits on a small flat piece of semiconductor material, silicon. It integrated many
+tiny transistors as a one component, instead of linking discrete transistors with wires. As of
+2016, typical chip areas range from a few square millimeters to around 600 mm
+2
+, with up to
+25 million transistors per mm2
+. Related to the number of transistors on a microchip there's
+the Moore law from Gordon Moore which is the co-founder together with Robert Noyce of
+the Intel corporation that says that the number of transistors in the integrated circuit doubles
+every two years. The number of transistors employed on a chip in 2016 is 10 billion
+transistors.
+
+6.In 1958, DARPA (Defense Advanced Research Projects Agency) was created by the DoD
+(Department of Defense) in US. In 1962, J.C.R. Licklider published a paper about a "Galactic
+Network". He was the first director of DARPA. He then influenced his successors at DARPA
+about the importance of networking concept. In 1961, Leonard Kleinrock, professor at UCLA
+published a paper about packet-switching being more efficient than circuit-switching
+communication paradigm. In 1965, Thomas Merrill & Lawrence Roberts connected 2 computers
+using a low-speed dialup telephone line to prove that Kleinrock was right. In 1966, Lawrence
+Roberts went to DARPA and planned the "ARPANET" and presented it at a conference (L.
+Roberts, "Multiple Computer Networks and Intercomputer Communication," ACM Gatlinburg
+Conference, October 1967). At this conference, Lawrence Roberts met with Roger Scantlebury
+who told him about two other similar, packet-switched network ideas, from UK: one created by
+Donald Davies and Roger Scantlebury at NLP (they also had a paper about this at the same
+conference) and another one created by Paul Baran and others at RAND. Roberts adopted the
+term "packet" from the NLP paper and the network speed of ARPANET was set to 50kbps. He
+refined the plans for the packet-switched network at DARPA until 1968 and DARPA released an
+RFQ (Request for Quote/Quotation) for the packet switches of ARPANET (called Interface
+Message Processor - IMP). In 1968, a group lead by Frank Heart from BBN (Bolt Beranek and
+Newman) won the DARPA contract and created the IMP with a team including Robert (Bob)
+Kahn who created ARPANET architecture; another team of the group leaded by Lawrence
+Roberts and Howard Frank worked on the network topology and economics; and L. Kleinrock's
+team from UCLA worked on the network measurement system. In september 1969 first 2 nodes
+were connected to ARPANET (Stanford-UCLA), IMPs were installed at both ends; "LOgin" is
+the first text sent over the ARPANET; 2 additional computers were connected by the end of
+1969(Univ. Utah, UC Santa Barbara). Additional computers were added to ARPANET and in
+1970 the Host-to-Host protocol (NCP - Network Control Protocol) was created by S. Crocker -
+predecesor of TCP/IP. In 1972, large successful presentation of ARPANET at a conference by
+Robert Kahn at the International Computer Communication Conference (ICCC). Ray Tomlinson
+from BBN invented the hot application, email. In 1972-1973 Robert Kahn introduced the 
+opennetwork architecture (several networks managed independently, but interconnected together) at
+DARPA and then saw that NCP was not good for this architecture (NCP could nod address
+machines past the next IMP), so Robert Kahn and Vinton Cerf (from Standord) produced the
+TCP/IP protocols. They wanted to have only secure communication in a virtual-circuit pattern,
+but tests with voice packets showed them that for some class of applications, the application
+should decide what to do after packet losses, not the end host. So they have split initial TCP intru
+reliable TCP (the one we have today) and unreliable communication provided by UDP. DARPA
+signed 3 contracts with Stanford (a group lead by Cerf), BBN (a group lead by Ray Tomlinson)
+and UCL (a group lead by Peter Kirstein) to implement TCP/IP (it was simply called TCP in the
+Cerf/Kahn paper and it included both protocols). In 1973 Ethernet technology was developed by
+Bob Metcalfe at Xerox PARC. In 1976 Kleinrock published a book on ARPANET which was
+instrumental in the wide spread of the network. The number of independently managed networks
+increased, so Paul Mockapetris of USC/ISI invented the Domain Name System (DNS) which
+allowed scaling the distributed system. Initially, only one routing protocol was used in the
+ARPANET, but as the number of independently managed network increased, Interior Gateway
+Protocol (IGP) was invented in order to be used inside a local network and Exterior Gateway
+Protocol (EGP) was used to interconnect the independent local networks. DARPA assigned UC
+Berkeley to implement TCP/IP in Unix, and UC Berkeley rewrote the BBN code into Unix BSD -
+which contributed a lot to the success of the network; In January 1, 1983 it was the "flag-day",
+carefully prepared several years ago, when all computers on the ARPANET should
+synchronously change from the NCP host protocol to TCP/IP. By 1985 there were a lot of
+networks inspired from the Internet technology of ARPANET: MFENet of Dept. of Energy,
+HEPNet for High Energy Physics, MilNet for military, CSNet for academic research in computer
+science, .. In 1985, NSF started the NSFNet program which reunited several of existing networks
+for academic research. In 1988, a National Research Council committee, chaired by Kleinrock
+and with Kahn and Clark as members, produced a NFS report "Towards a National Research
+Network", which was influential on then Senator Al Gore and laid the foundation for the future
+information superhighway. In 1994, a National Research Council report, again chaired by
+Kleinrock (and with Kahn and Clark as members again), Entitled "Realizing The Information
+Future: The Internet and Beyond" was released.
