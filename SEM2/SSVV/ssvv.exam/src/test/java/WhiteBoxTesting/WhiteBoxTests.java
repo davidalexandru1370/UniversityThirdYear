@@ -32,7 +32,9 @@ public class WhiteBoxTests {
             solution.InsertCow(new ArrayList<>(), -1);
         });
 
-
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+            solution.InsertCow(new ArrayList<>(), 100);
+        });
     }
 
     public static Stream<Arguments> getListOfAnimals() {
