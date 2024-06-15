@@ -307,3 +307,108 @@ cout << "-------------------" << endl;
 }
 
 ```
+
+1. The lineup for a figure skating championship includes competitors who can register for the championship
+   events. Competitors participating in events are evaluated by judges. The data is stored in a relational
+   database.
+
+- A competitor has an ID, last name, first name, and date of birth.
+- An event has an ID, name, description, and date.
+- A competitor can register for multiple events. Multiple competitors can register for an event.
+- A judge has an ID, last name, and first name.
+- An evaluation is made by a judge for a competitor who is participating in a certain event and
+  involves giving an integer grade from 1 to 10 to the competitor in the event. A judge can evaluate
+  multiple competitors who participate in the same event, as well as multiple events for a certain
+  competitor. A judge can evaluate at most once a certain competitor’s participation in an event. A
+  competitor can be evaluated in an event only if they have registered for that event.
+  Create a relational BCNF schema for the database, rigorously highlighting the primary keys, candidate
+  keys, and foreign keys.
+
+Solution:
+
+```sql
+create table Competitor(
+    id int primary key identity,
+    lastname nvarchar(100),
+    firstname nvarchar(100),
+    dateOfBirth date,
+);
+
+create table Event(
+    id int primary key identity,
+    description text,
+    date date
+);
+
+create table Registration(
+    id int primary key identity,
+    competitorid foreign key references Competitor(Id) on delete cascade,
+    eventid foreign key references Event(Id) on delete cascade
+);
+
+create table Judge(
+    id int primary key identity,
+    lastname nvarchar(100),
+    firstname nvarchar(100),
+);
+
+create table Evaluation(
+    judgeId int foreign key references Judge(id) on delete cascade,
+    registrationId int foreign key references Registration(id) on delete cascade,
+    grade int,
+    constraint pk (judgeid, registrationId) primary key
+);
+
+```
+
+2. a. Write an SQL query that returns the total number of articles in the category named _Economics_ published
+   by journalists working at the newspaper named _Universe_.
+
+```sql
+   Select Count(*) from Articles A
+   inner join Category C on A.Category = C.Category
+   inner join Journalists J on J.JournalistID = A.JournalistID
+   inner join Newspapers N on N.NewspaperID = J.NewspaperID
+   where C.Category like 'Economics' and N.NewspaperName like 'Universe';
+```
+
+b1.
+
+| JournalistID | No  |
+| ------------ | --- |
+| 2            | 1   |
+
+b2.
+{JournalistId} -> {Title} is not satisfied because we can find multiple values for titles for the same journalistId, namely: {1} -> {a1}, {1} -> {a4}
+
+{ArticleId} -> {Text} is satisfied because every ArticleId has an unique text, namely: {1} -> {t1} ... {8} -> {t8}
+
+OS
+
+1. a. The purpose of pipe c is to prevent to read from pipe _a_ what the process wrote in pipe _a_.
+
+   b. 0 and 3
+
+   c. If the child process will read what he wrote in pipe _a_ earlier it will create a deadlock, otherwise it will run the same.
+
+   d.
+
+   e. The child process will continue its execution until the end of the program.
+
+2.
+
+```bash
+#!/bin/bash
+for F in `find /usr/sbin -type f`; do
+    if [ ! -x "$F" ] && ls -l "$F" | grep -q -E "^-(.{2}x|.{5}x|.{8}x)"
+    then
+       echo "$F:" `ps -e -f | grep -E "$F" | grep -E -v "grep" | wc -l`
+    fi
+done
+```
+
+1. The values will the name of files, excluding directories, hard/symbolic links found in folders and subfolders of /usr/sbin
+2. It will match only files starting with - then containg either 2,5,8 characters and final character is x
+3. The files with no rights for the user.
+4. the files with permissions for owner, group or others
+5. it eliminates the processes which contains the word grep, because -v flag inverts the match, printing the lines which are not "grep"
