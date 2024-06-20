@@ -1,0 +1,81 @@
+3.1.2. File Types and File Systems
+In a file system, the UNIX system calls handle eight types of files:
+1.Normal (the usual files)
+2.Directories
+3.Hard links
+4.Symbolic links
+5.Sockets
+6.FIFO (named pipes)
+7.Peripheral character devices
+8.Peripheral block devices
+Besides these eight type there are four more entities that the UNIX system calls treat 
+syntactically exactly as if they were files:
+9.Pipes (anonymous pipes)
+10. Shared memory segments
+11. Message queues
+12. Semaphores
+Normal files are sequences of bytes accessible either sequentially or directly using the byte’s 
+order number.
+Directories. A directory file differs from a normal file only thorough the information it 
+contains. A directory contains the list of names and addresses of the files it contains. Usually 
+every user has a directory of its own which points to its normal files and other subdirectories.
+Special files. In this category we can include, for now, the last six file types. Actually, UNIX 
+regards any I/O device as a special file. From a user perspective there is no difference 
+between the way it works with a normal disk file and the way it works with a special file.
+Every directory includes the two special entries below:
+“.” (dot) it points to the directory itself 
+“..” (two consecutive dots) points to the parent directory
+Every file system contains a main directory named root or /.
+73
+Usually, every user is using a current directory attached to the user upon entering the system. 
+The user can change this directory (cd), can create a new directory inside the current 
+directory (mkdir), delete a directory (rmdir), display the access path from root to the current 
+directory (pwd). 
+The appearance of large numbers of UNIX distributers lead, inevitably, to the appearance of 
+many proprietary “extended file systems”: For instance,
+• Solaris is using the UFS file system
+• Linux uses mostly ext2 and more recently ext3
+• IRIX is using XFS
+• Etc.
+Today’s UNIX distributions support also file systems specific to other operating systems. The 
+most important such file systems are listed below. The usage of these third party file systems 
+is transparent to the user, however users are recommended to use such file systems carefully 
+for operations other than reading. Modifying a Microsoft Word document from UNIX may 
+result in the file being unusable.
+• FAT and FAT32 specific to MS-DOS and Windows 9x
+• NTFS specific to Windows NT and 2000
+UNIX system administrators must pay attention to the types of file sytems used and the 
+permissions they give to the users on them.
+The tree structure principle of a file system states that any file or directory has a single 
+parent. Implicitly, each file or directory has a single unique path of access starting from the 
+root. The link between a file or directory and its parent directory will be call natural link. The 
+natural links are created implicitly when the file or subdirectory is created.
+
+
+Upon start, a shell stays active until specifically closed, and follows the algorithm below:
+While(session is not closed)
+    Display prompt;
+    Read command line;
+    If (command line ends with ‘&’) then
+        Create a process that executes the command
+        Do not wait for its execution to complete
+    Else
+        Create a process that executes the command
+        Wait for its execution to complete
+    End If
+End While
+The algorithm above emphasizes two modes in which a command can be executed:
+• Mode foreground – visible execution. The shell waits for the execution to finish ad 
+then displays a prompt again. This is the implicit execution mode for any UNXI 
+command.
+• Mode background – hidden execution. The shell executed the command but does of 
+wait for it to finish, and displays the prompt immediately after it started, offering the 
+user the possibility to run another command. In order to run a command in the 
+background, one must end it with ‘&’
+In a UNIX session, one can run any number of background commands but only one 
+foreground command. For example, the script below runs two command in the background, 
+one for copying a file (cp) and one for compiling a C program (gcc), and one command in 
+foreground for editing a text file (vi).
+cp A B &
+gcc x.c &
+vi H
